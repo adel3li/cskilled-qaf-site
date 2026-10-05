@@ -1,0 +1,125 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/cskilled-home-qaf.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/cskilled-track-python-qaf.html",
+      "destination": "/track-python",
+      "permanent": true
+    },
+    {
+      "source": "/cskilled-track-cpp-qaf.html",
+      "destination": "/track-cpp",
+      "permanent": true
+    },
+    {
+      "source": "/cskilled-track-ai-qaf.html",
+      "destination": "/track-ai",
+      "permanent": true
+    },
+    {
+      "source": "/cskilled-diploma-python-qaf.html",
+      "destination": "/diploma-python",
+      "permanent": true
+    },
+    {
+      "source": "/cskilled-diploma-dsa-python-qaf.html",
+      "destination": "/diploma-dsa-python",
+      "permanent": true
+    },
+    {
+      "source": "/cskilled-diploma-cpp-qaf.html",
+      "destination": "/diploma-cpp",
+      "permanent": true
+    },
+    {
+      "source": "/cskilled-diploma-dsa-cpp-qaf.html",
+      "destination": "/diploma-dsa-cpp",
+      "permanent": true
+    },
+    {
+      "source": "/cskilled-diploma-ml-qaf.html",
+      "destination": "/diploma-ml",
+      "permanent": true
+    },
+    {
+      "source": "/cskilled-diploma-dl-qaf.html",
+      "destination": "/diploma-dl",
+      "permanent": true
+    },
+    {
+      "source": "/cskilled-instructor-qaf.html",
+      "destination": "/instructor",
+      "permanent": true
+    },
+    {
+      "source": "/cskilled-community-qaf.html",
+      "destination": "/community",
+      "permanent": true
+    },
+    {
+      "source": "/cskilled-faq-qaf.html",
+      "destination": "/faq",
+      "permanent": true
+    },
+    {
+      "source": "/cskilled-contact-qaf.html",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/cskilled-policy-terms-qaf.html",
+      "destination": "/terms",
+      "permanent": true
+    },
+    {
+      "source": "/cskilled-policy-privacy-qaf.html",
+      "destination": "/privacy",
+      "permanent": true
+    },
+    {
+      "source": "/cskilled-policy-refund-qaf.html",
+      "destination": "/refund",
+      "permanent": true
+    },
+    {
+      "source": "/index",
+      "destination": "/",
+      "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        }
+      ]
+    }
+  ]
+}
