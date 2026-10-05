@@ -1,0 +1,1596 @@
+<!doctype html>
+<!--
+  VISUAL VERSION WITH SAMPLE CONTENT: every review, name, story, event, count and policy marked as sample on the canvas is invented for design review only, and the photo/video frames are drawn SVG stand-ins. Replace with real, confirmed content before shipping.
+  Built from the CSkilled design system «المخطّط الهندسي» (tokens + components/bundle.css inlined below).
+-->
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CSkilled — مسار الذكاء الاصطناعي (قاف)</title>
+<meta property="og:image" content="assets/plate-05-ml-share.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..24,400..600,0..1,0&amp;display=swap">
+<style>
+/* ===== Design tokens (from tokens.json) ===== */
+
+:root{
+--cs-paper:#faf9f6;--cs-surface:#ffffff;--cs-border:#e2e8f0;--cs-border-soft:rgba(226,232,240,0.8);
+--cs-text:#0f172a;--cs-text-muted:#475569;--cs-text-subtle:#94a3b8;--cs-text-strong-muted:#334155;
+--cs-primary:#062985;--cs-primary-hover:#041c5c;--cs-secondary:#2440dc;--cs-lavender:#ebedff;--cs-cobalt-tint:#eff6ff;--cs-neutral-100:#f1f5f9;
+--cs-primary-a20:rgba(6,41,133,0.2);--cs-primary-a25:rgba(6,41,133,0.25);--cs-primary-a40:rgba(6,41,133,0.4);--cs-secondary-a30:rgba(36,64,220,0.3);
+--cs-lavender-a30:rgba(235,237,255,0.3);--cs-lavender-a40:rgba(235,237,255,0.4);--cs-lavender-a50:rgba(235,237,255,0.5);--cs-grid-line:rgba(6,41,133,0.04);
+--cs-code-bg:#0a101d;--cs-code-chrome:#060b14;--cs-code-footer:#080e1a;--cs-code-border:#1e293b;--cs-code-divider:rgba(30,41,59,0.8);--cs-code-text:#e2e8f0;--cs-code-muted:#94a3b8;
+--cs-code-dot-red:#ff5f56;--cs-code-dot-yellow:#ffbd2e;--cs-code-dot-green:#27c93f;--cs-code-success:#34d399;
+--cs-grid-size:24px;--cs-card-pad:24px;--cs-card-pad-sm:20px;--cs-grid-gap:24px;--cs-list-gap:12px;--cs-touch:44px;
+--cs-radius:4px;--cs-radius-card:6px;--cs-radius-media:8px;--cs-radius-pill:999px;
+--cs-shadow-xs:0 1px 2px rgba(15,23,42,0.05);--cs-shadow-sm:0 1px 3px rgba(15,23,42,0.10);--cs-shadow-md:0 4px 12px rgba(15,23,42,0.10);--cs-shadow-btn:0 1px 2px rgba(15,23,42,0.10);--cs-shadow-code:0 20px 40px rgba(2,6,23,0.25);
+--cs-container:1280px;--cs-gutter:32px;--cs-section-y:80px;--cs-nav-height:80px;--cs-measure:640px;
+}
+
+/* ===== Design system: components/bundle.css ===== */
+/* CSkilled — variables the token file does not carry (type scale, weights, motion),
+   followed by the component kit (components.css from the repository). */
+:root {
+  --cs-font-sans: var(--font-sans, 'IBM Plex Sans Arabic', sans-serif);
+  --cs-font-mono: var(--font-mono, 'JetBrains Mono', monospace);
+  --cs-font-icon: 'Material Symbols Outlined';
+  --cs-text-h1: 42px;      --cs-leading-h1: 1.25;
+  --cs-text-h2: 30px;      --cs-leading-h2: 1.3;
+  --cs-text-h3: 20px;      --cs-leading-h3: 1.4;
+  --cs-text-h3-sm: 18px;
+  --cs-text-body: 16px;    --cs-leading-body: 1.8;
+  --cs-text-small: 14px;
+  --cs-text-kicker: 12px;  --cs-leading-kicker: 1.6;
+  --cs-text-micro: 11px;
+  --cs-weight-regular: 400;
+  --cs-weight-medium: 500;
+  --cs-weight-semibold: 600;
+  --cs-weight-bold: 700;
+  --cs-dur-color: 150ms;
+  --cs-dur-chevron: 200ms;
+  --cs-ease: ease;
+  --cs-press: scale(0.98);
+  --cs-lift: translateY(-8px);
+}
+
+/*
+ * CSkilled design system — components.
+ * Requires tokens.css. Every page is dir="rtl"; spacing uses logical properties
+ * so components also mirror correctly inside dir="ltr" islands.
+ */
+
+/* ── Base ─────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--cs-paper);
+  color: var(--cs-text);
+  font-family: var(--cs-font-sans);
+  font-size: var(--cs-text-body);
+  line-height: var(--cs-leading-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--cs-primary); text-decoration: none; transition: color var(--cs-dur-color) var(--cs-ease); }
+a:hover { color: var(--cs-secondary); }
+
+::placeholder { color: var(--cs-text-subtle); opacity: 1; font-family: var(--cs-font-sans); }
+
+:where(a, button, summary, input, [tabindex]):focus-visible {
+  outline: 1px solid var(--cs-primary);
+  outline-offset: 2px;
+}
+
+/* Western digits in <bdi>, tabular in tables/prices/counters */
+.cs-num { font-family: var(--cs-font-mono); font-variant-numeric: tabular-nums; }
+.cs-mono { font-family: var(--cs-font-mono); }
+.cs-ltr { direction: ltr; unicode-bidi: isolate; }
+
+/* ── Icons (Material Symbols Outlined) ────────────────────── */
+.cs-icon {
+  font-family: var(--cs-font-icon);
+  font-weight: normal;
+  font-style: normal;
+  font-size: 18px;            /* lists & buttons */
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  white-space: nowrap;
+  direction: ltr;
+  display: inline-block;
+  flex: none;
+  -webkit-font-feature-settings: 'liga';
+  font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
+.cs-icon--badge { font-size: 15px; }  /* 15–16 inside badges */
+.cs-icon--title { font-size: 20px; }  /* 20–22 card titles */
+.cs-icon--chip  { font-size: 24px; }  /* icon chips */
+.cs-icon--primary   { color: var(--cs-primary); }
+.cs-icon--secondary { color: var(--cs-secondary); }
+.cs-icon--muted     { color: var(--cs-text-muted); }
+
+/* ── Texture & layout ─────────────────────────────────────── */
+.cs-grid-paper {
+  background-color: var(--cs-paper);
+  background-image:
+    linear-gradient(to right, var(--cs-grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--cs-grid-line) 1px, transparent 1px);
+  background-size: var(--cs-grid-size) var(--cs-grid-size);
+}
+
+.cs-container {
+  width: 100%;
+  max-width: var(--cs-container);
+  margin-inline: auto;
+  padding-inline: var(--cs-gutter);
+}
+
+/* Sections alternate white ↔ paper/grid; never two adjacent sections with the same texture. */
+.cs-section {
+  padding-block: var(--cs-section-y);
+  border-bottom: 1px solid var(--cs-border);
+  background: var(--cs-surface);
+}
+.cs-section--paper { background: var(--cs-paper); }
+.cs-section--grid {
+  background-color: var(--cs-paper);
+  background-image:
+    linear-gradient(to right, var(--cs-grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--cs-grid-line) 1px, transparent 1px);
+  background-size: var(--cs-grid-size) var(--cs-grid-size);
+}
+
+.cs-grid {
+  display: grid;
+  gap: var(--cs-grid-gap);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--cs-grid-min, 300px)), 1fr));
+}
+
+/* ── Typography ───────────────────────────────────────────── */
+.cs-h1, .cs-h2, .cs-h3 { margin: 0; font-weight: var(--cs-weight-bold); color: var(--cs-text); }
+.cs-h1 { font-size: var(--cs-text-h1); line-height: var(--cs-leading-h1); }
+.cs-h2 { font-size: var(--cs-text-h2); line-height: var(--cs-leading-h2); }
+.cs-h3 { font-size: var(--cs-text-h3); line-height: var(--cs-leading-h3); }
+.cs-h3--sm { font-size: var(--cs-text-h3-sm); }
+.cs-accent { color: var(--cs-primary); }
+
+@media (max-width: 640px) {
+  .cs-h1 { font-size: 32px; }
+  .cs-h2 { font-size: 24px; }
+}
+
+.cs-body  { font-size: var(--cs-text-body); line-height: var(--cs-leading-body); color: var(--cs-text-muted); margin: 0; }
+.cs-small { font-size: var(--cs-text-small); line-height: var(--cs-leading-body); color: var(--cs-text-muted); margin: 0; }
+.cs-micro { font-family: var(--cs-font-mono); font-size: var(--cs-text-micro); line-height: var(--cs-leading-kicker); color: var(--cs-text-muted); }
+
+/* Kicker: mono 12/700 directly above every section H2 */
+.cs-kicker {
+  display: block;
+  font-family: var(--cs-font-mono);
+  font-size: var(--cs-text-kicker);
+  line-height: var(--cs-leading-kicker);
+  font-weight: var(--cs-weight-bold);
+  color: var(--cs-primary);
+}
+.cs-kicker--secondary { color: var(--cs-secondary); }  /* guidance / marketing sections */
+
+.cs-section-head { display: flex; flex-direction: column; gap: 8px; margin-bottom: 40px; }
+.cs-section-head > .cs-body { max-width: var(--cs-measure); }
+
+/* ── Logo lockup ──────────────────────────────────────────── */
+.cs-logo { display: inline-flex; align-items: center; gap: 12px; color: inherit; }
+.cs-logo__mark {
+  width: 40px; height: 40px; flex: none;
+  border-radius: var(--cs-radius);
+  background: var(--cs-primary);
+  color: #FFFFFF;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--cs-font-mono);
+  font-weight: var(--cs-weight-bold);
+  font-size: 18px;
+  box-shadow: var(--cs-shadow-btn);
+  transition: background-color var(--cs-dur-color) var(--cs-ease);
+}
+a.cs-logo:hover .cs-logo__mark { background: var(--cs-secondary); }
+.cs-logo__text { display: flex; flex-direction: column; }
+.cs-logo__name { font-weight: var(--cs-weight-bold); font-size: 18px; line-height: 1.3; color: var(--cs-primary); }
+.cs-logo__tagline { font-family: var(--cs-font-mono); font-size: 12px; line-height: 1.6; color: var(--cs-text-muted); }
+
+/* Compact: footer & narrow spaces — no tagline */
+.cs-logo--compact { gap: 10px; }
+.cs-logo--compact .cs-logo__mark { width: 32px; height: 32px; font-size: 14px; box-shadow: none; }
+.cs-logo--compact .cs-logo__name { font-size: 16px; }
+.cs-logo--compact .cs-logo__tagline { display: none; }
+
+/* ── Buttons ──────────────────────────────────────────────── */
+.cs-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  min-height: var(--cs-touch);
+  padding: 13px 20px;
+  border: 1px solid transparent;
+  border-radius: var(--cs-radius);
+  font-family: var(--cs-font-sans);
+  font-size: 14px;
+  font-weight: var(--cs-weight-semibold);
+  line-height: 1.2;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color var(--cs-dur-color) var(--cs-ease),
+    border-color var(--cs-dur-color) var(--cs-ease),
+    color var(--cs-dur-color) var(--cs-ease);
+}
+.cs-btn:active:not(:disabled):not([aria-disabled="true"]) { transform: var(--cs-press); }
+.cs-btn .cs-icon { font-size: 18px; }
+.cs-btn--block { display: flex; width: 100%; }
+.cs-btn--sm { min-height: 36px; padding: 8px 14px; font-size: 12px; }
+
+/* Primary: always deep blue */
+.cs-btn--primary {
+  background: var(--cs-primary);
+  color: #FFFFFF;
+  padding: 14px 24px;
+  border: 0;
+  box-shadow: var(--cs-shadow-btn);
+}
+.cs-btn--primary:hover { background: var(--cs-primary-hover); color: #FFFFFF; }
+.cs-btn--primary.cs-btn--sm { padding: 8px 14px; }
+
+/* Secondary: white with hairline */
+.cs-btn--secondary { background: var(--cs-surface); color: var(--cs-text); border-color: var(--cs-border); }
+.cs-btn--secondary:hover { background: var(--cs-lavender-a30); border-color: var(--cs-primary-a40); color: var(--cs-text); }
+.cs-btn--secondary .cs-icon { font-size: 20px; color: var(--cs-secondary); }
+
+/* Outline: blue frame */
+.cs-btn--outline { background: var(--cs-surface); color: var(--cs-primary); border-color: var(--cs-primary); }
+.cs-btn--outline:hover { background: var(--cs-lavender-a40); color: var(--cs-primary); }
+
+/* Quiet */
+.cs-btn--quiet { background: transparent; color: var(--cs-text-muted); font-weight: var(--cs-weight-medium); }
+.cs-btn--quiet:hover { color: var(--cs-primary); border-color: var(--cs-border); }
+
+.cs-btn:disabled, .cs-btn[aria-disabled="true"] {
+  background: var(--cs-neutral-100);
+  color: var(--cs-text-subtle);
+  border-color: transparent;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+/* Round play button — the only pill radius */
+.cs-play {
+  width: 64px; height: 64px;
+  border-radius: var(--cs-radius-pill);
+  border: 0;
+  background: var(--cs-primary);
+  color: #FFFFFF;
+  display: inline-flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  box-shadow: var(--cs-shadow-md);
+  transition: background-color var(--cs-dur-color) var(--cs-ease);
+}
+.cs-play:hover { background: var(--cs-primary-hover); }
+.cs-play:active { transform: var(--cs-press); }
+.cs-play .cs-icon { font-size: 32px; }
+
+/* ── Badges ───────────────────────────────────────────────── */
+.cs-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 4px 10px;
+  border: 1px solid transparent;
+  border-radius: var(--cs-radius);
+  font-family: var(--cs-font-mono);
+  font-size: 12px;
+  line-height: 1.6;
+  font-weight: var(--cs-weight-semibold);
+}
+.cs-badge .cs-icon { font-size: 15px; }
+.cs-badge--outline   { background: var(--cs-surface); color: var(--cs-primary); border-color: var(--cs-primary-a20); }
+.cs-badge--soft      { background: var(--cs-lavender); color: var(--cs-primary); font-weight: var(--cs-weight-medium); }
+.cs-badge--secondary { background: var(--cs-surface); color: var(--cs-secondary); border-color: var(--cs-secondary-a30); }
+.cs-badge--neutral   { background: var(--cs-surface); color: var(--cs-text-muted); border-color: var(--cs-border); font-family: var(--cs-font-sans); font-weight: var(--cs-weight-regular); }
+.cs-badge--live      { background: var(--cs-lavender); color: var(--cs-primary); border-color: var(--cs-primary-a20); gap: 4px; }
+/* Hero meta pills (slightly larger) */
+.cs-badge--meta      { background: var(--cs-surface); color: var(--cs-primary); border-color: var(--cs-primary-a25); padding: 5px 14px; }
+
+/* Unit-number badge: 32px lavender square */
+.cs-unit {
+  width: 32px; height: 32px; flex: none;
+  border: 1px solid transparent;
+  border-radius: var(--cs-radius);
+  background: var(--cs-lavender);
+  color: var(--cs-primary);
+  font-family: var(--cs-font-mono);
+  font-weight: var(--cs-weight-bold);
+  font-size: 13px;
+  display: inline-flex; align-items: center; justify-content: center;
+}
+/* Cobalt only for the graduation / featured unit */
+.cs-unit--featured { background: var(--cs-cobalt-tint); border-color: var(--cs-secondary-a30); color: var(--cs-secondary); }
+
+/* Phase tags inside methodology cards */
+.cs-phase {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: var(--cs-radius);
+  font-family: var(--cs-font-mono);
+  font-size: 12px;
+  line-height: 1.6;
+  font-weight: var(--cs-weight-bold);
+}
+.cs-phase--depth      { color: var(--cs-primary);  background: var(--cs-lavender); }
+.cs-phase--breadth    { color: var(--cs-secondary); background: var(--cs-cobalt-tint); }
+.cs-phase--practice   { color: var(--cs-text);      background: var(--cs-border); }
+.cs-phase--experience { color: var(--cs-text-strong-muted); background: var(--cs-neutral-100); }
+
+/* ── Surfaces ─────────────────────────────────────────────── */
+.cs-card {
+  background: var(--cs-surface);
+  border: 1px solid var(--cs-border);
+  border-radius: var(--cs-radius);
+  padding: var(--cs-card-pad);
+  box-shadow: var(--cs-shadow-xs);
+}
+/* Recommended card only: 2px cobalt + md shadow (+ lift inside pricing grid) */
+.cs-card--featured { border: 2px solid var(--cs-secondary); box-shadow: var(--cs-shadow-md); }
+/* Inset paper: card inside a white surface, price boxes, summaries — no shadow */
+.cs-card--inset { background: var(--cs-paper); box-shadow: none; }
+
+/* Card hover: border tint OR md shadow — never both */
+.cs-card--hover-border { transition: border-color var(--cs-dur-color) var(--cs-ease); }
+.cs-card--hover-border:hover { border-color: var(--cs-primary-a40); }
+.cs-card--hover-shadow { transition: box-shadow var(--cs-dur-color) var(--cs-ease); }
+.cs-card--hover-shadow:hover { box-shadow: var(--cs-shadow-md); }
+
+.cs-icon-chip {
+  width: 40px; height: 40px;
+  border-radius: var(--cs-radius);
+  background: var(--cs-lavender);
+  color: var(--cs-primary);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 16px;
+}
+.cs-icon-chip .cs-icon { font-size: 24px; }
+
+/* Content card: icon chip + title + list + mono footer */
+.cs-content-card { display: flex; flex-direction: column; padding: var(--cs-card-pad-sm); }
+.cs-content-card__title { margin: 0 0 10px; font-weight: var(--cs-weight-bold); font-size: 17px; line-height: 1.4; }
+.cs-content-card__footer {
+  margin-top: 18px;
+  padding-top: 12px;
+  border-top: 1px solid var(--cs-border-soft);
+  font-family: var(--cs-font-mono);
+  font-size: 12px;
+  font-weight: var(--cs-weight-medium);
+  color: var(--cs-primary);
+}
+
+/* Checklists: check (blue) = fit · muted = requirements · arrow_forward (cobalt) = next steps */
+.cs-checklist { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; font-size: 13px; line-height: 1.8; color: var(--cs-text-muted); }
+.cs-checklist li { display: flex; align-items: flex-start; gap: 8px; }
+.cs-checklist .cs-icon { font-size: 18px; margin-top: 2px; color: var(--cs-primary); }
+.cs-checklist--requirements .cs-icon { color: var(--cs-text-muted); }
+.cs-checklist--next .cs-icon { color: var(--cs-secondary); }
+
+/* ── Navigation ───────────────────────────────────────────── */
+.cs-nav {
+  position: sticky; top: 0; z-index: 50;
+  height: var(--cs-nav-height);
+  background: rgba(255, 255, 255, 0.95);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--cs-border);
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+}
+.cs-nav__inner { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.cs-nav__links { display: flex; align-items: center; gap: 4px; list-style: none; margin: 0; padding: 0; }
+.cs-nav__link {
+  display: inline-flex; align-items: center;
+  min-height: var(--cs-touch);
+  padding: 8px 14px;
+  border-radius: var(--cs-radius);
+  font-size: 14px;
+  font-weight: var(--cs-weight-medium);
+  color: var(--cs-text-muted);
+  transition: color var(--cs-dur-color) var(--cs-ease), background-color var(--cs-dur-color) var(--cs-ease);
+}
+.cs-nav__link:hover { color: var(--cs-primary); background: var(--cs-lavender-a50); }
+.cs-nav__link[aria-current="page"], .cs-nav__link.is-active {
+  color: var(--cs-primary);
+  background: var(--cs-lavender);
+  font-weight: var(--cs-weight-semibold);
+}
+@media (max-width: 860px) { .cs-nav__links { display: none; } }
+
+/* ── Metric strip ─────────────────────────────────────────── */
+.cs-metrics {
+  display: grid;
+  grid-template-columns: repeat(var(--cs-metrics-cols, 3), 1fr);
+  background: var(--cs-surface);
+  border: 1px solid var(--cs-border);
+  border-radius: var(--cs-radius);
+  padding: 14px 0;
+  box-shadow: var(--cs-shadow-xs);
+}
+.cs-metric { display: flex; flex-direction: column; padding-inline: 14px; border-inline-end: 1px solid var(--cs-border); }
+.cs-metric:last-child { border-inline-end: 0; }
+.cs-metric__value {
+  font-family: var(--cs-font-mono);
+  font-size: 18px;
+  line-height: 1.5;
+  font-weight: var(--cs-weight-bold);
+  font-variant-numeric: tabular-nums;
+  color: var(--cs-primary);
+}
+.cs-metric__value--secondary { color: var(--cs-secondary); }
+.cs-metric__label { font-size: 11px; line-height: 1.6; color: var(--cs-text-muted); margin-top: 2px; }
+
+/* ── Accordion (curriculum) ───────────────────────────────── */
+/* Use <details name="…"> so only one item is open at a time. */
+.cs-accordion { display: flex; flex-direction: column; gap: 12px; }
+.cs-accordion__item {
+  border: 1px solid var(--cs-border);
+  border-radius: var(--cs-radius);
+  overflow: hidden;
+  background: var(--cs-surface);
+  box-shadow: var(--cs-shadow-xs);
+}
+.cs-accordion__summary {
+  list-style: none;
+  padding: 16px;
+  min-height: var(--cs-touch);
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  cursor: pointer;
+  transition: background-color var(--cs-dur-color) var(--cs-ease);
+}
+.cs-accordion__summary::-webkit-details-marker { display: none; }
+.cs-accordion__summary:hover, .cs-accordion__item[open] > .cs-accordion__summary { background: var(--cs-paper); }
+.cs-accordion__lead { display: flex; align-items: center; gap: 12px; }
+.cs-accordion__title { font-weight: var(--cs-weight-bold); font-size: 14px; line-height: 1.6; }
+.cs-accordion__desc { font-size: 11px; line-height: 1.6; color: var(--cs-text-muted); margin-top: 2px; }
+.cs-accordion__trail { display: flex; align-items: center; gap: 10px; flex: none; }
+.cs-accordion__meta { font-family: var(--cs-font-mono); font-size: 11px; color: var(--cs-text-muted); }
+.cs-accordion__chevron { font-size: 20px; color: var(--cs-text-muted); transition: transform var(--cs-dur-chevron) var(--cs-ease); }
+.cs-accordion__item[open] .cs-accordion__chevron { transform: rotate(180deg); }
+.cs-accordion__item[open] .cs-accordion__desc { display: none; }
+.cs-accordion__panel { padding: 0 16px 16px; }
+.cs-accordion__body {
+  background: var(--cs-paper);
+  border: 1px solid rgba(226, 232, 240, 0.6);
+  border-radius: var(--cs-radius);
+  padding: 14px;
+  font-size: 12px;
+  line-height: 1.9;
+  color: var(--cs-text-muted);
+}
+.cs-accordion__body ul { margin: 0; padding-inline-start: 18px; }
+@media (max-width: 560px) { .cs-accordion__meta { display: none; } }
+
+/* ── Pricing ──────────────────────────────────────────────── */
+.cs-pricing {
+  display: grid;
+  gap: var(--cs-grid-gap);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  align-items: end;
+  padding-top: 8px;
+}
+.cs-price-card {
+  position: relative;
+  display: flex; flex-direction: column; gap: 8px;
+  background: var(--cs-surface);
+  border: 1px solid var(--cs-border);
+  border-radius: var(--cs-radius);
+  padding: var(--cs-card-pad);
+  transition: box-shadow var(--cs-dur-color) var(--cs-ease);
+}
+.cs-price-card:hover { box-shadow: var(--cs-shadow-md); }
+.cs-price-card--recommended { border: 2px solid var(--cs-secondary); box-shadow: var(--cs-shadow-md); }
+.cs-pricing .cs-price-card--recommended { transform: var(--cs-lift); }
+@media (max-width: 640px) { .cs-pricing .cs-price-card--recommended { transform: none; margin-top: 12px; } }
+
+.cs-price-card__flag {
+  position: absolute; top: -11px; inset-inline-start: 14px;
+  background: var(--cs-secondary);
+  color: #FFFFFF;
+  font-family: var(--cs-font-mono);
+  font-size: 10px;
+  line-height: 1.6;
+  font-weight: var(--cs-weight-bold);
+  padding: 3px 8px;
+  border-radius: var(--cs-radius);
+}
+.cs-price-card__eyebrow { font-family: var(--cs-font-mono); font-size: 11px; color: var(--cs-text-muted); text-transform: uppercase; }
+.cs-price-card--recommended .cs-price-card__eyebrow { color: var(--cs-secondary); font-weight: var(--cs-weight-semibold); }
+.cs-price-card__title { margin: 0; font-weight: var(--cs-weight-bold); font-size: 15px; line-height: 1.6; }
+.cs-price-card__box { background: var(--cs-paper); border: 1px solid var(--cs-border); border-radius: var(--cs-radius); padding: 10px; }
+.cs-price-card--recommended .cs-price-card__box { background: var(--cs-lavender-a50); border-color: var(--cs-secondary-a30); }
+.cs-price-card .cs-btn { margin-top: 4px; }
+
+/* Prices are always mono */
+.cs-price { display: flex; align-items: baseline; gap: 6px; flex-wrap: wrap; }
+.cs-price__amount { font-family: var(--cs-font-mono); font-size: 20px; line-height: 1.5; font-weight: var(--cs-weight-bold); color: var(--cs-primary); font-variant-numeric: tabular-nums; }
+.cs-price-card--recommended .cs-price__amount { color: var(--cs-text); }
+.cs-price__was { font-family: var(--cs-font-mono); font-size: 11px; color: var(--cs-text-muted); text-decoration: line-through; }
+.cs-price__note { font-family: var(--cs-font-mono); font-size: 10px; line-height: 1.6; color: var(--cs-secondary); font-weight: var(--cs-weight-semibold); margin-top: 2px; }
+.cs-price__fine { font-family: var(--cs-font-mono); font-size: 11px; line-height: 1.6; color: var(--cs-text-muted); }
+
+/* ── Segmented toggle ─────────────────────────────────────── */
+.cs-segmented {
+  display: inline-flex;
+  padding: 4px;
+  border-radius: var(--cs-radius);
+  background: var(--cs-paper);
+  border: 1px solid var(--cs-border);
+  box-shadow: var(--cs-shadow-xs);
+}
+.cs-segmented__option {
+  padding: 8px 16px;
+  min-height: 36px;
+  border: 1px solid transparent;
+  border-radius: var(--cs-radius);
+  background: transparent;
+  font-family: var(--cs-font-sans);
+  font-size: 12px;
+  font-weight: var(--cs-weight-semibold);
+  color: var(--cs-text-muted);
+  cursor: pointer;
+  transition: color var(--cs-dur-color) var(--cs-ease);
+}
+.cs-segmented__option:hover { color: var(--cs-text); }
+.cs-segmented__option[aria-pressed="true"], .cs-segmented__option[aria-selected="true"] {
+  background: var(--cs-surface);
+  color: var(--cs-primary);
+  border-color: var(--cs-border);
+  box-shadow: var(--cs-shadow-xs);
+  font-weight: var(--cs-weight-bold);
+}
+
+/* ── Form fields ──────────────────────────────────────────── */
+.cs-field { display: flex; flex-direction: column; gap: 6px; border: 0; margin: 0; padding: 0; min-width: 0; }
+.cs-label { font-size: 13px; font-weight: var(--cs-weight-medium); color: var(--cs-text); padding: 0; }
+.cs-input {
+  width: 100%;
+  min-height: 40px;
+  padding: 9px 12px;
+  border-radius: var(--cs-radius);
+  border: 1px solid var(--cs-border);
+  background: var(--cs-surface);
+  color: var(--cs-text);
+  font-family: var(--cs-font-sans);
+  font-size: 13px;
+  outline: none;
+  transition: border-color var(--cs-dur-color) var(--cs-ease), box-shadow var(--cs-dur-color) var(--cs-ease);
+}
+/* Focus: blue border + 1px ring — no thick colored rings */
+.cs-input:focus, .cs-input:focus-visible { border-color: var(--cs-primary); box-shadow: 0 0 0 1px var(--cs-primary); outline: none; }
+.cs-input[dir="ltr"] { text-align: left; }
+
+/* Choice chips (radio group). Selected: blue border + lavender fill */
+.cs-choices { display: grid; grid-template-columns: repeat(auto-fit, minmax(90px, 1fr)); gap: 8px; }
+.cs-choice { position: relative; display: block; }
+.cs-choice input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.cs-choice span {
+  display: flex; align-items: center; justify-content: center;
+  min-height: 40px;
+  padding: 8px;
+  border-radius: var(--cs-radius);
+  border: 1px solid var(--cs-border);
+  color: var(--cs-text-muted);
+  font-family: var(--cs-font-mono);
+  font-size: 12px;
+  cursor: pointer;
+  transition: border-color var(--cs-dur-color) var(--cs-ease), color var(--cs-dur-color) var(--cs-ease);
+}
+.cs-choice:hover span { border-color: var(--cs-primary); color: var(--cs-primary); }
+.cs-choice input:checked + span {
+  border-color: var(--cs-primary);
+  background: var(--cs-lavender);
+  color: var(--cs-primary);
+  font-weight: var(--cs-weight-semibold);
+}
+.cs-choice input:focus-visible + span { outline: 1px solid var(--cs-primary); outline-offset: 2px; }
+
+/* ── FAQ & institutional strips ───────────────────────────── */
+.cs-faq { background: var(--cs-surface); border: 1px solid var(--cs-border); border-radius: var(--cs-radius); padding: 16px; box-shadow: var(--cs-shadow-xs); }
+.cs-faq__q { display: flex; align-items: center; gap: 8px; margin: 0 0 8px; font-weight: var(--cs-weight-bold); font-size: 14px; line-height: 1.6; }
+.cs-faq__q .cs-icon { font-size: 20px; color: var(--cs-primary); }
+.cs-faq__a { margin: 0; font-size: 13px; line-height: 1.9; color: var(--cs-text-muted); }
+
+/* Principle strip — every page ends with it before the footer */
+.cs-principle {
+  display: flex; align-items: center; gap: 10px;
+  background: var(--cs-paper);
+  border: 1px solid var(--cs-border);
+  border-radius: var(--cs-radius);
+  padding: 14px;
+  font-size: 12px;
+  line-height: 1.8;
+  font-weight: var(--cs-weight-medium);
+  color: var(--cs-text-muted);
+}
+.cs-principle .cs-icon { font-size: 20px; color: var(--cs-primary); }
+
+/* Inline info strip (e.g. payment channels) */
+.cs-info-strip {
+  display: inline-flex; flex-wrap: wrap; align-items: center; gap: 14px;
+  background: var(--cs-paper);
+  border: 1px solid var(--cs-border);
+  border-radius: var(--cs-radius);
+  padding: 12px 14px;
+  font-family: var(--cs-font-mono);
+  font-size: 11px;
+  color: var(--cs-text-muted);
+}
+.cs-info-strip__label { font-weight: var(--cs-weight-bold); color: var(--cs-text); }
+.cs-info-strip__item { display: inline-flex; align-items: center; gap: 4px; }
+.cs-info-strip__item .cs-icon { font-size: 16px; }
+
+/* ── Code window (the only dark surface) ──────────────────── */
+.cs-code {
+  border-radius: var(--cs-radius-media);
+  overflow: hidden;
+  border: 1px solid var(--cs-code-border);
+  background: var(--cs-code-bg);
+  color: var(--cs-code-text);
+  box-shadow: var(--cs-shadow-code);
+}
+.cs-code__bar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 16px;
+  background: var(--cs-code-chrome);
+  border-bottom: 1px solid var(--cs-code-divider);
+}
+.cs-code__dots { display: flex; align-items: center; gap: 8px; }
+.cs-code__dots span { width: 12px; height: 12px; border-radius: var(--cs-radius-pill); background: var(--cs-code-dot-red); }
+.cs-code__dots span:nth-child(2) { background: var(--cs-code-dot-yellow); }
+.cs-code__dots span:nth-child(3) { background: var(--cs-code-dot-green); }
+.cs-code__file { font-family: var(--cs-font-mono); font-size: 12px; color: var(--cs-code-muted); }
+/* Code is always dir="ltr" and left-aligned inside the Arabic page */
+.cs-code__body {
+  direction: ltr;
+  text-align: left;
+  margin: 0;
+  padding: 20px;
+  font-family: var(--cs-font-mono);
+  font-size: 13px;
+  line-height: 1.8;
+  overflow-x: auto;
+  white-space: pre;
+  background: transparent;
+  color: inherit;
+}
+.cs-code__foot {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 16px;
+  background: var(--cs-code-footer);
+  border-top: 1px solid var(--cs-code-divider);
+  font-family: var(--cs-font-mono);
+  font-size: 12px;
+  color: var(--cs-code-muted);
+}
+.cs-code__status { display: flex; align-items: center; gap: 6px; color: var(--cs-code-success); }
+.cs-code__status .cs-icon { font-size: 16px; }
+
+.tok-kw { color: var(--cs-code-keyword); }
+.tok-type { color: var(--cs-code-type); }
+.tok-name { color: var(--cs-code-name); }
+.tok-def { color: var(--cs-code-name); font-weight: var(--cs-weight-semibold); }
+.tok-num { color: var(--cs-code-number); }
+.tok-comment { color: var(--cs-code-comment); }
+
+/* ── Footer ───────────────────────────────────────────────── */
+/* The preceding section's bottom hairline separates it — no border-top. */
+.cs-footer { background: var(--cs-surface); padding-block: 48px; }
+.cs-footer__inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; }
+.cs-footer__meta { font-family: var(--cs-font-mono); font-size: 12px; color: var(--cs-text-muted); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: 0ms !important; }
+}
+
+
+/* ===== Page styles ===== */
+
+
+a{color:#062985}a:hover{color:#2440dc}
+bdi{font-family:var(--cs-font-mono);font-variant-numeric:tabular-nums}
+.ph{display:inline-flex;align-items:center;gap:4px;padding:2px 8px;border:1px dashed var(--cs-secondary-a30);background:var(--cs-cobalt-tint);color:var(--cs-secondary);border-radius:var(--cs-radius);font-family:var(--cs-font-mono);font-size:12px;font-weight:600;line-height:1.6;white-space:normal;vertical-align:middle}
+.ph--dark{background:transparent;border-color:var(--cs-code-border);color:var(--cs-code-muted);font-weight:500}
+.ph-block{border:1px dashed var(--cs-border);background:var(--cs-paper);border-radius:var(--cs-radius);padding:10px 12px;display:flex;align-items:flex-start}
+.dd{position:relative}
+.dd__btn{background:transparent;border:0;font-family:var(--cs-font-sans);cursor:pointer;gap:4px}
+.dd__menu{display:none;position:absolute;top:calc(100% + 6px);inset-inline-start:0;width:340px;padding:8px;z-index:60;flex-direction:column;gap:2px;box-shadow:var(--cs-shadow-md)}
+.dd:hover .dd__menu,.dd:focus-within .dd__menu{display:flex}
+.dd__item{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:44px;padding:8px 12px;border-radius:var(--cs-radius);font-size:14px;font-weight:500;color:var(--cs-text)}
+.dd__item:hover{background:var(--cs-lavender-a50);color:var(--cs-primary)}
+.dd__en{font-family:var(--cs-font-mono);font-size:11px;color:var(--cs-text-muted)}
+.media{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;background:var(--cs-code-bg);padding:20px;text-align:center}
+.cs-play.play--light{background:var(--cs-surface);color:var(--cs-primary)}
+.cs-play.play--light:hover{background:var(--cs-lavender)}
+.step-wrap{display:flex;align-items:flex-start}
+.step-wrap--grow{flex:1 1 0}
+.step{width:190px;flex:none;display:flex;flex-direction:column;align-items:flex-start;gap:8px}
+.step__name{font-size:14px;font-weight:700;line-height:1.6;color:var(--cs-text)}
+.step__en{font-family:var(--cs-font-mono);font-size:11px;color:var(--cs-text-muted);margin-top:-6px}
+.step__link{flex:1 1 0;height:32px;display:flex;align-items:center;gap:6px;padding-inline:8px}
+.step__line{flex:1 1 0;height:0;border-top:1px solid var(--cs-border)}
+.dcard{display:flex;flex-direction:column;gap:12px;color:var(--cs-text)}
+.dcard:hover{color:var(--cs-text)}
+.dcard__foot{margin-top:auto;padding-top:14px;border-top:1px solid var(--cs-border-soft);display:flex;align-items:center;justify-content:space-between}
+.qlink{display:inline-flex;align-items:center;gap:4px;font-size:14px;font-weight:600;color:var(--cs-primary)}
+.dcard:hover .qlink{color:var(--cs-secondary)}
+.en{font-family:var(--cs-font-mono);font-size:12px;color:var(--cs-text-muted);line-height:1.6}
+.meta{font-family:var(--cs-font-mono);font-size:12px;color:var(--cs-text-muted)}
+.foot-link{font-size:14px;color:var(--cs-text-muted);line-height:2.2}
+.foot-link:hover{color:var(--cs-primary)}
+.social{display:inline-flex;align-items:center;gap:6px;font-family:var(--cs-font-mono);font-size:12px;color:var(--cs-text-muted);min-height:44px}
+.social:hover{color:var(--cs-primary)}
+.wa{position:absolute;left:24px;top:812px;z-index:70;width:56px;height:56px;border-radius:var(--cs-radius-pill);background:var(--cs-surface);border:1px solid var(--cs-border);box-shadow:var(--cs-shadow-md);display:flex;align-items:center;justify-content:center;transition:border-color 150ms ease}
+.wa:hover{border-color:var(--cs-primary-a40)}
+.cs-nav__link.is-active{color:var(--cs-primary);background:var(--cs-lavender);font-weight:600}
+.scene{position:relative;overflow:hidden}
+.progress{flex:1 1 0;height:3px;margin-inline:16px;background:var(--cs-code-border);border-radius:var(--cs-radius-pill);overflow:hidden}
+.prefix{display:inline-flex;align-items:center;padding:0 12px;min-height:40px;border:1px solid var(--cs-border);border-radius:var(--cs-radius);background:var(--cs-paper);font-size:13px;color:var(--cs-text)}
+.cs-input.is-error{border-color:var(--cs-secondary);box-shadow:0 0 0 1px var(--cs-secondary)}
+.field-err{display:flex;align-items:center;gap:6px;font-size:12px;line-height:1.6;color:var(--cs-text);font-weight:500}
+.field-err .cs-icon{color:var(--cs-secondary)}
+.sbar{height:56px;background:var(--cs-surface);border-bottom:1px solid var(--cs-border);box-shadow:var(--cs-shadow-xs)}
+.mbar{display:none}
+@media (max-width:860px){.sbar-wrap{display:none}.mbar{display:flex;gap:8px;position:fixed;inset-inline:0;bottom:0;z-index:60;padding:10px 16px;background:var(--cs-surface);border-top:1px solid var(--cs-border)}}
+.tile{display:flex;align-items:center;justify-content:center;height:64px;background:var(--cs-surface);border:1px solid var(--cs-border);border-radius:var(--cs-radius)}
+.lec{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:44px;border-bottom:1px solid var(--cs-border)}
+.lec__lead{display:flex;align-items:center;gap:10px;color:var(--cs-text)}
+.tag-group{display:flex;flex-direction:column;gap:10px}
+.tag-label{font-family:var(--cs-font-mono);font-size:12px;font-weight:700;color:var(--cs-text-muted)}
+.tag-row{display:flex;flex-wrap:wrap;gap:8px}
+.cmp{width:100%;border-collapse:separate;border-spacing:0;border:1px solid var(--cs-border);border-radius:var(--cs-radius);background:var(--cs-surface);font-size:14px;line-height:1.6}
+.cmp th,.cmp td{padding:14px 16px;text-align:start;vertical-align:top;border-bottom:1px solid var(--cs-border);border-inline-start:1px solid var(--cs-border);color:var(--cs-text-muted)}
+.cmp tr> :first-child{border-inline-start:0}
+.cmp tbody tr:last-child> *{border-bottom:0}
+.cmp thead th{font-family:var(--cs-font-mono);font-size:12px;font-weight:600;color:var(--cs-text);background:var(--cs-paper)}
+.cmp tbody th{font-weight:600;color:var(--cs-text);width:150px}
+.cmp .cs-col{border-inline:2px solid var(--cs-secondary);color:var(--cs-text);font-weight:500}
+.cmp thead .cs-col{background:var(--cs-lavender);color:var(--cs-primary);font-weight:700;border-top:2px solid var(--cs-secondary)}
+.cmp tbody tr:last-child .cs-col{border-bottom:2px solid var(--cs-secondary)}
+.yes{display:flex;align-items:flex-start;gap:6px}.yes .cs-icon{margin-top:2px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.pay{display:inline-flex;align-items:center;justify-content:center;gap:6px;width:140px;padding:12px 14px}
+.pay .cs-icon{font-size:16px}
+.seq{position:relative;display:flex;flex-direction:column;gap:20px}
+.seq__line{position:absolute;inset-inline-start:15px;top:48px;bottom:48px;border-inline-start:1px solid var(--cs-primary-a20)}
+.seq__row{display:flex;gap:24px;align-items:flex-start}
+.seq__row>.cs-unit{margin-top:32px;position:relative;z-index:1}
+.tcard{flex:1 1 0;display:grid;grid-template-columns:180px minmax(0,1fr) 300px auto;gap:32px;align-items:center;padding:28px;color:var(--cs-text)}
+.tcard:hover{color:var(--cs-text)}
+.tcard:hover .qlink{color:var(--cs-secondary)}
+.scene{position:relative;overflow:hidden;background-color:var(--cs-code-bg);background-image:linear-gradient(to right,rgba(148,163,184,0.06) 1px,transparent 1px),linear-gradient(to bottom,rgba(148,163,184,0.06) 1px,transparent 1px);background-size:24px 24px}
+.overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(10,16,29,0.35);transition:background-color 150ms ease}
+.overlay:hover{background:rgba(10,16,29,0.2)}
+.dchip{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;background:rgba(6,11,20,0.85);border:1px solid var(--cs-code-border);border-radius:var(--cs-radius);font-family:var(--cs-font-mono);font-size:12px;color:var(--cs-code-text)}
+.lower{position:absolute;inset-inline:0;bottom:0;padding:14px 16px;background:rgba(6,11,20,0.85);border-top:1px solid var(--cs-code-divider);display:flex;flex-direction:column;gap:2px}
+.lower__title{font-size:15px;font-weight:700;color:var(--cs-code-text);line-height:1.5}
+.lower__sub{font-family:var(--cs-font-mono);font-size:11px;color:var(--cs-code-muted)}
+.progress{flex:1 1 0;height:3px;margin-inline:16px;background:var(--cs-code-border);border-radius:var(--cs-radius-pill);overflow:hidden}
+.avatar{width:36px;height:36px;flex:none;border-radius:var(--cs-radius-pill);background:var(--cs-lavender);color:var(--cs-primary);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px}
+.review-text{margin:0;font-size:14px;line-height:1.9;color:var(--cs-text)}
+.wordmark{font-family:var(--cs-font-mono);font-size:14px;font-weight:700;color:var(--cs-text-muted);letter-spacing:-0.02em}
+.thumb{width:180px;flex:none;border-radius:var(--cs-radius-media);border:1px solid var(--cs-code-border);aspect-ratio:16/9}
+.scene svg{direction:ltr}
+
+/* ===== v2 fixes: Arabic never in mono, plain photo frames, plates ===== */
+.cs-logo__tagline,.p-eyebrow,.cs-micro,.dchip,.meta,.cs-info-strip__label,.cs-info-strip__item,.foot-link,.cs-code__foot,.app__side,.app__side b,.judge,.wm small.ar,.ar,.ar-unit,.cs-badge{font-family:'IBM Plex Sans Arabic',sans-serif;letter-spacing:0}
+.p-eyebrow{font-size:13px;font-weight:600}
+.mono,.cs-micro[dir=ltr],.dchip[dir=ltr],.judge [dir=ltr]{font-family:var(--cs-font-mono)}
+.ar-unit{font-size:20px;font-weight:700;margin-inline-start:6px}
+.poster-hit{position:absolute;top:0;bottom:0;left:0;border:0;padding:0;background:transparent;cursor:pointer}
+.poster-hit:focus-visible{outline:2px solid #7dd3fc;outline-offset:-4px}
+.pframe{margin:0;border:1px solid var(--cs-border);border-radius:8px;overflow:hidden;background:#ffffff}
+.pframe svg{display:block}
+.pframe__cap{display:flex;align-items:center;gap:10px;padding:12px 16px;border-top:1px solid var(--cs-border);background:var(--cs-paper);font-size:14px;line-height:1.6;color:var(--cs-text)}
+.pframe__cap .mono{font-size:12px;color:var(--cs-text-muted)}
+.dcard2__cover{position:relative;aspect-ratio:16/10;border-radius:4px 4px 0 0;overflow:hidden;border-bottom:1px solid var(--cs-border)}
+.dcard2__cover svg{position:absolute;inset:0}
+.cover-badge{position:absolute;bottom:10px;left:10px;background:#ffffff}
+.route-plate{display:block}
+.route-plate svg{display:block}
+
+/* ===================== v5 · Qaf-inspired, light & airy ===================== */
+@property --n{syntax:'<integer>';inherits:false;initial-value:0}
+.q5{font-family:'IBM Plex Sans Arabic',sans-serif;color:#0F172A;--navy:#062985;--cob:#2440DC;--lav:#EBEDFF;--paper:#FAF9F6;--night:#0A101D;--mut:#475569;--line:#E2E8F0}
+.q5 *{box-sizing:border-box}
+.mono{font-family:var(--cs-font-mono)}
+.q-w{width:100%;max-width:1280px;margin-inline:auto;padding-inline:32px}
+.q-sec{flex:none;padding-block:120px;position:relative}
+.q-k{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;letter-spacing:0;color:var(--cob)}
+.q-h1{font-size:72px;line-height:1.16;font-weight:700;margin:0;letter-spacing:0}
+.q-h2{font-size:48px;line-height:1.25;font-weight:700;margin:0}
+.q-lead{font-size:19px;line-height:1.9;color:var(--mut);margin:0}
+.q-head{display:flex;flex-direction:column;gap:16px;max-width:760px;margin-bottom:64px}
+.q-head--c{align-items:center;text-align:center;margin-inline:auto}
+.q-uc{display:inline-block;padding:0 6px;border:1px dashed #D97706;border-radius:4px;background:#FFFBEB;color:#92400E;font-size:.92em;line-height:1.6}
+
+.q-b{display:inline-flex;align-items:center;gap:10px;height:56px;padding:0 28px;border-radius:8px;font-family:inherit;font-size:16px;font-weight:600;text-decoration:none;border:1px solid transparent;cursor:pointer;white-space:nowrap;transition:transform 200ms ease,background-color 200ms ease,border-color 200ms ease,box-shadow 200ms ease}
+.q-b .cs-icon{font-size:20px}
+.q-b:hover{transform:translateY(-2px)}
+.q-b:focus-visible{outline:2px solid var(--cob);outline-offset:3px}
+.q-b--fill{background:var(--navy);color:#fff;box-shadow:0 10px 24px rgba(6,41,133,0.22)}
+.q-b--fill:hover{background:#041c5c}
+.q-b--line{background:#fff;border-color:rgba(6,41,133,0.25);color:var(--navy)}
+.q-b--line:hover{border-color:var(--navy)}
+.q-b--white{background:#fff;color:var(--navy)}
+.q-b--white:hover{background:var(--lav)}
+.q-b--ghostw{border-color:rgba(255,255,255,0.4);color:#fff}
+.q-b--ghostw:hover{border-color:#fff}
+.q-b--sm{height:42px;padding:0 18px;font-size:14px}
+.q-a{display:inline-flex;align-items:center;gap:6px;font-weight:600;font-size:15px;color:var(--navy);text-decoration:none}
+.q-a .cs-icon{font-size:18px;transition:transform 200ms ease}
+.q-a:hover .cs-icon{transform:translateX(-4px)}
+
+/* nav */
+.q-nav{position:sticky;top:0;z-index:60;flex:none;background:rgba(255,255,255,0.92);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.q-nav__in{height:80px;display:flex;align-items:center;gap:40px}
+.q-logo{display:flex;align-items:center;gap:12px;color:#0F172A;text-decoration:none}
+.q-logo__m{width:38px;height:38px;border-radius:6px;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--cs-font-mono);font-weight:700;font-size:14px}
+.q-logo b{display:block;font-size:18px;line-height:1.2}
+.q-logo small{font-size:12px;color:var(--mut)}
+.q-links{display:flex;gap:4px;list-style:none;margin:0 auto;padding:0}
+.q-links a{display:inline-flex;align-items:center;height:40px;padding:0 14px;border-radius:6px;font-size:15px;font-weight:500;color:#334155;text-decoration:none;transition:background-color 150ms ease,color 150ms ease}
+.q-links a:hover,.q-links a[aria-current]{background:var(--lav);color:var(--navy)}
+
+/* hero */
+.q-hero{flex:none;position:relative;overflow:clip;background:#fff;padding-top:88px}
+.q-pill{display:inline-flex;align-items:center;gap:10px;height:40px;padding:0 6px 0 16px;border-radius:999px;background:var(--lav);color:var(--navy);font-size:14px;font-weight:600}
+.q-pill i{font-style:normal;display:inline-flex;align-items:center;height:28px;padding:0 12px;border-radius:999px;background:#fff;font-size:12px;color:var(--cob)}
+.q-hero__t{display:flex;flex-direction:column;align-items:center;text-align:center;gap:28px;position:relative;z-index:2}
+.q-hero__t .q-h1 span{color:var(--cob)}
+.q-hero__cta{display:flex;gap:12px;justify-content:center}
+.q-shape{position:absolute;border-radius:16px;z-index:0}
+.q-trust{display:flex;align-items:center;justify-content:center;gap:12px;font-size:14px;color:var(--mut)}
+.q-av{flex:none;width:40px;height:40px;border-radius:999px;background:var(--lav);color:var(--navy);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Sans Arabic',sans-serif;font-weight:700;font-size:16px;border:2px solid #fff;box-shadow:0 0 0 1px var(--line)}
+.q-rail{position:relative;z-index:1;margin-top:72px;padding-block:8px 96px;overflow:clip;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.q-rail__t{display:flex;gap:24px;width:max-content;align-items:flex-start}
+.q-tile{width:380px;flex:none;border-radius:8px;overflow:clip;border:1px solid var(--line);background:#fff;box-shadow:0 18px 40px rgba(15,23,42,0.10);transition:transform 300ms ease}
+.q-tile:nth-child(odd){transform:translateY(28px) rotate(-1.2deg)}
+.q-tile:nth-child(even){transform:rotate(1.2deg)}
+.q-tile:hover{transform:translateY(-6px) rotate(0)}
+.q-tile__c{aspect-ratio:16/10;position:relative}
+.q-tile__c svg{position:absolute;inset:0}
+.q-tile__f{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px;font-size:14px;font-weight:600;border-top:1px solid var(--line)}
+.q-tile__f span:last-child{font-size:12px;font-weight:500;color:var(--mut)}
+
+/* logos strip */
+.q-logos{flex:none;padding-block:48px;border-block:1px solid var(--line);background:var(--paper)}
+.q-logos__in{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.q-logos__l{font-size:14px;font-weight:600;color:var(--mut);max-width:220px;line-height:1.7}
+.q-wm{font-family:var(--cs-font-mono);font-size:22px;font-weight:700;color:#94A3B8;transition:color 200ms ease;display:inline-flex;align-items:baseline;gap:8px}
+.q-wm small{font-family:'IBM Plex Sans Arabic',sans-serif;font-size:12px;font-weight:500}
+.q-wm:hover{color:var(--navy)}
+
+/* DBPE */
+.q-pil{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.q-pc{border-radius:8px;padding:32px 28px;display:flex;flex-direction:column;gap:14px;min-height:420px;position:relative;overflow:clip;transition:transform 250ms ease}
+.q-pc:hover{transform:translateY(-6px)}
+.q-pc__n{font-family:var(--cs-font-mono);font-size:14px;font-weight:700;opacity:.8}
+.q-pc h3{margin:0;font-size:24px;line-height:1.4;font-weight:700}
+.q-pc p{margin:0;font-size:15px;line-height:1.85;opacity:.85}
+.q-pc__art{margin-top:auto;height:140px}
+.q-pc--navy{background:var(--navy);color:#fff}
+.q-pc--cob{background:var(--cob);color:#fff}
+.q-pc--lav{background:var(--lav);color:#0F172A}
+.q-pc--paper{background:var(--paper);color:#0F172A;border:1px solid var(--line)}
+
+/* tracks */
+.q-tr{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.q-tc{border:1px solid var(--line);border-radius:8px;background:#fff;display:flex;flex-direction:column;overflow:clip;transition:box-shadow 250ms ease,border-color 250ms ease,transform 250ms ease;text-decoration:none;color:inherit}
+.q-tc:hover{box-shadow:0 24px 48px rgba(15,23,42,0.10);border-color:rgba(6,41,133,0.3);transform:translateY(-4px)}
+.q-tc__top{padding:32px 32px 0;display:flex;flex-direction:column;gap:12px}
+.q-tc__tag{align-self:flex-start;font-size:12px;font-weight:600;padding:4px 10px;border-radius:4px;background:var(--lav);color:var(--navy)}
+.q-tc h3{margin:0;font-size:28px;font-weight:700;line-height:1.35}
+.q-tc p{margin:0;font-size:15px;line-height:1.85;color:var(--mut)}
+.q-st{list-style:none;margin:24px 32px 0;padding:0;display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.q-st li{display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid #F1F5F9;font-size:15px;font-weight:500}
+.q-st li bdi{width:32px;height:32px;flex:none;border-radius:6px;border:1px solid rgba(6,41,133,0.3);display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--navy)}
+.q-st li:last-child bdi{background:var(--cob);border-color:var(--cob);color:#fff}
+.q-st li small{white-space:nowrap;margin-inline-start:auto;font-family:var(--cs-font-mono);font-size:12px;color:#64748B}
+.q-tc__f{margin-top:auto;padding:24px 32px 28px;display:flex;flex-direction:column;align-items:flex-start;gap:14px}
+.q-tc__f .sum{font-size:13px;color:var(--mut)}
+.q-tc__f .sum b{font-family:var(--cs-font-mono);font-size:20px;color:#0F172A;margin-inline-end:4px}
+.q-tc--feat{border-color:var(--navy);box-shadow:0 0 0 1px var(--navy)}
+
+/* journey */
+.q-jr{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:24px;position:relative}
+.q-jr::before{content:"";position:absolute;top:36px;inset-inline:10%;height:2px;background:repeating-linear-gradient(to left,var(--cob) 0 8px,transparent 8px 14px);opacity:.5}
+.q-js{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px}
+.q-js__i{width:72px;height:72px;border-radius:999px;background:#fff;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--navy);box-shadow:0 8px 20px rgba(15,23,42,0.06);position:relative}
+.q-js__i .cs-icon{font-size:30px}
+.q-js__i bdi{position:absolute;top:-6px;inset-inline-end:-6px;width:26px;height:26px;border-radius:999px;background:var(--cob);color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center}
+.q-js h3{margin:0;font-size:18px;font-weight:700}
+.q-js p{margin:0;font-size:14px;line-height:1.8;color:var(--mut);max-width:220px}
+
+/* lessons */
+.q-ls{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.q-lc{border:1px solid var(--line);border-radius:8px;overflow:clip;background:#fff;display:flex;flex-direction:column;text-decoration:none;color:inherit;transition:transform 250ms ease,box-shadow 250ms ease}
+.q-lc:hover{transform:translateY(-4px);box-shadow:0 20px 40px rgba(15,23,42,0.10)}
+.q-lc__m{position:relative;aspect-ratio:16/10;border-bottom:1px solid var(--line)}
+.q-lc__m svg{position:absolute;inset:0}
+.q-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(10,16,29,0);transition:background-color 200ms ease}
+.q-play span{width:64px;height:64px;border-radius:999px;background:#fff;color:var(--navy);display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px rgba(6,41,133,0.25);transition:transform 200ms ease}
+.q-play .cs-icon{font-size:34px;font-variation-settings:'FILL' 1}
+.q-lc:hover .q-play{background:rgba(10,16,29,0.08)}
+.q-lc:hover .q-play span{transform:scale(1.08)}
+.q-lc__b{padding:22px 24px 24px;display:flex;flex-direction:column;gap:10px}
+.q-lc__b h3{margin:0;font-size:18px;line-height:1.55;font-weight:700}
+.q-lc__meta{display:flex;align-items:center;justify-content:space-between;font-size:13px;color:var(--mut)}
+
+/* programs */
+.q-pg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.q-pr{border-radius:8px;padding:32px;min-height:390px;display:flex;flex-direction:column;gap:10px;position:relative;overflow:clip;text-decoration:none;transition:transform 250ms ease,box-shadow 250ms ease}
+.q-pr:hover{transform:translateY(-4px);box-shadow:0 24px 48px rgba(15,23,42,0.14)}
+.q-pr__art{position:absolute;bottom:16px;left:16px;width:124px;height:124px;opacity:.9;transition:transform 400ms ease}
+.q-pr:hover .q-pr__art{transform:scale(1.06) rotate(-2deg)}
+.q-pr__pl{font-family:var(--cs-font-mono);font-size:12px;font-weight:700;opacity:.75}
+.q-pr h3{margin:0;font-size:26px;line-height:1.35;font-weight:700;max-width:300px}
+.q-pr .en{font-family:var(--cs-font-mono);font-size:12px;opacity:.75;color:inherit}
+.q-pr p{margin:4px 0 0;font-size:15px;line-height:1.8;max-width:290px;opacity:.88}
+.q-pr__f{margin-top:auto;position:relative;z-index:1;display:flex;flex-direction:column;align-items:flex-start;gap:12px;font-size:13px}
+.q-pr__f .q-a{color:inherit}
+.q-pr--navy{background:var(--navy);color:#fff}
+.q-pr--cob{background:var(--cob);color:#fff}
+.q-pr--lav{background:var(--lav);color:#0F172A}
+.q-pr--paper{background:var(--paper);color:#0F172A;border:1px solid var(--line)}
+.q-pr--night{background:var(--night);color:#E2E8F0}
+.q-pr--white{background:#fff;color:#0F172A;border:1px solid var(--line)}
+
+/* instructor */
+.q-in{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:64px;align-items:center;margin-bottom:56px}
+.q-card{border:1px solid var(--line);border-radius:8px;background:#fff;padding:32px;display:flex;flex-direction:column;gap:22px;box-shadow:0 24px 48px rgba(15,23,42,0.06)}
+.q-card__top{display:flex;align-items:center;gap:18px}
+.q-card__top .q-av{width:80px;height:80px;font-size:32px}
+.q-card__top b{display:block;font-size:22px}
+.q-card__top > div > span{display:block;font-family:var(--cs-font-mono);font-size:12px;color:var(--mut);line-height:1.8}
+.q-chips{display:flex;flex-wrap:wrap;gap:8px}
+.q-chips span{display:inline-flex;align-items:center;gap:6px;height:34px;padding:0 12px;border-radius:6px;background:var(--paper);border:1px solid var(--line);font-size:13px;font-weight:500}
+.q-chips .cs-icon{font-size:16px;color:var(--cob)}
+.q-st3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.q-st3 > div{padding:16px;border-radius:6px;background:var(--lav)}
+.q-st3 b{display:block;font-family:var(--cs-font-mono);font-size:26px;line-height:1.2;color:var(--navy)}
+.q-st3 > div > span{font-size:12px;color:var(--mut)}
+.q-cp{border:1px solid var(--line);border-radius:8px;overflow:clip;background:var(--paper)}
+
+/* reviews */
+.q-rv{flex:none;background:var(--paper);overflow:clip;border-block:1px solid var(--line)}
+.q-row{display:flex;gap:20px;width:max-content;padding-block:8px}
+.q-rc{width:400px;flex:none;border-radius:8px;background:#fff;border:1px solid var(--line);padding:28px;display:flex;flex-direction:column;gap:18px}
+.q-rc p{margin:0;font-size:15px;line-height:1.95}
+.q-rc__by{display:flex;align-items:center;gap:12px}
+.q-rc__by b{display:block;font-size:14px}
+.q-rc__by > div > span{font-size:12px;color:var(--mut)}
+.q-rc__by em{margin-inline-start:auto;font-style:normal;font-size:12px;color:var(--navy);background:var(--lav);padding:4px 10px;border-radius:4px;max-width:160px;text-align:center;line-height:1.5}
+.q-big{font-family:var(--cs-font-mono);font-size:64px;font-weight:700;line-height:1;color:var(--navy)}
+
+/* community */
+.q-cm{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.q-cs{border-radius:8px;padding:32px;display:flex;flex-direction:column;gap:8px;border:1px solid var(--line);background:#fff}
+.q-cs .cs-icon{font-size:28px;color:var(--cob)}
+.q-cs b{font-family:var(--cs-font-mono);font-size:48px;line-height:1.1;color:var(--navy);margin-top:16px}
+.q-cs > span:last-child{font-size:15px;color:var(--mut)}
+
+/* faq */
+.q-fq{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:64px;align-items:start}
+.q-q{border:1px solid var(--line);border-radius:8px;background:#fff;margin-bottom:12px;padding:0 24px;transition:border-color 200ms ease}
+.q-q[open]{border-color:rgba(6,41,133,0.3)}
+.q-q summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 0;font-size:17px;font-weight:600;cursor:pointer}
+.q-q summary::-webkit-details-marker{display:none}
+.q-q summary .cs-icon{width:32px;height:32px;border-radius:6px;background:var(--lav);color:var(--navy);display:flex;align-items:center;justify-content:center;font-size:20px;transition:transform 250ms ease}
+.q-q[open] summary .cs-icon{transform:rotate(45deg)}
+.q-q p{margin:0 0 22px;font-size:15px;line-height:1.95;color:var(--mut)}
+.q-en{border-radius:8px;background:var(--lav);padding:36px;display:flex;flex-direction:column;gap:18px;position:sticky;top:120px}
+.q-en ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px}
+.q-en li{display:flex;gap:12px;align-items:flex-start;font-size:15px;line-height:1.8}
+.q-en li .cs-icon{color:var(--navy);font-size:20px;margin-top:3px}
+
+/* closing panel */
+.q-end{border-radius:8px;background:var(--navy);color:#fff;padding:96px 64px;position:relative;overflow:clip;text-align:center;display:flex;flex-direction:column;align-items:center;gap:22px}
+.q-end .q-h2{font-size:52px}
+.q-end .q-lead{color:#C7D2FE;max-width:620px}
+.q-end__sh{position:absolute;border-radius:16px}
+.q-reas{display:flex;gap:28px;justify-content:center;font-size:14px;color:#C7D2FE}
+.q-reas span{display:inline-flex;align-items:center;gap:8px}
+.q-reas .cs-icon{font-size:18px}
+.cs-principle,.cs-footer{font-family:'IBM Plex Sans Arabic',sans-serif}
+
+/* motion */
+@keyframes q5mq{from{transform:translateX(0)}to{transform:translateX(50%)}}
+@keyframes q5mq2{from{transform:translateX(50%)}to{transform:translateX(0)}}
+@keyframes q5rise{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:none}}
+@keyframes q5in{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes q5cnt{from{--n:0}}
+@keyframes q5float{0%,100%{translate:0 0}50%{translate:0 -12px}}
+.cnt{counter-reset:n var(--n)}
+.cnt::after{content:counter(n)}
+@media (prefers-reduced-motion: no-preference){
+  .q-up{animation:q5in 900ms cubic-bezier(.2,.7,.2,1) var(--d,0ms) both}
+  .q-rail__t{animation:q5mq 70s linear infinite}
+  .q-rail:hover .q-rail__t,.q-row:hover{animation-play-state:paused}
+  .q-row--a{animation:q5mq 80s linear infinite}
+  .q-row--b{animation:q5mq2 80s linear infinite}
+  .q-shape{animation:q5float 9s ease-in-out infinite}
+  .q-shape:nth-of-type(2){animation-duration:11s;animation-delay:-3s}
+  .cnt{animation:q5cnt 1800ms cubic-bezier(.2,.7,.2,1) 300ms both}
+  @supports (animation-timeline: view()){
+    .q-rv-in{animation:q5rise linear both;animation-timeline:view();animation-range:entry 0% entry 65%}
+    .cnt{animation:q5cnt linear both;animation-timeline:view();animation-range:entry 20% cover 40%}
+  }
+}
+
+/* ===== v6 · Qaf family: inner pages ===== */
+.ph,.q-uc{display:inline-block;padding:0 6px;border:1px dashed #D97706;border-radius:4px;background:#FFFBEB;color:#92400E;font-size:.92em;line-height:1.6;font-family:'IBM Plex Sans Arabic',sans-serif}
+.q-crumb{display:flex;gap:8px;align-items:center;font-size:14px;color:var(--mut)}
+.q-crumb a{color:var(--mut);text-decoration:none}
+.q-crumb a:hover{color:var(--navy)}
+.q-crumb span[aria-current]{color:#0F172A;font-weight:600}
+.q-ph-hero{flex:none;position:relative;overflow:clip;background:#fff;padding-block:64px 96px;border-bottom:1px solid var(--line)}
+.q-split{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:64px;align-items:center;position:relative;z-index:1}
+.q-split--57{grid-template-columns:minmax(0,7fr) minmax(0,5fr)}
+.q-stack{display:flex;flex-direction:column;gap:22px}
+.q-h1s{font-size:60px;line-height:1.2;font-weight:700;margin:0}
+.q-ename{font-family:var(--cs-font-mono);font-size:15px;color:#64748B}
+.q-sub{font-size:22px;line-height:1.6;font-weight:700;color:var(--cob);margin:0}
+.q-tags{display:flex;flex-wrap:wrap;gap:8px}
+.q-tag{display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 12px;border-radius:6px;font-size:13px;font-weight:600;background:var(--lav);color:var(--navy)}
+.q-tag--o{background:#fff;border:1px solid var(--line);color:#334155;font-weight:500}
+.q-tag--m{font-family:var(--cs-font-mono);font-weight:500}
+.q-tag .cs-icon{font-size:16px}
+.q-mx{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:1px solid var(--line);border-radius:8px;background:#fff}
+.q-mx > div{padding:18px 20px;border-inline-start:1px solid var(--line);display:flex;flex-direction:column;gap:4px}
+.q-mx > div:first-child{border-inline-start:0}
+.q-mx b{font-family:var(--cs-font-mono);font-size:24px;line-height:1.25;color:var(--navy)}
+.q-mx b .ph{font-size:13px;font-weight:500}
+.q-mx > div > span{font-size:13px;color:var(--mut)}
+.q-by{display:flex;align-items:center;gap:12px;font-size:14px;color:var(--mut)}
+.q-by b{color:#0F172A}
+.q-note{font-size:13px;color:var(--mut)}
+
+/* gate */
+.q-gate{border:1px solid var(--line);border-radius:8px;overflow:clip;background:#fff;box-shadow:0 30px 60px rgba(15,23,42,0.10)}
+.q-gate > .q-g{display:none}
+.q-gate:has(.ga:checked) > .q-g--a,.q-gate:has(.gb:checked) > .q-g--b,.q-gate:has(.gc:checked) > .q-g--c{display:block;animation:q5in 400ms ease both}
+.q-gate__m{position:relative;aspect-ratio:16/9;background:#0A101D}
+.q-gate__hit{position:absolute;top:0;bottom:0;left:0;right:41.7%;cursor:pointer}
+.q-gate__f{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 22px}
+.q-gate__f b{display:block;font-size:16px}
+.q-gate__f span{font-size:13px;color:var(--mut)}
+.q-form{padding:28px;display:flex;flex-direction:column;gap:16px}
+.q-form h3{margin:0;font-size:22px}
+.q-fld{display:grid;gap:8px;font-size:14px;font-weight:600;align-content:start}
+.q-fld small{font-weight:400;color:var(--mut)}
+.q-in{margin:0;height:52px;border:1px solid #CBD5E1;border-radius:8px;padding:0 16px;font-family:inherit;font-size:15px;background:#fff;color:#0F172A;width:100%;transition:border-color 150ms ease,box-shadow 150ms ease}
+.q-in:focus{outline:none;border-color:var(--cob);box-shadow:0 0 0 3px rgba(36,64,220,0.15)}
+.q-in:user-invalid{border-color:#DC2626}
+.q-err{display:none;align-items:center;gap:6px;font-size:13px;font-weight:500;color:#B91C1C}
+.q-err .cs-icon{font-size:16px}
+.q-fld:has(.q-in:user-invalid) .q-err{display:flex}
+.q-phone{display:flex;gap:8px;direction:ltr}
+.q-phone span{display:flex;align-items:center;padding:0 14px;border:1px solid #CBD5E1;border-radius:8px;font-family:var(--cs-font-mono);font-size:14px;color:var(--mut)}
+.q-phone .q-in{direction:ltr;text-align:left}
+.q-go{justify-content:center;width:100%}
+form:not(:has(input[type=email]:valid)) .q-go{opacity:.45;pointer-events:none}
+.q-back{align-self:center;font-size:14px;color:var(--mut);cursor:pointer;text-decoration:underline}
+.q-pbar{display:flex;align-items:center;gap:12px;padding:14px 22px;font-size:13px;color:var(--mut);border-top:1px solid var(--line)}
+.q-pbar i{flex:1 1 0;height:4px;border-radius:99px;background:#E2E8F0;overflow:clip;display:block}
+.q-pbar i::before{content:"";display:block;width:12%;height:100%;background:var(--cob)}
+
+/* learn + code */
+.q-ck{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 32px}
+.q-ck li{display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.8}
+.q-ck li > .cs-icon{flex:none;width:24px;height:24px;border-radius:6px;background:var(--lav);color:var(--navy);display:flex;align-items:center;justify-content:center;font-size:16px;margin-top:3px}
+.q-ck--1{grid-template-columns:minmax(0,1fr)}
+.q-code{border-radius:8px;overflow:clip;background:#0A101D;border:1px solid #1E293B;box-shadow:0 24px 48px rgba(15,23,42,0.14)}
+.q-code__bar{display:flex;align-items:center;gap:12px;height:42px;padding:0 16px;background:#060B14;border-bottom:1px solid #1E293B}
+.q-code__bar .dots{display:flex;gap:7px;direction:ltr}
+.q-code__bar .dots i{width:10px;height:10px;border-radius:99px;background:#334155;display:block}
+.q-code__file{margin-inline-start:auto;font-family:var(--cs-font-mono);font-size:12px;color:#94A3B8}
+.q-code pre{margin:0;padding:20px 22px;font-family:var(--cs-font-mono);font-size:13px;line-height:1.95;color:#E2E8F0;white-space:pre-wrap;overflow-wrap:anywhere;direction:ltr;text-align:left}
+.q-code__foot{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 18px;border-top:1px solid #1E293B;background:#060B14;font-family:var(--cs-font-mono);font-size:12px;color:#94A3B8;direction:ltr}
+.q-code__foot .ok{display:inline-flex;align-items:center;gap:6px;color:#34D399}
+.q-code__foot .cs-icon{font-size:16px}
+.tok-kw{color:#C4B5FD}.tok-def{color:#7DD3FC}.tok-type{color:#A5B4FC}.tok-num{color:#FBBF24}.tok-name{color:#93C5FD}.tok-comment{color:#64748B}
+
+/* logos placeholder strip */
+.q-cos{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px}
+.q-cos > span{height:64px;border:1px dashed #CBD5E1;border-radius:8px;display:flex;align-items:center;justify-content:center;background:#fff}
+
+/* instructor strip */
+.q-ins{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:56px;align-items:start}
+.q-st4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.q-st4 > div{padding:16px;border-radius:8px;background:var(--lav)}
+.q-st4 b{display:block;font-family:var(--cs-font-mono);font-size:24px;line-height:1.2;color:var(--navy)}
+.q-st4 > div > span{font-size:12px;color:var(--mut)}
+
+/* curriculum */
+.q-acc{display:flex;flex-direction:column;gap:12px}
+.q-u{border:1px solid var(--line);border-radius:8px;background:#fff;transition:border-color 200ms ease,box-shadow 200ms ease}
+.q-u[open]{border-color:rgba(6,41,133,0.3);box-shadow:0 12px 32px rgba(15,23,42,0.06)}
+.q-u summary{list-style:none;display:flex;align-items:center;gap:18px;padding:20px 24px;cursor:pointer}
+.q-u summary::-webkit-details-marker{display:none}
+.q-u__n{flex:none;width:44px;height:44px;border-radius:8px;background:var(--lav);color:var(--navy);display:flex;align-items:center;justify-content:center;font-family:var(--cs-font-mono);font-weight:700;font-size:14px}
+.q-u:last-of-type .q-u__n{background:var(--cob);color:#fff}
+.q-u__t{flex:1 1 0;min-width:0}
+.q-u__t b{display:block;font-size:17px;line-height:1.6}
+.q-u__t span{font-size:14px;color:var(--mut)}
+.q-u__m{font-size:12px;color:var(--mut);white-space:nowrap}
+.q-u summary > .cs-icon{color:var(--navy);transition:transform 250ms ease}
+.q-u[open] summary > .cs-icon{transform:rotate(180deg)}
+.q-u__b{padding:0 24px 20px 24px;padding-inline-start:86px}
+.q-lec{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid #F1F5F9;font-size:14px}
+.q-lec:last-child{border-bottom:0}
+.q-lec > span:first-child{display:flex;align-items:center;gap:10px}
+.q-free{display:inline-flex;align-items:center;gap:4px;height:24px;padding:0 8px;border-radius:4px;background:#ECFDF5;color:#047857;font-size:12px;font-weight:600}
+.q-free .cs-icon{font-size:14px}
+.q-lock{color:#94A3B8;font-size:18px}
+
+/* skills */
+.q-sk{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.q-sk > div{border-radius:8px;padding:28px;display:flex;flex-direction:column;gap:16px}
+.q-sk h3{margin:0;font-size:18px}
+.cs-badge{font-family:'IBM Plex Sans Arabic',sans-serif}
+
+/* comparison */
+.q-tbl{width:100%;border-collapse:separate;border-spacing:0;border:1px solid var(--line);border-radius:8px;overflow:clip;background:#fff;font-size:14px}
+.q-tbl th,.q-tbl td{padding:16px 18px;text-align:start;border-bottom:1px solid #F1F5F9;vertical-align:top;line-height:1.7}
+.q-tbl thead th{background:var(--paper);font-size:13px;font-weight:700;color:#334155}
+.q-tbl tbody tr:last-child > *{border-bottom:0}
+.q-tbl tbody th{font-weight:600;color:#0F172A;width:180px}
+.q-tbl td{color:var(--mut)}
+.q-tbl .q-us{background:#F5F6FF;color:#0F172A;font-weight:600}
+.q-tbl thead .q-us{background:var(--navy);color:#fff}
+.q-tbl .q-us .cs-icon{font-size:18px;color:var(--cob);vertical-align:middle;margin-inline-end:4px}
+
+/* pricing */
+.q-cur{display:inline-flex;gap:4px;padding:4px;border:1px solid var(--line);border-radius:8px;background:#fff}
+.q-cur label{display:inline-flex;align-items:center;height:42px;padding:0 18px;border-radius:6px;font-size:14px;font-weight:600;color:var(--mut);cursor:pointer}
+.q-price:has(.ce:checked) label.le,.q-price:has(.cu:checked) label.lu{background:var(--navy);color:#fff}
+.q-price:has(.ce:focus-visible) label.le,.q-price:has(.cu:focus-visible) label.lu{outline:2px solid var(--cob);outline-offset:2px}
+.q-plans{display:none;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:28px}
+.q-price:has(.ce:checked) .q-plans--egp,.q-price:has(.cu:checked) .q-plans--usd{display:grid;animation:q5in 400ms ease both}
+.q-plan{border:1px solid var(--line);border-radius:8px;background:#fff;padding:28px 24px;display:flex;flex-direction:column;gap:12px;position:relative}
+.q-plan--rec{border-color:var(--navy);box-shadow:0 0 0 1px var(--navy),0 24px 48px rgba(6,41,133,0.12)}
+.q-plan__rec{position:absolute;top:-13px;inset-inline-start:20px;height:26px;padding:0 10px;border-radius:4px;background:var(--navy);color:#fff;font-size:12px;font-weight:600;display:flex;align-items:center}
+.q-plan__e{font-size:13px;color:var(--cob);font-weight:600}
+.q-plan h3{margin:0;font-size:18px}
+.q-plan__today{font-family:var(--cs-font-mono);font-size:30px;font-weight:700;color:#0F172A;line-height:1.2}
+.q-plan__today .cur{font-family:'IBM Plex Sans Arabic',sans-serif;font-size:16px;font-weight:600;margin-inline-start:6px}
+.q-plan__today small{font-family:'IBM Plex Sans Arabic',sans-serif;font-size:13px;font-weight:500;color:var(--mut);display:block}
+.q-plan__rest{font-size:14px;color:var(--mut);min-height:24px}
+.q-plan__tot{font-size:12px;color:var(--mut);border-top:1px solid #F1F5F9;padding-top:12px;margin-top:auto}
+.q-band{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 20px;border-radius:8px;background:var(--lav);font-size:15px;margin-top:24px}
+.q-trust2{display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:center;margin-top:28px;font-size:14px;color:var(--mut)}
+.q-trust2 span{display:inline-flex;align-items:center;gap:8px}
+.q-trust2 .cs-icon{font-size:20px;color:var(--navy)}
+
+/* sticky action bar */
+.q-stick{position:sticky;bottom:16px;z-index:40;margin:0 auto 24px;width:min(1216px,calc(100% - 64px));display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 12px 12px 20px;padding-inline-start:24px;border-radius:8px;background:rgba(255,255,255,0.96);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border:1px solid var(--line);box-shadow:0 20px 40px rgba(15,23,42,0.14)}
+.q-stick b{font-size:15px}
+.q-stick span{font-size:13px;color:var(--mut)}
+
+/* review feature */
+.q-rf{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,3fr) minmax(0,3fr);gap:20px}
+.q-rf .q-rc{width:auto}
+.q-rc--big p{font-size:19px;line-height:1.9}
+.q-rc--ph{background:var(--paper);border-style:dashed;align-items:flex-start;justify-content:center}
+
+/* who cards */
+.q-who{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.q-who > div{border-radius:8px;padding:32px;display:flex;flex-direction:column;gap:16px}
+.q-who h3{margin:0;font-size:20px;display:flex;align-items:center;gap:10px}
+.q-who h3 .cs-icon{font-size:24px}
+.q-who ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+.q-who li{display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.8}
+.q-who li .cs-icon{font-size:18px;margin-top:4px}
+.q-who p{margin:auto 0 0;padding-top:16px;border-top:1px solid rgba(15,23,42,0.08);font-size:14px;font-weight:600}
+
+/* stations */
+.q-route{border:1px solid var(--line);border-radius:8px;overflow:clip;background:var(--paper);margin-bottom:24px}
+.q-dl{display:grid;gap:20px}
+.q-dl > a{display:flex;flex-direction:column;gap:10px;border:1px solid var(--line);border-radius:8px;background:#fff;padding:28px;text-decoration:none;color:inherit;transition:transform 250ms ease,box-shadow 250ms ease,border-color 250ms ease}
+.q-dl > a:hover{transform:translateY(-4px);box-shadow:0 20px 40px rgba(15,23,42,0.08);border-color:rgba(6,41,133,0.3)}
+.q-dl h3{margin:0;font-size:20px;line-height:1.5}
+.q-dl__top{display:flex;align-items:center;justify-content:space-between}
+.q-dl__n{width:40px;height:40px;border-radius:8px;background:var(--lav);color:var(--navy);display:flex;align-items:center;justify-content:center;font-family:var(--cs-font-mono);font-weight:700;font-size:14px}
+.q-dl > a:last-child .q-dl__n{background:var(--cob);color:#fff}
+.q-dl__f{margin-top:auto;padding-top:14px;border-top:1px solid #F1F5F9;display:flex;flex-direction:column;gap:12px;font-size:13px;color:var(--mut)}
+.q-totals{display:flex;gap:40px;justify-content:center;margin-top:28px;font-size:15px;color:var(--mut)}
+.q-totals b{font-family:var(--cs-font-mono);font-size:28px;color:var(--navy);margin-inline-end:6px}
+
+/* light media slot */
+.q-slot{position:relative;aspect-ratio:16/10;border-radius:8px;border:1px dashed #94A3B8;background-color:#F8FAFC;background-image:linear-gradient(to right,rgba(6,41,133,0.05) 1px,transparent 1px),linear-gradient(to bottom,rgba(6,41,133,0.05) 1px,transparent 1px);background-size:24px 24px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;text-align:center;padding:16px;color:#475569}
+.q-slot > .cs-icon{font-size:32px;color:var(--navy)}
+.q-slot .mono{font-size:12px;color:#64748B}
+.q-slot > span:last-child{font-size:14px;max-width:320px;line-height:1.7}
+.q-slot--v .cs-icon{width:56px;height:56px;border-radius:999px;background:#fff;box-shadow:0 8px 20px rgba(6,41,133,0.15);display:flex;align-items:center;justify-content:center;font-variation-settings:'FILL' 1}
+.q-frame{border:1px solid var(--line);border-radius:8px;overflow:clip;background:#fff}
+.q-frame > svg{display:block}
+.q-frame__cap{display:flex;align-items:center;gap:10px;padding:12px 16px;border-top:1px solid var(--line);background:var(--paper);font-size:14px}
+.q-frame__cap .cs-icon{font-size:18px;color:var(--navy)}
+.q-frame__cap .mono{margin-inline-start:auto;font-size:12px;color:var(--mut)}
+
+/* policy */
+.q-toc{position:sticky;top:104px;display:flex;flex-direction:column;gap:2px;padding:20px;border:1px solid var(--line);border-radius:8px;background:#fff}
+.q-toc b{font-size:13px;color:var(--mut);margin-bottom:8px}
+.q-toc a{display:flex;align-items:center;gap:10px;min-height:40px;padding:6px 10px;border-radius:6px;font-size:14px;color:#334155;text-decoration:none}
+.q-toc a:hover{background:var(--lav);color:var(--navy)}
+.q-toc a bdi{font-size:11px;color:var(--cob)}
+.q-art{display:flex;flex-direction:column;gap:16px}
+.q-art section{scroll-margin-top:100px;padding:28px 32px;border:1px solid var(--line);border-radius:8px;background:#fff}
+.q-art h2{display:flex;align-items:center;gap:12px;margin:0 0 14px;font-size:20px}
+.q-art h2 bdi{width:36px;height:36px;border-radius:8px;background:var(--lav);color:var(--navy);display:flex;align-items:center;justify-content:center;font-size:13px}
+.q-art p{margin:0 0 12px;font-size:15px;line-height:1.95;color:var(--mut)}
+.q-art p:last-child{margin-bottom:0}
+.q-art ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px}
+.q-art li{display:flex;gap:8px;align-items:flex-start;font-size:15px;line-height:1.85;color:var(--mut)}
+.q-art li .cs-icon{color:var(--navy);margin-top:4px;font-size:18px}
+.dtable{width:100%;border-collapse:separate;border-spacing:0;border:1px solid var(--line);border-radius:8px;font-size:14px;margin-top:4px;overflow:clip}
+.dtable th,.dtable td{padding:12px 14px;text-align:start;border-bottom:1px solid #F1F5F9;vertical-align:top;line-height:1.7}
+.dtable thead th{background:var(--paper);font-size:13px;font-weight:700;color:#0F172A}
+.dtable tbody tr:last-child td{border-bottom:0}
+.dtable td{color:var(--mut)}
+.dtable td:first-child{color:#0F172A;font-weight:600}
+.q-art .cs-accordion__item{border:1px solid var(--line);border-radius:8px;margin-bottom:8px;padding:0 16px}
+.q-art .cs-accordion__summary{list-style:none;padding:14px 0;cursor:pointer;font-weight:600}
+.q-art .cs-accordion__lead{display:flex;align-items:center;gap:8px}
+.q-notice{display:flex;align-items:center;gap:10px;padding:14px 18px;border-radius:8px;background:#FFFBEB;border:1px dashed #D97706;font-size:14px;color:#92400E}
+.step{border:1px solid var(--line);border-radius:8px;background:#fff;padding:24px;display:flex;flex-direction:column;gap:10px}
+.step__n{font-family:var(--cs-font-mono);font-size:12px;font-weight:700;color:var(--cob)}
+
+/* contact */
+.q-ch{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.q-ch > div{border:1px solid var(--line);border-radius:8px;background:#fff;padding:28px;display:flex;flex-direction:column;gap:12px}
+.q-ch > div:first-child{background:var(--navy);border-color:var(--navy);color:#fff}
+.q-ch > div:first-child p,.q-ch > div:first-child small{color:#C7D2FE}
+.q-ch .cs-icon{font-size:28px;color:var(--cob)}
+.q-ch > div:first-child .cs-icon{color:#fff}
+.q-ch h3{margin:0;font-size:20px}
+.q-ch p{margin:0;font-size:14px;line-height:1.8;color:var(--mut)}
+.q-ch small{font-size:13px;color:var(--mut);margin-top:auto}
+.q-topics{display:flex;flex-wrap:wrap;gap:8px;border:0;padding:0;margin:0}
+.q-topics label{display:inline-flex;align-items:center;height:40px;padding:0 16px;border-radius:8px;border:1px solid var(--line);font-size:14px;cursor:pointer;background:#fff}
+.q-topics input{position:absolute;opacity:0;pointer-events:none}
+.q-topics label:has(input:checked){background:var(--navy);border-color:var(--navy);color:#fff}
+.q-topics label:has(input:focus-visible){outline:2px solid var(--cob);outline-offset:2px}
+.q-ta{min-height:140px;padding:14px 16px;height:auto;resize:vertical;line-height:1.8}
+.q-sentwrap > .q-sent{display:none}
+.q-sentwrap:has(#sent:checked) > .q-sent{display:flex}
+.q-sentwrap:has(#sent:checked) > form{display:none}
+.q-sent{flex-direction:column;align-items:center;text-align:center;gap:14px;padding:48px 28px}
+.q-sent > .cs-icon{width:64px;height:64px;border-radius:999px;background:#ECFDF5;color:#047857;display:flex;align-items:center;justify-content:center;font-size:32px}
+.q-chat{border:1px solid var(--line);border-radius:8px;background:#fff;overflow:clip;box-shadow:0 30px 60px rgba(15,23,42,0.10)}
+.q-chat__top{display:flex;align-items:center;gap:12px;padding:16px 20px;background:var(--navy);color:#fff}
+.q-chat__top small{display:block;font-size:12px;color:#C7D2FE}
+.q-chat__b{padding:20px;display:flex;flex-direction:column;gap:12px;background:var(--paper)}
+.q-bub{max-width:80%;padding:12px 16px;border-radius:8px;font-size:14px;line-height:1.8;background:#fff;border:1px solid var(--line)}
+.q-bub--me{align-self:flex-end;background:var(--lav);border-color:var(--lav)}
+.q-bub time{display:block;font-family:var(--cs-font-mono);font-size:11px;color:#94A3B8;margin-top:4px}
+
+/* faq page filter */
+.q-fchips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.q-fchips label{display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 18px;border-radius:999px;border:1px solid var(--line);background:#fff;font-size:14px;font-weight:600;color:#334155;cursor:pointer}
+.q-fchips label .cs-icon{font-size:18px;color:var(--cob)}
+.q-fgrp{display:block}
+.q-fgrp h2{display:flex;align-items:center;gap:10px;font-size:22px;margin:0 0 16px}
+.q-fgrp h2 .cs-icon{color:var(--cob)}
+
+/* leaderboard */
+.q-podium{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-bottom:20px}
+.q-podium > div{border-radius:8px;padding:28px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;border:1px solid var(--line);background:#fff}
+.q-podium > div:first-child{background:var(--navy);color:#fff;border-color:var(--navy)}
+.q-rank{font-family:var(--cs-font-mono);font-size:13px;font-weight:700;width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;background:var(--lav);color:var(--navy)}
+
+
+
+html{scroll-behavior:smooth}
+[id]{scroll-margin-top:96px}
+[hidden]{display:none !important}
+.page{position:relative;min-height:100vh;display:flex;flex-direction:column}
+.wa{position:fixed;top:auto;bottom:24px}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+
+</style>
+</head>
+<body>
+<div class="page">
+<div class="q5" style="display: contents">
+<header class="q-nav">
+<div class="q-w q-nav__in">
+<a class="q-logo" href="#" aria-label="CSkilled — الرئيسية"><span class="q-logo__m">CS</span><span><b>CSkilled</b><small>أكاديمية علوم الحاسوب</small></span></a>
+<nav aria-label="التنقل الرئيسي"><ul class="q-links"><li><a href="#">الرئيسية</a></li><li><a href="#" aria-current="page">المسارات</a></li><li><a href="#">الدبلومات</a></li><li><a href="#">المدرّس</a></li><li><a href="#">المجتمع</a></li><li><a href="#">الأسئلة الشائعة</a></li></ul></nav>
+<div style="display: flex; align-items: center; gap: 8px"><a href="#" style="display: inline-flex; align-items: center; gap: 6px; height: 42px; padding: 0 12px; color: #334155; text-decoration: none; font-size: 15px"><span class="cs-icon" aria-hidden="true">login</span>تسجيل الدخول</a><a class="q-b q-b--line q-b--sm" href="#">ابدأ مجانًا</a></div>
+</div>
+</header>
+<section class="q-ph-hero">
+<div class="q-shape" aria-hidden="true" style="width: 220px; height: 280px; background: #2440DC; top: -80px; left: -90px; rotate: -14deg"></div>
+<div class="q-w q-split">
+<div class="q-stack">
+<nav class="q-crumb q-up" aria-label="مسار الصفحة"><a href="#">المسارات</a><span class="cs-icon" aria-hidden="true">chevron_left</span><span aria-current="page">مسار الذكاء الاصطناعي</span></nav>
+<div class="q-up" style="--d: 80ms"><h1 class="q-h1s">مسار الذكاء الاصطناعي</h1><span class="q-ename" dir="ltr">AI Track</span></div>
+<p class="q-lead q-up" style="--d: 160ms; font-size: 17px">أربع دبلومات بترتيب واحد: تبدأ من أول سطر Python، ثم هياكل البيانات والخوارزميات (Data Structures and Algorithms)، ثم تعلّم الآلة (Machine Learning)، وتنتهي بالتعلّم العميق (Deep Learning).</p>
+<div class="q-mx q-up" style="--d: 220ms"><div><b><bdi dir="ltr">+370</bdi></b><span>ساعة · <bdi>292</bdi> محاضرة</span></div><div><b style="font-family: 'IBM Plex Sans Arabic', sans-serif; font-size: 20px"><bdi>4</bdi> دبلومات</b><span>بترتيب واحد</span></div><div><b><span class="ph">[[عدد المسائل]]</span></b><span>مصحَّحة ومتدرجة</span></div><div><b><span class="ph">[[عدد المشاريع]]</span></b><span>مشاريع تطبيقية</span></div></div>
+<div class="q-tags q-up" style="--d: 260ms"><span class="q-tag"><span class="cs-icon" aria-hidden="true">flag</span>المتطلبات السابقة: لا شيء، تبدأ من الصفر</span></div>
+<div class="q-hero__cta q-up" style="--d: 300ms; justify-content: flex-start"><a class="q-b q-b--fill" href="#gate"><span class="cs-icon ic-fill" aria-hidden="true">play_circle</span>شاهد محاضرة مجانية</a><a class="q-b q-b--line" href="#pricing">الخطط والأسعار<span class="cs-icon" aria-hidden="true">arrow_downward</span></a><a class="q-a" href="#route">محتوى المسار<span class="cs-icon" aria-hidden="true">arrow_downward</span></a></div>
+<div class="q-by q-up" style="--d: 360ms"><span class="q-av" aria-hidden="true">م</span><span>يدرّسه <b>د. مصطفى سعد إبراهيم</b> · <bdi dir="ltr">+20</bdi> سنة تدريس · ICPC World Finalist <bdi>2011</bdi> · <bdi dir="ltr">+134K</bdi> على YouTube</span></div>
+</div>
+<div class="q-gate q-up" id="gate" style="--d: 200ms">
+<input class="sr ga" type="radio" name="gate" id="g-a" checked="" aria-label="عرض الفيديو التعريفي"><input class="sr gb" type="radio" name="gate" id="g-b" aria-label="نموذج المحاضرة المجانية"><input class="sr gc" type="radio" name="gate" id="g-c" aria-label="مشغّل المحاضرة">
+<div class="q-g q-g--a">
+<div class="q-gate__m"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" role="img" aria-label="ملصق فيديو تعريفي بدبلومة البرمجة بلغة Python مع زر تشغيل" style="direction: ltr; display: block"><rect width="1920" height="1080" fill="#0A101D"></rect><path d="M1144 0V1080M1168 0V1080M1192 0V1080M1216 0V1080M1240 0V1080M1264 0V1080M1288 0V1080M1312 0V1080M1336 0V1080M1360 0V1080M1384 0V1080M1408 0V1080M1432 0V1080M1456 0V1080M1480 0V1080M1504 0V1080M1528 0V1080M1552 0V1080M1576 0V1080M1600 0V1080M1624 0V1080M1648 0V1080M1672 0V1080M1696 0V1080M1720 0V1080M1744 0V1080M1768 0V1080M1792 0V1080M1816 0V1080M1840 0V1080M1864 0V1080M1888 0V1080M1912 0V1080M1120 24H1920M1120 48H1920M1120 72H1920M1120 96H1920M1120 120H1920M1120 144H1920M1120 168H1920M1120 192H1920M1120 216H1920M1120 240H1920M1120 264H1920M1120 288H1920M1120 312H1920M1120 336H1920M1120 360H1920M1120 384H1920M1120 408H1920M1120 432H1920M1120 456H1920M1120 480H1920M1120 504H1920M1120 528H1920M1120 552H1920M1120 576H1920M1120 600H1920M1120 624H1920M1120 648H1920M1120 672H1920M1120 696H1920M1120 720H1920M1120 744H1920M1120 768H1920M1120 792H1920M1120 816H1920M1120 840H1920M1120 864H1920M1120 888H1920M1120 912H1920M1120 936H1920M1120 960H1920M1120 984H1920M1120 1008H1920M1120 1032H1920M1120 1056H1920" stroke="rgba(165,180,252,0.06)" stroke-width="1" fill="none"></path><path d="M24 0V1080M48 0V1080M72 0V1080M96 0V1080M120 0V1080M144 0V1080M168 0V1080M192 0V1080M216 0V1080M240 0V1080M264 0V1080M288 0V1080M312 0V1080M336 0V1080M360 0V1080M384 0V1080M408 0V1080M432 0V1080M456 0V1080M480 0V1080M504 0V1080M528 0V1080M552 0V1080M576 0V1080M600 0V1080M624 0V1080M648 0V1080M672 0V1080M696 0V1080M720 0V1080M744 0V1080M768 0V1080M792 0V1080M816 0V1080M840 0V1080M864 0V1080M888 0V1080M912 0V1080M936 0V1080M960 0V1080M984 0V1080M1008 0V1080M1032 0V1080M1056 0V1080M1080 0V1080M1104 0V1080M0 24H1120M0 48H1120M0 72H1120M0 96H1120M0 120H1120M0 144H1120M0 168H1120M0 192H1120M0 216H1120M0 240H1120M0 264H1120M0 288H1120M0 312H1120M0 336H1120M0 360H1120M0 384H1120M0 408H1120M0 432H1120M0 456H1120M0 480H1120M0 504H1120M0 528H1120M0 552H1120M0 576H1120M0 600H1120M0 624H1120M0 648H1120M0 672H1120M0 696H1120M0 720H1120M0 744H1120M0 768H1120M0 792H1120M0 816H1120M0 840H1120M0 864H1120M0 888H1120M0 912H1120M0 936H1120M0 960H1120M0 984H1120M0 1008H1120M0 1032H1120M0 1056H1120" stroke="rgba(165,180,252,0.06)" stroke-width="1" fill="none"></path><g transform="translate(110 190) scale(1.0)"><rect x="160" y="62" width="140" height="48" rx="24" fill="#0A101D" stroke="#A5B4FC" stroke-width="1.5" vector-effect="non-scaling-stroke"></rect><rect x="140" y="172" width="180" height="52" fill="#0A101D" stroke="#A5B4FC" stroke-width="1.5" vector-effect="non-scaling-stroke"></rect><path d="M230 284 L340 344 L230 404 L120 344 Z" fill="#0A101D" stroke="#A5B4FC" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"></path><rect x="140" y="464" width="180" height="52" fill="#18203A" stroke="#A5B4FC" stroke-width="1.5" vector-effect="non-scaling-stroke"></rect><rect x="350" y="584" width="180" height="52" fill="#0A101D" stroke="#A5B4FC" stroke-width="1.5" vector-effect="non-scaling-stroke"></rect><line x1="230.0" y1="110.0" x2="230.0" y2="167.2" stroke="#A5B4FC" stroke-width="1.5" vector-effect="non-scaling-stroke"></line><path d="M230.0 172.0 L226.2 164.9 L233.8 164.9 Z" fill="#A5B4FC"></path><line x1="230.0" y1="224.0" x2="230.0" y2="279.2" stroke="#A5B4FC" stroke-width="1.5" vector-effect="non-scaling-stroke"></line><path d="M230.0 284.0 L226.2 276.9 L233.8 276.9 Z" fill="#A5B4FC"></path><line x1="230.0" y1="404.0" x2="230.0" y2="459.2" stroke="#A5B4FC" stroke-width="1.5" vector-effect="non-scaling-stroke"></line><path d="M230.0 464.0 L226.2 456.9 L233.8 456.9 Z" fill="#A5B4FC"></path><path d="M340 344 H440 V578" fill="none" stroke="#A5B4FC" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"></path><path d="M440.0 584.0 L436.2 576.9 L443.8 576.9 Z" fill="#A5B4FC"></path><path d="M140 490 H60 V344 H112" fill="none" stroke="#7DD3FC" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"></path><path d="M120.0 344.0 L112.1 348.2 L112.1 339.8 Z" fill="#7DD3FC"></path><text x="230.0" y="92.0" font-family="JetBrains Mono, monospace" font-size="15.00" font-weight="400" fill="#E2E8F0" text-anchor="middle" letter-spacing="0">start</text><text x="230.0" y="204.0" font-family="JetBrains Mono, monospace" font-size="15.00" font-weight="400" fill="#E2E8F0" text-anchor="middle" letter-spacing="0">result = 0</text><text x="230.0" y="349.0" font-family="JetBrains Mono, monospace" font-size="14.00" font-weight="400" fill="#E2E8F0" text-anchor="middle" letter-spacing="0">more items?</text><text x="230.0" y="496.0" font-family="JetBrains Mono, monospace" font-size="15.00" font-weight="400" fill="#E2E8F0" text-anchor="middle" letter-spacing="0">result += x</text><text x="440.0" y="616.0" font-family="JetBrains Mono, monospace" font-size="15.00" font-weight="400" fill="#E2E8F0" text-anchor="middle" letter-spacing="0">return result</text><text x="248.0" y="440.0" font-family="JetBrains Mono, monospace" font-size="12.00" font-weight="400" fill="#94A3B8" text-anchor="start" letter-spacing="0">yes</text><text x="354.0" y="334.0" font-family="JetBrains Mono, monospace" font-size="12.00" font-weight="400" fill="#94A3B8" text-anchor="start" letter-spacing="0">no</text><line x1="308.0" y1="86.0" x2="576.0" y2="86.0" stroke="#A5B4FC" stroke-width="0.75" stroke-dasharray="3 4" vector-effect="non-scaling-stroke"></line><circle cx="576" cy="86" r="2.5" fill="#A5B4FC"></circle><text x="590.0" y="91.0" font-family="JetBrains Mono, monospace" font-size="16.00" font-weight="400" fill="#E2E8F0" text-anchor="start" letter-spacing="0">def total(items):</text><line x1="328.0" y1="198.0" x2="576.0" y2="198.0" stroke="#A5B4FC" stroke-width="0.75" stroke-dasharray="3 4" vector-effect="non-scaling-stroke"></line><circle cx="576" cy="198" r="2.5" fill="#A5B4FC"></circle><text x="628.4" y="203.0" font-family="JetBrains Mono, monospace" font-size="16.00" font-weight="400" fill="#E2E8F0" text-anchor="start" letter-spacing="0">result = 0</text><line x1="290.0" y1="314.0" x2="576.0" y2="314.0" stroke="#A5B4FC" stroke-width="0.75" stroke-dasharray="3 4" vector-effect="non-scaling-stroke"></line><circle cx="576" cy="314" r="2.5" fill="#A5B4FC"></circle><text x="628.4" y="319.0" font-family="JetBrains Mono, monospace" font-size="16.00" font-weight="400" fill="#E2E8F0" text-anchor="start" letter-spacing="0">for x in items:</text><line x1="328.0" y1="490.0" x2="576.0" y2="490.0" stroke="#A5B4FC" stroke-width="0.75" stroke-dasharray="3 4" vector-effect="non-scaling-stroke"></line><circle cx="576" cy="490" r="2.5" fill="#A5B4FC"></circle><text x="666.8" y="495.0" font-family="JetBrains Mono, monospace" font-size="16.00" font-weight="400" fill="#E2E8F0" text-anchor="start" letter-spacing="0">result += x</text><line x1="538.0" y1="610.0" x2="576.0" y2="610.0" stroke="#A5B4FC" stroke-width="0.75" stroke-dasharray="3 4" vector-effect="non-scaling-stroke"></line><circle cx="576" cy="610" r="2.5" fill="#A5B4FC"></circle><text x="628.4" y="615.0" font-family="JetBrains Mono, monospace" font-size="16.00" font-weight="400" fill="#E2E8F0" text-anchor="start" letter-spacing="0">return result</text><line x1="60.0" y1="250.0" x2="165.0" y2="316.1" stroke="#A5B4FC" stroke-width="1" vector-effect="non-scaling-stroke"></line><path d="M168.0 318.0 L162.0 317.6 L165.0 312.8 Z" fill="#A5B4FC"></path><text x="54.0" y="254.0" font-family="JetBrains Mono, monospace" font-size="12.00" font-weight="400" fill="#94A3B8" text-anchor="end" letter-spacing="0">condition</text><line x1="210.0" y1="580.0" x2="248.0" y2="521.0" stroke="#A5B4FC" stroke-width="1" vector-effect="non-scaling-stroke"></line><path d="M250.0 518.0 L249.5 524.0 L244.8 520.9 Z" fill="#A5B4FC"></path><text x="204.0" y="584.0" font-family="JetBrains Mono, monospace" font-size="12.00" font-weight="400" fill="#94A3B8" text-anchor="end" letter-spacing="0">loop body</text><line x1="560.0" y1="690.0" x2="502.8" y2="642.3" stroke="#A5B4FC" stroke-width="1" vector-effect="non-scaling-stroke"></line><path d="M500.0 640.0 L505.9 641.2 L502.3 645.6 Z" fill="#A5B4FC"></path><text x="566.0" y="694.0" font-family="JetBrains Mono, monospace" font-size="12.00" font-weight="400" fill="#94A3B8" text-anchor="start" letter-spacing="0">return value</text></g><circle cx="560" cy="540" r="56" fill="#FFFFFF"></circle><path d="M544 516 L586 540 L544 564 Z" fill="#062985"></path><line x1="1120.0" y1="0.0" x2="1120.0" y2="1080.0" stroke="#1E293B" stroke-width="1" vector-effect="non-scaling-stroke"></line><text x="1728.0" y="250.0" font-family="JetBrains Mono, monospace" font-size="16.00" font-weight="500" fill="#A5B4FC" text-anchor="end" letter-spacing="0">DIPLOMA INTRO · 02:30</text><text x="1728.0" y="342.0" direction="rtl" unicode-bidi="embed" font-family="IBM Plex Sans Arabic, sans-serif" font-size="64" font-weight="700" fill="#E2E8F0" text-anchor="start" letter-spacing="0">البرمجة بلغة Python</text><text x="1728.0" y="416.0" font-family="JetBrains Mono, monospace" font-size="16.00" font-weight="400" fill="#94A3B8" text-anchor="end" letter-spacing="0">65 lectures · 75+ h</text><g transform="translate(1448.0 610.0) scale(0.2979)"><rect x="160" y="62" width="140" height="48" rx="24" fill="#0A101D" stroke="#A5B4FC" stroke-width="1.5" vector-effect="non-scaling-stroke"></rect><rect x="140" y="172" width="180" height="52" fill="#0A101D" stroke="#A5B4FC" stroke-width="1.5" vector-effect="non-scaling-stroke"></rect><path d="M230 284 L340 344 L230 404 L120 344 Z" fill="#0A101D" stroke="#A5B4FC" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"></path><rect x="140" y="464" width="180" height="52" fill="#18203A" stroke="#A5B4FC" stroke-width="1.5" vector-effect="non-scaling-stroke"></rect><rect x="350" y="584" width="180" height="52" fill="#0A101D" stroke="#A5B4FC" stroke-width="1.5" vector-effect="non-scaling-stroke"></rect><line x1="230.0" y1="110.0" x2="230.0" y2="167.2" stroke="#A5B4FC" stroke-width="1.5" vector-effect="non-scaling-stroke"></line><path d="M230.0 172.0 L226.2 164.9 L233.8 164.9 Z" fill="#A5B4FC"></path><line x1="230.0" y1="224.0" x2="230.0" y2="279.2" stroke="#A5B4FC" stroke-width="1.5" vector-effect="non-scaling-stroke"></line><path d="M230.0 284.0 L226.2 276.9 L233.8 276.9 Z" fill="#A5B4FC"></path><line x1="230.0" y1="404.0" x2="230.0" y2="459.2" stroke="#A5B4FC" stroke-width="1.5" vector-effect="non-scaling-stroke"></line><path d="M230.0 464.0 L226.2 456.9 L233.8 456.9 Z" fill="#A5B4FC"></path><path d="M340 344 H440 V578" fill="none" stroke="#A5B4FC" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"></path><path d="M440.0 584.0 L436.2 576.9 L443.8 576.9 Z" fill="#A5B4FC"></path><path d="M140 490 H60 V344 H112" fill="none" stroke="#7DD3FC" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"></path><path d="M120.0 344.0 L112.1 348.2 L112.1 339.8 Z" fill="#7DD3FC"></path></g><rect x="1160" y="920" width="292.8" height="40" fill="#0A101D" stroke="#334155" stroke-width="1"></rect><line x1="1230.0" y1="920.0" x2="1230.0" y2="960.0" stroke="#334155" stroke-width="1" vector-effect="non-scaling-stroke"></line><line x1="1367.2" y1="920.0" x2="1367.2" y2="960.0" stroke="#334155" stroke-width="1" vector-effect="non-scaling-stroke"></line><text x="1174.0" y="945.0" font-family="JetBrains Mono, monospace" font-size="14.00" font-weight="700" fill="#E2E8F0" text-anchor="start" letter-spacing="0">VD-01</text><text x="1244.0" y="945.0" font-family="JetBrains Mono, monospace" font-size="14.00" font-weight="400" fill="#E2E8F0" text-anchor="start" letter-spacing="0">DIPLOMA INTRO</text><text x="1381.2" y="944.5" font-family="JetBrains Mono, monospace" font-size="12.00" font-weight="400" fill="#94A3B8" text-anchor="start" letter-spacing="0">CSkilled</text><rect x="1700" y="932" width="28" height="28" rx="4" fill="#062985"></rect><text x="1714" y="950.5" font-family="JetBrains Mono, monospace" font-size="11.5" font-weight="700" fill="#FFFFFF" text-anchor="middle">CS</text></svg><label class="q-gate__hit" for="g-b" aria-label="شاهد المحاضرة الأولى مجانًا"></label></div>
+<div class="q-gate__f"><div><b>شاهد المحاضرة الأولى مجانًا</b><span>دبلومة Python · المحاضرة <bdi>01</bdi> · <span class="ph">[[المدة]]</span> دقيقة</span></div><label class="q-b q-b--line q-b--sm" for="g-b"><span class="cs-icon" aria-hidden="true">play_arrow</span>ابدأ الآن</label></div>
+</div>
+<div class="q-g q-g--b">
+<form class="q-form" onsubmit="return false" novalidate="">
+<h3>شاهد المحاضرة الأولى الآن</h3>
+<p class="q-note" style="margin: 0">دبلومة Python · المحاضرة <bdi>01</bdi> · <span class="ph">[[المدة]]</span> دقيقة</p>
+<label class="q-fld"><span>البريد الإلكتروني <small>(مطلوب)</small></span><input class="q-in" type="email" required="" placeholder="name@example.com" dir="ltr" autocomplete="email"><span class="q-err"><span class="cs-icon" aria-hidden="true">error</span>أدخل بريدًا إلكترونيًا صحيحًا، مثل name@example.com</span></label>
+<label class="q-fld"><span>رقم واتساب <small>(اختياري)</small></span><span class="q-phone"><span>+<bdi>20</bdi></span><input class="q-in" type="tel" inputmode="tel" autocomplete="tel"></span></label>
+<label class="q-b q-b--fill q-go" for="g-c"><span class="cs-icon" aria-hidden="true">play_arrow</span>شاهد الآن</label>
+<span class="q-note" style="text-align: center">نرسل لك رابط المحاضرات المجانية فقط.</span>
+<label class="q-back" for="g-a">رجوع</label>
+</form>
+</div>
+<div class="q-g q-g--c">
+<div class="q-gate__m"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" role="img" aria-label="ملصق المحاضرة الأولى المجانية من البرمجة بلغة Python" style="direction: ltr; display: block"><rect width="1920" height="1080" fill="#0A101D"></rect><path d="M1144 0V1080M1168 0V1080M1192 0V1080M1216 0V1080M1240 0V1080M1264 0V1080M1288 0V1080M1312 0V1080M1336 0V1080M1360 0V1080M1384 0V1080M1408 0V1080M1432 0V1080M1456 0V1080M1480 0V1080M1504 0V1080M1528 0V1080M1552 0V1080M1576 0V1080M1600 0V1080M1624 0V1080M1648 0V1080M1672 0V1080M1696 0V1080M1720 0V1080M1744 0V1080M1768 0V1080M1792 0V1080M1816 0V1080M1840 0V1080M1864 0V1080M1888 0V1080M1912 0V1080M1120 24H1920M1120 48H1920M1120 72H1920M1120 96H1920M1120 120H1920M1120 144H1920M1120 168H1920M1120 192H1920M1120 216H1920M1120 240H1920M1120 264H1920M1120 288H1920M1120 312H1920M1120 336H1920M1120 360H1920M1120 384H1920M1120 408H1920M1120 432H1920M1120 456H1920M1120 480H1920M1120 504H1920M1120 528H1920M1120 552H1920M1120 576H1920M1120 600H1920M1120 624H1920M1120 648H1920M1120 672H1920M1120 696H1920M1120 720H1920M1120 744H1920M1120 768H1920M1120 792H1920M1120 816H1920M1120 840H1920M1120 864H1920M1120 888H1920M1120 912H1920M1120 936H1920M1120 960H1920M1120 984H1920M1120 1008H1920M1120 1032H1920M1120 1056H1920" stroke="rgba(165,180,252,0.06)" stroke-width="1" fill="none"></path><path d="M24 0V1080M48 0V1080M72 0V1080M96 0V1080M120 0V1080M144 0V1080M168 0V1080M192 0V1080M216 0V1080M240 0V1080M264 0V1080M288 0V1080M312 0V1080M336 0V1080M360 0V1080M384 0V1080M408 0V1080M432 0V1080M456 0V1080M480 0V1080M504 0V1080M528 0V1080M552 0V1080M576 0V1080M600 0V1080M624 0V1080M648 0V1080M672 0V1080M696 0V1080M720 0V1080M744 0V1080M768 0V1080M792 0V1080M816 0V1080M840 0V1080M864 0V1080M888 0V1080M912 0V1080M936 0V1080M960 0V1080M984 0V1080M1008 0V1080M1032 0V1080M1056 0V1080M1080 0V1080M1104 0V1080M0 24H1120M0 48H1120M0 72H1120M0 96H1120M0 120H1120M0 144H1120M0 168H1120M0 192H1120M0 216H1120M0 240H1120M0 264H1120M0 288H1120M0 312H1120M0 336H1120M0 360H1120M0 384H1120M0 408H1120M0 432H1120M0 456H1120M0 480H1120M0 504H1120M0 528H1120M0 552H1120M0 576H1120M0 600H1120M0 624H1120M0 648H1120M0 672H1120M0 696H1120M0 720H1120M0 744H1120M0 768H1120M0 792H1120M0 816H1120M0 840H1120M0 864H1120M0 888H1120M0 912H1120M0 936H1120M0 960H1120M0 984H1120M0 1008H1120M0 1032H1120M0 1056H1120" stroke="rgba(165,180,252,0.06)" stroke-width="1" fill="none"></path><g transform="translate(110 190) scale(1.0)"><rect x="160" y="62" width="140" height="48" rx="24" fill="#0A101D" stroke="#A5B4FC" stroke-width="1.5" vector-effect="non-scaling-stroke"></rect><rect x="140" y="172" width="180" height="52" fill="#0A101D" stroke="#A5B4FC" stroke-width="1.5" vector-effect="non-scaling-stroke"></rect><path d="M230 284 L340 344 L230 404 L120 344 Z" fill="#0A101D" stroke="#A5B4FC" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"></path><rect x="140" y="464" width="180" height="52" fill="#18203A" stroke="#A5B4FC" stroke-width="1.5" vector-effect="non-scaling-stroke"></rect><rect x="350" y="584" width="180" height="52" fill="#0A101D" stroke="#A5B4FC" stroke-width="1.5" vector-effect="non-scaling-stroke"></rect><line x1="230.0" y1="110.0" x2="230.0" y2="167.2" stroke="#A5B4FC" stroke-width="1.5" vector-effect="non-scaling-stroke"></line><path d="M230.0 172.0 L226.2 164.9 L233.8 164.9 Z" fill="#A5B4FC"></path><line x1="230.0" y1="224.0" x2="230.0" y2="279.2" stroke="#A5B4FC" stroke-width="1.5" vector-effect="non-scaling-stroke"></line><path d="M230.0 284.0 L226.2 276.9 L233.8 276.9 Z" fill="#A5B4FC"></path><line x1="230.0" y1="404.0" x2="230.0" y2="459.2" stroke="#A5B4FC" stroke-width="1.5" vector-effect="non-scaling-stroke"></line><path d="M230.0 464.0 L226.2 456.9 L233.8 456.9 Z" fill="#A5B4FC"></path><path d="M340 344 H440 V578" fill="none" stroke="#A5B4FC" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"></path><path d="M440.0 584.0 L436.2 576.9 L443.8 576.9 Z" fill="#A5B4FC"></path><path d="M140 490 H60 V344 H112" fill="none" stroke="#7DD3FC" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"></path><path d="M120.0 344.0 L112.1 348.2 L112.1 339.8 Z" fill="#7DD3FC"></path><text x="230.0" y="92.0" font-family="JetBrains Mono, monospace" font-size="15.00" font-weight="400" fill="#E2E8F0" text-anchor="middle" letter-spacing="0">start</text><text x="230.0" y="204.0" font-family="JetBrains Mono, monospace" font-size="15.00" font-weight="400" fill="#E2E8F0" text-anchor="middle" letter-spacing="0">result = 0</text><text x="230.0" y="349.0" font-family="JetBrains Mono, monospace" font-size="14.00" font-weight="400" fill="#E2E8F0" text-anchor="middle" letter-spacing="0">more items?</text><text x="230.0" y="496.0" font-family="JetBrains Mono, monospace" font-size="15.00" font-weight="400" fill="#E2E8F0" text-anchor="middle" letter-spacing="0">result += x</text><text x="440.0" y="616.0" font-family="JetBrains Mono, monospace" font-size="15.00" font-weight="400" fill="#E2E8F0" text-anchor="middle" letter-spacing="0">return result</text><text x="248.0" y="440.0" font-family="JetBrains Mono, monospace" font-size="12.00" font-weight="400" fill="#94A3B8" text-anchor="start" letter-spacing="0">yes</text><text x="354.0" y="334.0" font-family="JetBrains Mono, monospace" font-size="12.00" font-weight="400" fill="#94A3B8" text-anchor="start" letter-spacing="0">no</text><line x1="308.0" y1="86.0" x2="576.0" y2="86.0" stroke="#A5B4FC" stroke-width="0.75" stroke-dasharray="3 4" vector-effect="non-scaling-stroke"></line><circle cx="576" cy="86" r="2.5" fill="#A5B4FC"></circle><text x="590.0" y="91.0" font-family="JetBrains Mono, monospace" font-size="16.00" font-weight="400" fill="#E2E8F0" text-anchor="start" letter-spacing="0">def total(items):</text><line x1="328.0" y1="198.0" x2="576.0" y2="198.0" stroke="#A5B4FC" stroke-width="0.75" stroke-dasharray="3 4" vector-effect="non-scaling-stroke"></line><circle cx="576" cy="198" r="2.5" fill="#A5B4FC"></circle><text x="628.4" y="203.0" font-family="JetBrains Mono, monospace" font-size="16.00" font-weight="400" fill="#E2E8F0" text-anchor="start" letter-spacing="0">result = 0</text><line x1="290.0" y1="314.0" x2="576.0" y2="314.0" stroke="#A5B4FC" stroke-width="0.75" stroke-dasharray="3 4" vector-effect="non-scaling-stroke"></line><circle cx="576" cy="314" r="2.5" fill="#A5B4FC"></circle><text x="628.4" y="319.0" font-family="JetBrains Mono, monospace" font-size="16.00" font-weight="400" fill="#E2E8F0" text-anchor="start" letter-spacing="0">for x in items:</text><line x1="328.0" y1="490.0" x2="576.0" y2="490.0" stroke="#A5B4FC" stroke-width="0.75" stroke-dasharray="3 4" vector-effect="non-scaling-stroke"></line><circle cx="576" cy="490" r="2.5" fill="#A5B4FC"></circle><text x="666.8" y="495.0" font-family="JetBrains Mono, monospace" font-size="16.00" font-weight="400" fill="#E2E8F0" text-anchor="start" letter-spacing="0">result += x</text><line x1="538.0" y1="610.0" x2="576.0" y2="610.0" stroke="#A5B4FC" stroke-width="0.75" stroke-dasharray="3 4" vector-effect="non-scaling-stroke"></line><circle cx="576" cy="610" r="2.5" fill="#A5B4FC"></circle><text x="628.4" y="615.0" font-family="JetBrains Mono, monospace" font-size="16.00" font-weight="400" fill="#E2E8F0" text-anchor="start" letter-spacing="0">return result</text><line x1="60.0" y1="250.0" x2="165.0" y2="316.1" stroke="#A5B4FC" stroke-width="1" vector-effect="non-scaling-stroke"></line><path d="M168.0 318.0 L162.0 317.6 L165.0 312.8 Z" fill="#A5B4FC"></path><text x="54.0" y="254.0" font-family="JetBrains Mono, monospace" font-size="12.00" font-weight="400" fill="#94A3B8" text-anchor="end" letter-spacing="0">condition</text><line x1="210.0" y1="580.0" x2="248.0" y2="521.0" stroke="#A5B4FC" stroke-width="1" vector-effect="non-scaling-stroke"></line><path d="M250.0 518.0 L249.5 524.0 L244.8 520.9 Z" fill="#A5B4FC"></path><text x="204.0" y="584.0" font-family="JetBrains Mono, monospace" font-size="12.00" font-weight="400" fill="#94A3B8" text-anchor="end" letter-spacing="0">loop body</text><line x1="560.0" y1="690.0" x2="502.8" y2="642.3" stroke="#A5B4FC" stroke-width="1" vector-effect="non-scaling-stroke"></line><path d="M500.0 640.0 L505.9 641.2 L502.3 645.6 Z" fill="#A5B4FC"></path><text x="566.0" y="694.0" font-family="JetBrains Mono, monospace" font-size="12.00" font-weight="400" fill="#94A3B8" text-anchor="start" letter-spacing="0">return value</text></g><circle cx="560" cy="540" r="56" fill="#FFFFFF"></circle><path d="M544 516 L586 540 L544 564 Z" fill="#062985"></path><line x1="1120.0" y1="0.0" x2="1120.0" y2="1080.0" stroke="#1E293B" stroke-width="1" vector-effect="non-scaling-stroke"></line><rect x="1518" y="216" width="210" height="40" rx="4" fill="#EBEDFF"></rect><text x="1712.0" y="243.0" direction="rtl" unicode-bidi="embed" font-family="IBM Plex Sans Arabic, sans-serif" font-size="18" font-weight="600" fill="#062985" text-anchor="start" letter-spacing="0">متاحة بدون تسجيل</text><text x="1728.0" y="294.0" font-family="JetBrains Mono, monospace" font-size="16.00" font-weight="500" fill="#A5B4FC" text-anchor="end" letter-spacing="0">FREE LECTURE 01</text><text x="1728.0" y="386.0" direction="rtl" unicode-bidi="embed" font-family="IBM Plex Sans Arabic, sans-serif" font-size="64" font-weight="700" fill="#E2E8F0" text-anchor="start" letter-spacing="0">[[عنوان المحاضرة]]</text><text x="1728.0" y="460.0" font-family="JetBrains Mono, monospace" font-size="16.00" font-weight="400" fill="#94A3B8" text-anchor="end" letter-spacing="0">FREE LECTURE · Programming with Python</text><g transform="translate(1448.0 610.0) scale(0.2979)"><rect x="160" y="62" width="140" height="48" rx="24" fill="#0A101D" stroke="#A5B4FC" stroke-width="1.5" vector-effect="non-scaling-stroke"></rect><rect x="140" y="172" width="180" height="52" fill="#0A101D" stroke="#A5B4FC" stroke-width="1.5" vector-effect="non-scaling-stroke"></rect><path d="M230 284 L340 344 L230 404 L120 344 Z" fill="#0A101D" stroke="#A5B4FC" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"></path><rect x="140" y="464" width="180" height="52" fill="#18203A" stroke="#A5B4FC" stroke-width="1.5" vector-effect="non-scaling-stroke"></rect><rect x="350" y="584" width="180" height="52" fill="#0A101D" stroke="#A5B4FC" stroke-width="1.5" vector-effect="non-scaling-stroke"></rect><line x1="230.0" y1="110.0" x2="230.0" y2="167.2" stroke="#A5B4FC" stroke-width="1.5" vector-effect="non-scaling-stroke"></line><path d="M230.0 172.0 L226.2 164.9 L233.8 164.9 Z" fill="#A5B4FC"></path><line x1="230.0" y1="224.0" x2="230.0" y2="279.2" stroke="#A5B4FC" stroke-width="1.5" vector-effect="non-scaling-stroke"></line><path d="M230.0 284.0 L226.2 276.9 L233.8 276.9 Z" fill="#A5B4FC"></path><line x1="230.0" y1="404.0" x2="230.0" y2="459.2" stroke="#A5B4FC" stroke-width="1.5" vector-effect="non-scaling-stroke"></line><path d="M230.0 464.0 L226.2 456.9 L233.8 456.9 Z" fill="#A5B4FC"></path><path d="M340 344 H440 V578" fill="none" stroke="#A5B4FC" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"></path><path d="M440.0 584.0 L436.2 576.9 L443.8 576.9 Z" fill="#A5B4FC"></path><path d="M140 490 H60 V344 H112" fill="none" stroke="#7DD3FC" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"></path><path d="M120.0 344.0 L112.1 348.2 L112.1 339.8 Z" fill="#7DD3FC"></path></g><rect x="1160" y="920" width="309.6" height="40" fill="#0A101D" stroke="#334155" stroke-width="1"></rect><line x1="1230.0" y1="920.0" x2="1230.0" y2="960.0" stroke="#334155" stroke-width="1" vector-effect="non-scaling-stroke"></line><line x1="1384.0" y1="920.0" x2="1384.0" y2="960.0" stroke="#334155" stroke-width="1" vector-effect="non-scaling-stroke"></line><text x="1174.0" y="945.0" font-family="JetBrains Mono, monospace" font-size="14.00" font-weight="700" fill="#E2E8F0" text-anchor="start" letter-spacing="0">FL-01</text><text x="1244.0" y="945.0" font-family="JetBrains Mono, monospace" font-size="14.00" font-weight="400" fill="#E2E8F0" text-anchor="start" letter-spacing="0">FREE LECTURE 01</text><text x="1398.0" y="944.5" font-family="JetBrains Mono, monospace" font-size="12.00" font-weight="400" fill="#94A3B8" text-anchor="start" letter-spacing="0">CSkilled</text><rect x="1700" y="932" width="28" height="28" rx="4" fill="#062985"></rect><text x="1714" y="950.5" font-family="JetBrains Mono, monospace" font-size="11.5" font-weight="700" fill="#FFFFFF" text-anchor="middle">CS</text></svg></div>
+<div class="q-pbar"><bdi dir="ltr">00:52</bdi><i></i><span class="ph">[[المدة]]</span></div>
+<div class="q-gate__f"><div><b>تشاهد الآن: المحاضرة <bdi>01</bdi>، <span class="ph">[[عنوان المحاضرة]]</span></b></div><a class="q-a" href="#">المحاضرة المجانية التالية<span class="cs-icon" aria-hidden="true">arrow_back</span></a></div>
+</div>
+</div>
+</div>
+</section><div style="display: flex; flex-direction: column; flex: none"><section class="q-sec" style="background: #FAF9F6; border-top: 1px solid #E2E8F0;"><div class="q-w"><div class="q-head q-head--c"><span class="q-k">هل هذا المسار لك؟</span><h2 class="q-h2">لمن هذا المسار</h2></div><div class="q-who">
+<div class="q-rv-in" style="background: #062985; color: #fff"><h3><span class="cs-icon" aria-hidden="true">task_alt</span>يناسبك تمامًا إذا كنت</h3><ul><li><span class="cs-icon" aria-hidden="true">check</span><span>تبدأ من الصفر وتريد تأسيسًا متينًا في البرمجة ثم الذكاء الاصطناعي.</span></li><li><span class="cs-icon" aria-hidden="true">check</span><span>طالبًا في حاسبات أو هندسة وتريد عمقًا لا تقدّمه المحاضرات.</span></li><li><span class="cs-icon" aria-hidden="true">check</span><span>مطوّرًا تريد الانتقال إلى تعلّم الآلة.</span></li></ul><p>الهدف: مهندس يفهم ما يبنيه.</p></div>
+<div class="q-rv-in" style="background: #EBEDFF"><h3 style="color: #062985"><span class="cs-icon" aria-hidden="true">psychology</span>ما نتوقعه منك</h3><ul style="color: #0F172A"><li><span class="cs-icon" aria-hidden="true">check</span><span><span class="ph">[[عدد الساعات]]</span> ساعات أسبوعيًا بانتظام.</span></li><li><span class="cs-icon" aria-hidden="true">check</span><span>أن تحلّ المسألة بنفسك قبل مشاهدة الحل.</span></li><li><span class="cs-icon" aria-hidden="true">check</span><span>صبرًا على الرياضيات.</span></li></ul><p>المدة المتوقعة: <span class="ph">[[المدة بالأشهر]]</span></p></div>
+<div class="q-rv-in" style="background: #FAF9F6; border: 1px solid #E2E8F0"><h3><span class="cs-icon" aria-hidden="true">compare_arrows</span>لا يناسبك إذا كنت</h3><ul style="color: #475569"><li><span class="cs-icon" aria-hidden="true">remove</span><span>تبحث عن شهادة سريعة في أسابيع.</span></li><li><span class="cs-icon" aria-hidden="true">remove</span><span>تريد أدوات جاهزة دون فهم ما وراءها.</span></li><li><span class="cs-icon" aria-hidden="true">remove</span><span>تنتظر وعدًا بوظيفة.</span></li></ul><p>البديل: ابدأ بدبلومة واحدة.</p></div>
+</div></div></section><section id="route" class="q-sec" style="background: #ffffff; border-top: 1px solid #E2E8F0;"><div class="q-w"><div class="q-head"><span class="q-k">الخارطة التفصيلية للتعلم</span><h2 class="q-h2"><bdi>4</bdi> دبلومات بترتيب واحد</h2><p class="q-lead">كل دبلومة تبني على ما قبلها. اضغط على أي دبلومة لترى منهجها كاملًا.</p></div><div class="q-route q-rv-in"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 640" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" role="img" aria-label="خريطة مسار الذكاء الاصطناعي: أربع محطات من البرمجة بلغة Python إلى التعلّم العميق، 292 محاضرة وأكثر من 370 ساعة" style="direction: ltr; display: block"><rect width="1600" height="640" fill="#FAF9F6"></rect><path d="M24 0V640M48 0V640M72 0V640M96 0V640M120 0V640M144 0V640M168 0V640M192 0V640M216 0V640M240 0V640M264 0V640M288 0V640M312 0V640M336 0V640M360 0V640M384 0V640M408 0V640M432 0V640M456 0V640M480 0V640M504 0V640M528 0V640M552 0V640M576 0V640M600 0V640M624 0V640M648 0V640M672 0V640M696 0V640M720 0V640M744 0V640M768 0V640M792 0V640M816 0V640M840 0V640M864 0V640M888 0V640M912 0V640M936 0V640M960 0V640M984 0V640M1008 0V640M1032 0V640M1056 0V640M1080 0V640M1104 0V640M1128 0V640M1152 0V640M1176 0V640M1200 0V640M1224 0V640M1248 0V640M1272 0V640M1296 0V640M1320 0V640M1344 0V640M1368 0V640M1392 0V640M1416 0V640M1440 0V640M1464 0V640M1488 0V640M1512 0V640M1536 0V640M1560 0V640M1584 0V640M0 24H1600M0 48H1600M0 72H1600M0 96H1600M0 120H1600M0 144H1600M0 168H1600M0 192H1600M0 216H1600M0 240H1600M0 264H1600M0 288H1600M0 312H1600M0 336H1600M0 360H1600M0 384H1600M0 408H1600M0 432H1600M0 456H1600M0 480H1600M0 504H1600M0 528H1600M0 552H1600M0 576H1600M0 600H1600M0 624H1600" stroke="rgba(6,41,133,0.04)" stroke-width="1" fill="none"></path><rect x="24" y="24" width="1552" height="592" fill="none" stroke="#062985" stroke-width="1"></rect><path d="M6 18 L18 18 L18 6" fill="none" stroke="#062985" stroke-width="1" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"></path><path d="M1594 18 L1582 18 L1582 6" fill="none" stroke="#062985" stroke-width="1" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"></path><path d="M6 622 L18 622 L18 634" fill="none" stroke="#062985" stroke-width="1" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"></path><path d="M1594 622 L1582 622 L1582 634" fill="none" stroke="#062985" stroke-width="1" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"></path><text x="1536.0" y="100.0" direction="rtl" unicode-bidi="embed" font-family="IBM Plex Sans Arabic, sans-serif" font-size="40" font-weight="700" fill="#0F172A" text-anchor="start" letter-spacing="0">مسار الذكاء الاصطناعي</text><rect x="24" y="576" width="646.8" height="40" fill="#FAF9F6" stroke="#062985" stroke-width="1"></rect><line x1="94.0" y1="576.0" x2="94.0" y2="616.0" stroke="#062985" stroke-width="1" vector-effect="non-scaling-stroke"></line><line x1="239.6" y1="576.0" x2="239.6" y2="616.0" stroke="#062985" stroke-width="1" vector-effect="non-scaling-stroke"></line><text x="38.0" y="601.0" font-family="JetBrains Mono, monospace" font-size="14.00" font-weight="700" fill="#0F172A" text-anchor="start" letter-spacing="0">RT-01</text><text x="108.0" y="601.0" font-family="JetBrains Mono, monospace" font-size="14.00" font-weight="400" fill="#0F172A" text-anchor="start" letter-spacing="0">AI TRACK ROUTE</text><text x="253.6" y="600.5" font-family="JetBrains Mono, monospace" font-size="12.00" font-weight="400" fill="#475569" text-anchor="start" letter-spacing="0">CSkilled · AI Track · 4 diplomas · 292 lectures · 370+ h</text><rect x="1532" y="572" width="28" height="28" rx="4" fill="#062985"></rect><text x="1546" y="590.5" font-family="JetBrains Mono, monospace" font-size="11.5" font-weight="700" fill="#FFFFFF" text-anchor="middle">CS</text><line x1="1410.0" y1="400.2" x2="325.0" y2="308.8" stroke="#062985" stroke-width="2" vector-effect="non-scaling-stroke"></line><line x1="1410.0" y1="400.2" x2="1410.0" y2="346.2" stroke="#062985" stroke-width="1.5" vector-effect="non-scaling-stroke"></line><path d="M1410 346.1684210526316 L1444 355.1684210526316 L1410 364.1684210526316 Z" fill="#EBEDFF" stroke="#062985" stroke-width="1" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"></path><text x="1410.0" y="424.2" font-family="JetBrains Mono, monospace" font-size="12.00" font-weight="600" fill="#475569" text-anchor="middle" letter-spacing="0">START</text><line x1="1238.8" y1="411.8" x2="992.3" y2="390.9" stroke="#062985" stroke-width="1" vector-effect="non-scaling-stroke"></line><path d="M1238.8 411.8 L1233.3 414.2 L1233.8 408.6 Z" fill="#062985"></path><path d="M992.3 390.9 L997.9 388.5 L997.4 394.2 Z" fill="#062985"></path><line x1="1238.3" y1="417.8" x2="1239.3" y2="405.9" stroke="#062985" stroke-width="1" vector-effect="non-scaling-stroke"></line><line x1="991.8" y1="396.9" x2="992.8" y2="384.9" stroke="#062985" stroke-width="1" vector-effect="non-scaling-stroke"></line><text x="1116.7" y="421.4" font-family="JetBrains Mono, monospace" font-size="12.00" font-weight="400" fill="#475569" text-anchor="middle" letter-spacing="0">45+ h</text><circle cx="1275.0" cy="388.8" r="14" fill="#FFFFFF" stroke="#062985" stroke-width="1.5"></circle><text x="1275.0" y="393.3" font-family="JetBrains Mono, monospace" font-size="12.00" font-weight="700" fill="#062985" text-anchor="middle" letter-spacing="0">01</text><g transform="translate(1227.0 252.8) scale(0.1021)"><rect x="160" y="62" width="140" height="48" rx="24" fill="#FAF9F6" stroke="#062985" stroke-width="1.5" vector-effect="non-scaling-stroke"></rect><rect x="140" y="172" width="180" height="52" fill="#FAF9F6" stroke="#062985" stroke-width="1.5" vector-effect="non-scaling-stroke"></rect><path d="M230 284 L340 344 L230 404 L120 344 Z" fill="#FAF9F6" stroke="#062985" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"></path><rect x="140" y="464" width="180" height="52" fill="#EBEDFF" stroke="#062985" stroke-width="1.5" vector-effect="non-scaling-stroke"></rect><rect x="350" y="584" width="180" height="52" fill="#FAF9F6" stroke="#062985" stroke-width="1.5" vector-effect="non-scaling-stroke"></rect><line x1="230.0" y1="110.0" x2="230.0" y2="167.2" stroke="#062985" stroke-width="1.5" vector-effect="non-scaling-stroke"></line><path d="M230.0 172.0 L226.2 164.9 L233.8 164.9 Z" fill="#062985"></path><line x1="230.0" y1="224.0" x2="230.0" y2="279.2" stroke="#062985" stroke-width="1.5" vector-effect="non-scaling-stroke"></line><path d="M230.0 284.0 L226.2 276.9 L233.8 276.9 Z" fill="#062985"></path><line x1="230.0" y1="404.0" x2="230.0" y2="459.2" stroke="#062985" stroke-width="1.5" vector-effect="non-scaling-stroke"></line><path d="M230.0 464.0 L226.2 456.9 L233.8 456.9 Z" fill="#062985"></path><path d="M340 344 H440 V578" fill="none" stroke="#062985" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"></path><path d="M440.0 584.0 L436.2 576.9 L443.8 576.9 Z" fill="#062985"></path><path d="M140 490 H60 V344 H112" fill="none" stroke="#2440DC" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"></path><path d="M120.0 344.0 L112.1 348.2 L112.1 339.8 Z" fill="#2440DC"></path></g><text x="1275.0" y="454.8" font-family="JetBrains Mono, monospace" font-size="14.00" font-weight="400" fill="#0F172A" text-anchor="middle" letter-spacing="0">Programming with Python</text><text x="1275.0" y="482.8" direction="rtl" unicode-bidi="embed" font-family="IBM Plex Sans Arabic, sans-serif" font-size="16" font-weight="600" fill="#0F172A" text-anchor="middle" letter-spacing="0">البرمجة بلغة Python</text><text x="1275.0" y="506.8" font-family="JetBrains Mono, monospace" font-size="12.00" font-weight="400" fill="#475569" text-anchor="middle" letter-spacing="0">65 lectures · 75+ h</text><line x1="922.2" y1="385.2" x2="675.7" y2="364.2" stroke="#062985" stroke-width="1" vector-effect="non-scaling-stroke"></line><path d="M922.2 385.2 L916.6 387.5 L917.1 381.9 Z" fill="#062985"></path><path d="M675.7 364.2 L681.2 361.9 L680.7 367.5 Z" fill="#062985"></path><line x1="921.6" y1="391.2" x2="922.7" y2="379.2" stroke="#062985" stroke-width="1" vector-effect="non-scaling-stroke"></line><line x1="675.2" y1="370.2" x2="676.2" y2="358.3" stroke="#062985" stroke-width="1" vector-effect="non-scaling-stroke"></line><text x="800.0" y="394.7" font-family="JetBrains Mono, monospace" font-size="12.00" font-weight="400" fill="#475569" text-anchor="middle" letter-spacing="0">130+ h</text><circle cx="958.3" cy="362.1" r="14" fill="#FFFFFF" stroke="#062985" stroke-width="1.5"></circle><text x="958.3" y="366.6" font-family="JetBrains Mono, monospace" font-size="12.00" font-weight="700" fill="#062985" text-anchor="middle" letter-spacing="0">02</text><g transform="translate(910.3 226.1) scale(0.1021)"><line x1="340.1" y1="142.4" x2="219.9" y2="277.6" stroke="#062985" stroke-width="1.5" vector-effect="non-scaling-stroke"></line><line x1="379.9" y1="142.4" x2="500.1" y2="277.6" stroke="#2440DC" stroke-width="2" vector-effect="non-scaling-stroke"></line><line x1="187.8" y1="327.4" x2="132.2" y2="452.6" stroke="#062985" stroke-width="1.5" vector-effect="non-scaling-stroke"></line><line x1="212.2" y1="327.4" x2="267.8" y2="452.6" stroke="#062985" stroke-width="1.5" vector-effect="non-scaling-stroke"></line><line x1="507.8" y1="327.4" x2="452.2" y2="452.6" stroke="#2440DC" stroke-width="2" vector-effect="non-scaling-stroke"></line><line x1="532.2" y1="327.4" x2="587.8" y2="452.6" stroke="#062985" stroke-width="1.5" vector-effect="non-scaling-stroke"></line><circle cx="360" cy="120" r="30" fill="#FAF9F6" stroke="#2440DC" stroke-width="2" vector-effect="non-scaling-stroke"></circle><circle cx="200" cy="300" r="30" fill="#FAF9F6" stroke="#062985" stroke-width="1.5" vector-effect="non-scaling-stroke"></circle><circle cx="520" cy="300" r="30" fill="#FAF9F6" stroke="#2440DC" stroke-width="2" vector-effect="non-scaling-stroke"></circle><circle cx="120" cy="480" r="30" fill="#FAF9F6" stroke="#062985" stroke-width="1.5" vector-effect="non-scaling-stroke"></circle><circle cx="280" cy="480" r="30" fill="#FAF9F6" stroke="#062985" stroke-width="1.5" vector-effect="non-scaling-stroke"></circle><circle cx="440" cy="480" r="30" fill="#EBEDFF" stroke="#2440DC" stroke-width="2" vector-effect="non-scaling-stroke"></circle><circle cx="600" cy="480" r="30" fill="#FAF9F6" stroke="#062985" stroke-width="1.5" vector-effect="non-scaling-stroke"></circle><rect x="690" y="540" width="240" height="150" fill="#FAF9F6" stroke="#062985" stroke-width="1" vector-effect="non-scaling-stroke"></rect><line x1="724.0" y1="662.0" x2="911.0" y2="662.0" stroke="#062985" stroke-width="1" vector-effect="non-scaling-stroke"></line><path d="M914.0 662.0 L909.6 664.3 L909.6 659.7 Z" fill="#062985"></path><line x1="724.0" y1="662.0" x2="724.0" y2="557.0" stroke="#062985" stroke-width="1" vector-effect="non-scaling-stroke"></line><path d="M724.0 554.0 L726.3 558.4 L721.7 558.4 Z" fill="#062985"></path><line x1="724.0" y1="662.0" x2="890.0" y2="566.0" stroke="#062985" stroke-width="1.5" stroke-dasharray="4 4" vector-effect="non-scaling-stroke"></line><path d="M724 662 L725.0 657.4 L728.0 651.4 L731.0 648.2 L734.0 646.1 L737.0 644.5 L740.0 643.3 L743.0 642.2 L746.0 641.3 L749.0 640.5 L752.0 639.7 L755.0 639.1 L758.0 638.5 L761.0 637.9 L764.0 637.4 L767.0 637.0 L770.0 636.5 L773.0 636.1 L776.0 635.7 L779.0 635.4 L782.0 635.0 L785.0 634.7 L788.0 634.4 L791.0 634.1 L794.0 633.8 L797.0 633.5 L800.0 633.3 L803.0 633.0 L806.0 632.8 L809.0 632.5 L812.0 632.3 L815.0 632.1 L818.0 631.9 L821.0 631.7 L824.0 631.5 L827.0 631.3 L830.0 631.1 L833.0 630.9 L836.0 630.7 L839.0 630.6 L842.0 630.4 L845.0 630.2 L848.0 630.1 L851.0 629.9 L854.0 629.8 L857.0 629.6 L860.0 629.5 L863.0 629.3 L866.0 629.2 L869.0 629.0 L872.0 628.9 L875.0 628.8 L878.0 628.6 L881.0 628.5 L884.0 628.4 L887.0 628.3 L890.0 628.2 L893.0 628.0" fill="none" stroke="#2440DC" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"></path></g><text x="958.3" y="428.1" font-family="JetBrains Mono, monospace" font-size="14.00" font-weight="400" fill="#0F172A" text-anchor="middle" letter-spacing="0">DSA with Python</text><text x="958.3" y="456.1" direction="rtl" unicode-bidi="embed" font-family="IBM Plex Sans Arabic, sans-serif" font-size="16" font-weight="600" fill="#0F172A" text-anchor="middle" letter-spacing="0">هياكل البيانات والخوارزميات</text><text x="958.3" y="480.1" font-family="JetBrains Mono, monospace" font-size="12.00" font-weight="400" fill="#475569" text-anchor="middle" letter-spacing="0">43 lectures · 45+ h</text><line x1="605.5" y1="358.5" x2="359.0" y2="337.6" stroke="#062985" stroke-width="1" vector-effect="non-scaling-stroke"></line><path d="M605.5 358.5 L600.0 360.9 L600.4 355.3 Z" fill="#062985"></path><path d="M359.0 337.6 L364.5 335.2 L364.0 340.8 Z" fill="#062985"></path><line x1="605.0" y1="364.5" x2="606.0" y2="352.5" stroke="#062985" stroke-width="1" vector-effect="non-scaling-stroke"></line><line x1="358.5" y1="343.5" x2="359.5" y2="331.6" stroke="#062985" stroke-width="1" vector-effect="non-scaling-stroke"></line><text x="483.3" y="368.0" font-family="JetBrains Mono, monospace" font-size="12.00" font-weight="400" fill="#475569" text-anchor="middle" letter-spacing="0">120+ h</text><circle cx="641.7" cy="335.5" r="14" fill="#FFFFFF" stroke="#062985" stroke-width="1.5"></circle><text x="641.7" y="340.0" font-family="JetBrains Mono, monospace" font-size="12.00" font-weight="700" fill="#062985" text-anchor="middle" letter-spacing="0">03</text><g transform="translate(593.7 199.5) scale(0.1021)"><line x1="30.0" y1="660.0" x2="695.8" y2="660.0" stroke="#062985" stroke-width="1" vector-effect="non-scaling-stroke"></line><path d="M700.0 660.0 L693.8 663.3 L693.8 656.7 Z" fill="#062985"></path><line x1="30.0" y1="660.0" x2="30.0" y2="34.2" stroke="#062985" stroke-width="1" vector-effect="non-scaling-stroke"></line><path d="M30.0 30.0 L33.3 36.2 L26.7 36.2 Z" fill="#062985"></path><ellipse cx="360" cy="330" rx="42.9" ry="23.6" transform="rotate(-20 360 330)" fill="none" stroke="#062985" stroke-width="1" vector-effect="non-scaling-stroke"></ellipse><ellipse cx="360" cy="330" rx="85.7" ry="47.1" transform="rotate(-20 360 330)" fill="none" stroke="#062985" stroke-width="1" vector-effect="non-scaling-stroke"></ellipse><ellipse cx="360" cy="330" rx="128.6" ry="70.7" transform="rotate(-20 360 330)" fill="none" stroke="#062985" stroke-width="1" vector-effect="non-scaling-stroke"></ellipse><ellipse cx="360" cy="330" rx="171.4" ry="94.3" transform="rotate(-20 360 330)" fill="none" stroke="#062985" stroke-width="1" vector-effect="non-scaling-stroke"></ellipse><ellipse cx="360" cy="330" rx="214.3" ry="117.9" transform="rotate(-20 360 330)" fill="none" stroke="#062985" stroke-width="1" vector-effect="non-scaling-stroke"></ellipse><ellipse cx="360" cy="330" rx="257.1" ry="141.4" transform="rotate(-20 360 330)" fill="none" stroke="#062985" stroke-width="1" vector-effect="non-scaling-stroke"></ellipse><ellipse cx="360" cy="330" rx="300.0" ry="165.0" transform="rotate(-20 360 330)" fill="none" stroke="#062985" stroke-width="1.5" vector-effect="non-scaling-stroke"></ellipse><path d="M137.6 493.4 L181.5 403.2 L228.4 378.7 L264.1 365.0 L290.2 355.4 L309.2 348.5 L323.0 343.5 L333.1 339.8 L360.0 330.0" fill="none" stroke="#2440DC" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"></path><circle cx="137.6" cy="493.4" r="3.0" fill="#2440DC"></circle><circle cx="181.5" cy="403.2" r="3.0" fill="#2440DC"></circle><circle cx="228.4" cy="378.7" r="3.0" fill="#2440DC"></circle><circle cx="264.1" cy="365.0" r="3.0" fill="#2440DC"></circle><circle cx="290.2" cy="355.4" r="3.0" fill="#2440DC"></circle><circle cx="309.2" cy="348.5" r="3.0" fill="#2440DC"></circle><circle cx="323.0" cy="343.5" r="3.0" fill="#2440DC"></circle><circle cx="333.1" cy="339.8" r="3.0" fill="#2440DC"></circle><line x1="354.0" y1="324.0" x2="366.0" y2="336.0" stroke="#062985" stroke-width="1.5" vector-effect="non-scaling-stroke"></line><line x1="354.0" y1="336.0" x2="366.0" y2="324.0" stroke="#062985" stroke-width="1.5" vector-effect="non-scaling-stroke"></line><rect x="700" y="380" width="240" height="150" fill="#FAF9F6" stroke="#062985" stroke-width="1" vector-effect="non-scaling-stroke"></rect><line x1="730.0" y1="502.0" x2="923.0" y2="502.0" stroke="#062985" stroke-width="1" vector-effect="non-scaling-stroke"></line><path d="M926.0 502.0 L921.6 504.3 L921.6 499.7 Z" fill="#062985"></path><line x1="730.0" y1="502.0" x2="730.0" y2="397.0" stroke="#062985" stroke-width="1" vector-effect="non-scaling-stroke"></line><path d="M730.0 394.0 L732.3 398.4 L727.7 398.4 Z" fill="#062985"></path><path d="M734 404 C760 472 800 488 918 492" fill="none" stroke="#2440DC" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"></path></g><text x="641.7" y="401.5" font-family="JetBrains Mono, monospace" font-size="14.00" font-weight="400" fill="#0F172A" text-anchor="middle" letter-spacing="0">Machine Learning</text><text x="641.7" y="429.5" direction="rtl" unicode-bidi="embed" font-family="IBM Plex Sans Arabic, sans-serif" font-size="16" font-weight="600" fill="#0F172A" text-anchor="middle" letter-spacing="0">تعلّم الآلة</text><text x="641.7" y="453.5" font-family="JetBrains Mono, monospace" font-size="12.00" font-weight="400" fill="#475569" text-anchor="middle" letter-spacing="0">84 lectures · 130+ h</text><circle cx="325.0" cy="308.8" r="14" fill="#2440DC" stroke="#2440DC" stroke-width="2"></circle><text x="325.0" y="313.3" font-family="JetBrains Mono, monospace" font-size="12.00" font-weight="700" fill="#FFFFFF" text-anchor="middle" letter-spacing="0">04</text><g transform="translate(277.0 172.8) scale(0.1021)"><line x1="112.0" y1="226.0" x2="268.0" y2="174.0" stroke="#062985" stroke-width="0.75" vector-effect="non-scaling-stroke"></line><line x1="112.0" y1="226.0" x2="268.0" y2="278.0" stroke="#062985" stroke-width="0.75" vector-effect="non-scaling-stroke"></line><line x1="112.0" y1="226.0" x2="268.0" y2="382.0" stroke="#062985" stroke-width="0.75" vector-effect="non-scaling-stroke"></line><line x1="112.0" y1="226.0" x2="268.0" y2="486.0" stroke="#062985" stroke-width="0.75" vector-effect="non-scaling-stroke"></line><line x1="112.0" y1="330.0" x2="268.0" y2="174.0" stroke="#062985" stroke-width="0.75" vector-effect="non-scaling-stroke"></line><line x1="112.0" y1="330.0" x2="268.0" y2="278.0" stroke="#062985" stroke-width="0.75" vector-effect="non-scaling-stroke"></line><line x1="112.0" y1="330.0" x2="268.0" y2="382.0" stroke="#062985" stroke-width="0.75" vector-effect="non-scaling-stroke"></line><line x1="112.0" y1="330.0" x2="268.0" y2="486.0" stroke="#062985" stroke-width="0.75" vector-effect="non-scaling-stroke"></line><line x1="112.0" y1="434.0" x2="268.0" y2="174.0" stroke="#062985" stroke-width="0.75" vector-effect="non-scaling-stroke"></line><line x1="112.0" y1="434.0" x2="268.0" y2="278.0" stroke="#062985" stroke-width="0.75" vector-effect="non-scaling-stroke"></line><line x1="112.0" y1="434.0" x2="268.0" y2="382.0" stroke="#062985" stroke-width="0.75" vector-effect="non-scaling-stroke"></line><line x1="112.0" y1="434.0" x2="268.0" y2="486.0" stroke="#062985" stroke-width="0.75" vector-effect="non-scaling-stroke"></line><line x1="312.0" y1="174.0" x2="468.0" y2="174.0" stroke="#062985" stroke-width="0.75" vector-effect="non-scaling-stroke"></line><line x1="312.0" y1="174.0" x2="468.0" y2="278.0" stroke="#062985" stroke-width="0.75" vector-effect="non-scaling-stroke"></line><line x1="312.0" y1="174.0" x2="468.0" y2="382.0" stroke="#062985" stroke-width="0.75" vector-effect="non-scaling-stroke"></line><line x1="312.0" y1="174.0" x2="468.0" y2="486.0" stroke="#062985" stroke-width="0.75" vector-effect="non-scaling-stroke"></line><line x1="312.0" y1="278.0" x2="468.0" y2="174.0" stroke="#062985" stroke-width="0.75" vector-effect="non-scaling-stroke"></line><line x1="312.0" y1="278.0" x2="468.0" y2="278.0" stroke="#062985" stroke-width="0.75" vector-effect="non-scaling-stroke"></line><line x1="312.0" y1="278.0" x2="468.0" y2="382.0" stroke="#062985" stroke-width="0.75" vector-effect="non-scaling-stroke"></line><line x1="312.0" y1="278.0" x2="468.0" y2="486.0" stroke="#062985" stroke-width="0.75" vector-effect="non-scaling-stroke"></line><line x1="312.0" y1="382.0" x2="468.0" y2="174.0" stroke="#062985" stroke-width="0.75" vector-effect="non-scaling-stroke"></line><line x1="312.0" y1="382.0" x2="468.0" y2="278.0" stroke="#062985" stroke-width="0.75" vector-effect="non-scaling-stroke"></line><line x1="312.0" y1="382.0" x2="468.0" y2="382.0" stroke="#062985" stroke-width="0.75" vector-effect="non-scaling-stroke"></line><line x1="312.0" y1="382.0" x2="468.0" y2="486.0" stroke="#062985" stroke-width="0.75" vector-effect="non-scaling-stroke"></line><line x1="312.0" y1="486.0" x2="468.0" y2="174.0" stroke="#062985" stroke-width="0.75" vector-effect="non-scaling-stroke"></line><line x1="312.0" y1="486.0" x2="468.0" y2="278.0" stroke="#062985" stroke-width="0.75" vector-effect="non-scaling-stroke"></line><line x1="312.0" y1="486.0" x2="468.0" y2="382.0" stroke="#062985" stroke-width="0.75" vector-effect="non-scaling-stroke"></line><line x1="312.0" y1="486.0" x2="468.0" y2="486.0" stroke="#062985" stroke-width="0.75" vector-effect="non-scaling-stroke"></line><line x1="512.0" y1="174.0" x2="668.0" y2="278.0" stroke="#062985" stroke-width="0.75" vector-effect="non-scaling-stroke"></line><line x1="512.0" y1="174.0" x2="668.0" y2="382.0" stroke="#062985" stroke-width="0.75" vector-effect="non-scaling-stroke"></line><line x1="512.0" y1="278.0" x2="668.0" y2="278.0" stroke="#062985" stroke-width="0.75" vector-effect="non-scaling-stroke"></line><line x1="512.0" y1="278.0" x2="668.0" y2="382.0" stroke="#062985" stroke-width="0.75" vector-effect="non-scaling-stroke"></line><line x1="512.0" y1="382.0" x2="668.0" y2="278.0" stroke="#062985" stroke-width="0.75" vector-effect="non-scaling-stroke"></line><line x1="512.0" y1="382.0" x2="668.0" y2="382.0" stroke="#062985" stroke-width="0.75" vector-effect="non-scaling-stroke"></line><line x1="512.0" y1="486.0" x2="668.0" y2="278.0" stroke="#062985" stroke-width="0.75" vector-effect="non-scaling-stroke"></line><line x1="512.0" y1="486.0" x2="668.0" y2="382.0" stroke="#062985" stroke-width="0.75" vector-effect="non-scaling-stroke"></line><rect x="790" y="302" width="120" height="56" fill="#EBEDFF" stroke="#062985" stroke-width="1.5" vector-effect="non-scaling-stroke"></rect><line x1="712.0" y1="278.0" x2="790.0" y2="330.0" stroke="#062985" stroke-width="0.75" vector-effect="non-scaling-stroke"></line><line x1="712.0" y1="382.0" x2="790.0" y2="330.0" stroke="#062985" stroke-width="0.75" vector-effect="non-scaling-stroke"></line><line x1="790.0" y1="330.0" x2="705.3" y2="278.0" stroke="#2440DC" stroke-width="2" stroke-dasharray="6 5" vector-effect="non-scaling-stroke"></line><path d="M714.0 278.0 L724.0 279.0 L718.7 286.8 Z" fill="#2440DC"></path><line x1="668.0" y1="278.0" x2="504.0" y2="278.0" stroke="#2440DC" stroke-width="2" stroke-dasharray="6 5" vector-effect="non-scaling-stroke"></line><path d="M514.0 278.0 L522.8 273.3 L522.8 282.7 Z" fill="#2440DC"></path><line x1="468.0" y1="278.0" x2="305.3" y2="382.0" stroke="#2440DC" stroke-width="2" stroke-dasharray="6 5" vector-effect="non-scaling-stroke"></line><path d="M314.0 382.0 L318.7 373.2 L324.0 381.0 Z" fill="#2440DC"></path><line x1="268.0" y1="382.0" x2="104.4" y2="330.0" stroke="#2440DC" stroke-width="2" stroke-dasharray="6 5" vector-effect="non-scaling-stroke"></line><path d="M114.0 330.0 L123.9 328.3 L120.9 337.2 Z" fill="#2440DC"></path><circle cx="90" cy="226.0" r="22" fill="#FAF9F6" stroke="#062985" stroke-width="1.5" vector-effect="non-scaling-stroke"></circle><circle cx="90" cy="330.0" r="22" fill="#FAF9F6" stroke="#2440DC" stroke-width="2" vector-effect="non-scaling-stroke"></circle><circle cx="90" cy="434.0" r="22" fill="#FAF9F6" stroke="#062985" stroke-width="1.5" vector-effect="non-scaling-stroke"></circle><circle cx="290" cy="174.0" r="22" fill="#FAF9F6" stroke="#062985" stroke-width="1.5" vector-effect="non-scaling-stroke"></circle><circle cx="290" cy="278.0" r="22" fill="#FAF9F6" stroke="#062985" stroke-width="1.5" vector-effect="non-scaling-stroke"></circle><circle cx="290" cy="382.0" r="22" fill="#FAF9F6" stroke="#2440DC" stroke-width="2" vector-effect="non-scaling-stroke"></circle><circle cx="290" cy="486.0" r="22" fill="#FAF9F6" stroke="#062985" stroke-width="1.5" vector-effect="non-scaling-stroke"></circle><circle cx="490" cy="174.0" r="22" fill="#FAF9F6" stroke="#062985" stroke-width="1.5" vector-effect="non-scaling-stroke"></circle><circle cx="490" cy="278.0" r="22" fill="#FAF9F6" stroke="#2440DC" stroke-width="2" vector-effect="non-scaling-stroke"></circle><circle cx="490" cy="382.0" r="22" fill="#FAF9F6" stroke="#062985" stroke-width="1.5" vector-effect="non-scaling-stroke"></circle><circle cx="490" cy="486.0" r="22" fill="#FAF9F6" stroke="#062985" stroke-width="1.5" vector-effect="non-scaling-stroke"></circle><circle cx="690" cy="278.0" r="22" fill="#FAF9F6" stroke="#2440DC" stroke-width="2" vector-effect="non-scaling-stroke"></circle><circle cx="690" cy="382.0" r="22" fill="#FAF9F6" stroke="#062985" stroke-width="1.5" vector-effect="non-scaling-stroke"></circle></g><text x="325.0" y="374.8" font-family="JetBrains Mono, monospace" font-size="14.00" font-weight="400" fill="#0F172A" text-anchor="middle" letter-spacing="0">Deep Learning</text><text x="325.0" y="402.8" direction="rtl" unicode-bidi="embed" font-family="IBM Plex Sans Arabic, sans-serif" font-size="16" font-weight="600" fill="#0F172A" text-anchor="middle" letter-spacing="0">التعلّم العميق</text><text x="325.0" y="426.8" font-family="JetBrains Mono, monospace" font-size="12.00" font-weight="400" fill="#475569" text-anchor="middle" letter-spacing="0">100 lectures · 120+ h</text></svg></div><div class="q-dl" style="grid-template-columns: repeat(4, minmax(0, 1fr))"><a href="#" class="q-rv-in"><div class="q-dl__top"><span class="q-dl__n"><bdi>01</bdi></span><span class="q-free"><span class="cs-icon" aria-hidden="true">play_circle</span>متاحة بدون تسجيل</span></div>
+<h3>البرمجة بلغة Python</h3><span class="q-ename" dir="ltr" style="font-size: 12px">Programming with Python</span><p class="q-note" style="margin: 0; font-size: 14px; line-height: 1.8">التفكير البرمجي وبناء البرامج من أول سطر.</p>
+<div class="q-tags"><span class="q-tag q-tag--o q-tag--m">Variables</span><span class="q-tag q-tag--o q-tag--m">Functions</span><span class="q-tag q-tag--o q-tag--m">OOP</span></div>
+<div class="q-dl__f"><span><bdi>65</bdi> محاضرة · <bdi dir="ltr">+75</bdi> ساعة · <span class="ph">[[المسائل]]</span> مسألة</span><span class="q-a">تفاصيل الدبلومة<span class="cs-icon" aria-hidden="true">arrow_back</span></span></div></a><a href="#" class="q-rv-in"><div class="q-dl__top"><span class="q-dl__n"><bdi>02</bdi></span><span class="q-free"><span class="cs-icon" aria-hidden="true">play_circle</span>متاحة بدون تسجيل</span></div>
+<h3>هياكل البيانات والخوارزميات بلغة Python</h3><span class="q-ename" dir="ltr" style="font-size: 12px">DSA with Python</span><p class="q-note" style="margin: 0; font-size: 14px; line-height: 1.8">كيف تختار الهيكل الصحيح وتحلّل كفاءة الحل.</p>
+<div class="q-tags"><span class="q-tag q-tag--o q-tag--m">Complexity</span><span class="q-tag q-tag--o q-tag--m">Trees</span><span class="q-tag q-tag--o q-tag--m">Graphs</span></div>
+<div class="q-dl__f"><span><bdi>43</bdi> محاضرة · <bdi dir="ltr">+45</bdi> ساعة · <span class="ph">[[المسائل]]</span> مسألة</span><span class="q-a">تفاصيل الدبلومة<span class="cs-icon" aria-hidden="true">arrow_back</span></span></div></a><a href="#" class="q-rv-in"><div class="q-dl__top"><span class="q-dl__n"><bdi>03</bdi></span><span class="q-free"><span class="cs-icon" aria-hidden="true">play_circle</span>متاحة بدون تسجيل</span></div>
+<h3>تعلّم الآلة</h3><span class="q-ename" dir="ltr" style="font-size: 12px">Machine Learning</span><p class="q-note" style="margin: 0; font-size: 14px; line-height: 1.8">الرياضيات خلف النموذج، ثم Kaggle ومشروع كامل حتى النشر.</p>
+<div class="q-tags"><span class="q-tag q-tag--o q-tag--m">Gradient Descent</span><span class="q-tag q-tag--o q-tag--m">scikit-learn</span><span class="q-tag q-tag--o q-tag--m">End-to-End ML</span></div>
+<div class="q-dl__f"><span><bdi>84</bdi> محاضرة · <bdi dir="ltr">+130</bdi> ساعة · <span class="ph">[[المسائل]]</span> مسألة</span><span class="q-a">تفاصيل الدبلومة<span class="cs-icon" aria-hidden="true">arrow_back</span></span></div></a><a href="#" class="q-rv-in"><div class="q-dl__top"><span class="q-dl__n"><bdi>04</bdi></span><span class="q-free"><span class="cs-icon" aria-hidden="true">play_circle</span>متاحة بدون تسجيل</span></div>
+<h3>التعلّم العميق</h3><span class="q-ename" dir="ltr" style="font-size: 12px">Deep Learning</span><p class="q-note" style="margin: 0; font-size: 14px; line-height: 1.8">الشبكات العصبية من الاشتقاق إلى التطبيق.</p>
+<div class="q-tags"><span class="q-tag q-tag--o q-tag--m">Neural Networks</span><span class="q-tag q-tag--o q-tag--m">Backpropagation</span></div>
+<div class="q-dl__f"><span><bdi>100</bdi> محاضرة · <bdi dir="ltr">+120</bdi> ساعة · <span class="ph">[[المسائل]]</span> مسألة</span><span class="q-a">تفاصيل الدبلومة<span class="cs-icon" aria-hidden="true">arrow_back</span></span></div></a></div><div class="q-totals"><span><b style="font-family: 'IBM Plex Sans Arabic', sans-serif; font-size: 22px"><bdi>4</bdi> دبلومات</b></span><span><b><bdi>292</bdi></b>محاضرة</span><span><b dir="ltr">+<bdi>370</bdi></b>ساعة</span></div></div></section><section class="q-sec" style="background: #FAF9F6; border-top: 1px solid #E2E8F0;"><div class="q-w"><div class="q-head"><span class="q-k">المخرجات</span><h2 class="q-h2">ما تخرج به من المسار</h2></div><div class="q-sk" style="grid-template-columns: minmax(0, 1fr) minmax(0, 1fr)">
+<div class="q-rv-in" style="background: #062985; color: #fff"><h3><span class="cs-icon" aria-hidden="true">construction</span> المهارات</h3><div class="q-tags"><span class="q-tag q-tag--m">Python</span><span class="q-tag q-tag--m">OOP</span><span class="q-tag q-tag--m">Data Structures</span><span class="q-tag q-tag--m">Algorithms</span><span class="q-tag q-tag--m">NumPy</span><span class="q-tag q-tag--m">Pandas</span><span class="q-tag q-tag--m">scikit-learn</span><span class="q-tag q-tag--m">Gradient Descent</span><span class="q-tag q-tag--m">Neural Networks</span><span class="q-tag q-tag--m">Deployment</span></div></div>
+<div class="q-rv-in" style="background: #EBEDFF"><h3><span class="cs-icon" aria-hidden="true">work</span> أدوار يؤهّلك لها محتوى المسار</h3><div class="q-tags"><span class="q-tag q-tag--o q-tag--m">Machine Learning Engineer</span><span class="q-tag q-tag--o q-tag--m">Data Scientist</span><span class="q-tag q-tag--o q-tag--m">AI Engineer</span><span class="q-tag q-tag--o"><span class="ph">[[دور رابع، تأكيد]]</span></span></div><p class="q-note" style="margin: 0">الأدوار تصف ما يؤهّل له المحتوى، وليست وعدًا بالتوظيف.</p></div>
+</div><h3 style="margin: 48px 0 16px; font-size: 18px">طلاب تعلّموا معنا يعملون اليوم في</h3><div class="q-cos"><span><span class="ph">[[شركة <bdi>1</bdi>]]</span></span><span><span class="ph">[[شركة <bdi>2</bdi>]]</span></span><span><span class="ph">[[شركة <bdi>3</bdi>]]</span></span><span><span class="ph">[[شركة <bdi>4</bdi>]]</span></span><span><span class="ph">[[شركة <bdi>5</bdi>]]</span></span><span><span class="ph">[[شركة <bdi>6</bdi>]]</span></span></div>
+<p class="q-note" style="margin-top: 14px">أسماء موثّقة بموافقة أصحابها. لا نقدّم وعودًا وظيفية.</p></div></section><section class="q-sec" style="background: #ffffff; border-top: 1px solid #E2E8F0;"><div class="q-w"><div class="q-head"><span class="q-k">آراء الطلاب</span><h2 class="q-h2">ماذا يكتب طلاب المسار</h2></div><div class="q-rf" style="grid-template-columns: repeat(3, minmax(0, 1fr))"><article class="q-rc q-rv-in"><p>«أول مرة أفهم الرياضيات اللي ورا الـ Gradient Descent بدل ما أحفظ الكود وخلاص. المسائل المصححة هي اللي فرقت معايا فعلًا.»</p><div class="q-rc__by"><span class="q-av" aria-hidden="true">أ</span><div><b>أحمد سمير</b><span>تعليق على Facebook</span></div><em>تعلّم الآلة</em></div></article><article class="q-rc q-rv-in"><p>«اشتقاق الـ Backpropagation بإيدي على الورق كان أصعب جزء وأمتع جزء. بعدها أي Framework بقى مفهوم.»</p><div class="q-rc__by"><span class="q-av" aria-hidden="true">ع</span><div><b>عمر حسن</b><span>رسالة على Telegram</span></div><em>التعلّم العميق</em></div></article><article class="q-rc q-rv-in"><p>«بدأت من الصفر تمامًا، ودلوقتي بكتب برامج كاملة بـ Python. شكرًا يا دكتور.»</p><div class="q-rc__by"><span class="q-av" aria-hidden="true">ي</span><div><b>يوسف خالد</b><span>رسالة على Telegram</span></div><em>البرمجة بلغة Python</em></div></article></div></div></section><section class="q-sec" style="background: #FAF9F6; border-top: 1px solid #E2E8F0;"><div class="q-w"><div class="q-head"><span class="q-k">مقارنة صريحة</span><h2 class="q-h2">مسار واحد مرتّب، أم مصادر متفرقة؟</h2></div><table class="q-tbl"><thead><tr><th scope="col">المعيار</th><th scope="col" class="q-us">مسار CSkilled</th><th scope="col">قوائم التشغيل المجانية</th><th scope="col">الدورات العربية العامة</th><th scope="col">المنصّات الإنجليزية</th><th scope="col">المعسكرات التدريبية (Bootcamps)</th></tr></thead><tbody><tr><th scope="row">المسار من الصفر إلى التعلّم العميق</th><td class="q-us"><span class="cs-icon" aria-hidden="true">check</span><bdi>4</bdi> دبلومات بتسلسل واحد</td><td>تجمعه بنفسك</td><td>دورات منفصلة</td><td>تخصّصات متعددة</td><td>جزء من المسار فقط</td></tr><tr><th scope="row">العمق الرياضي</th><td class="q-us"><span class="cs-icon" aria-hidden="true">check</span>يشرح الاشتقاق كاملًا</td><td>متفاوت</td><td>سطحي غالبًا</td><td>عميق</td><td>محدود بالوقت</td></tr><tr><th scope="row">حجم الممارسة</th><td class="q-us"><span class="cs-icon" aria-hidden="true">check</span><span class="ph">[[عدد المسائل]]</span> مسألة مصحَّحة</td><td>قليل وغير مصحَّح</td><td>قليل</td><td>متوسط</td><td>مكثف لأسابيع</td></tr><tr><th scope="row">اللغة</th><td class="q-us"><span class="cs-icon" aria-hidden="true">check</span>عربية مع المصطلح الإنجليزي</td><td>متفاوتة</td><td>عربية</td><td>إنجليزية فقط</td><td>عربية</td></tr><tr><th scope="row">المدرّس</th><td class="q-us"><span class="cs-icon" aria-hidden="true">check</span>مدرّس واحد، مهندس في NVIDIA • PhD</td><td>متفاوت</td><td>متفاوت</td><td>أكاديميون</td><td>متفاوت</td></tr><tr><th scope="row">المشاريع</th><td class="q-us"><span class="cs-icon" aria-hidden="true">check</span>Kaggle ومشروع كامل حتى النشر</td><td>لا</td><td>مشاريع صغيرة</td><td>مشاريع موجَّهة</td><td>مشاريع سريعة</td></tr><tr><th scope="row">المجتمع والدعم</th><td class="q-us"><span class="cs-icon" aria-hidden="true">check</span>مجتمع نشط وإجابات على الأسئلة</td><td>تعليقات فقط</td><td>محدود</td><td>منتديات عامة</td><td>دفعة محددة المدة</td></tr><tr><th scope="row">السداد</th><td class="q-us"><span class="cs-icon" aria-hidden="true">check</span>تقسيط بدون فوائد، بالجنيه أو الدولار</td><td>مجاني</td><td>سعر منخفض لكل دورة</td><td>اشتراك شهري بالدولار</td><td>سعر أعلى ومواعيد ثابتة</td></tr></tbody></table><p class="q-note" style="margin-top: 14px">مقارنة عامة بحسب النوع، ولا تشير إلى جهة بعينها.</p></div></section><div class="q-stick" aria-label="إجراءات سريعة"><div><b>مسار الذكاء الاصطناعي</b><br><span><bdi>4</bdi> دبلومات · <bdi dir="ltr">+370</bdi> ساعة</span></div><div style="display: flex; gap: 8px"><a class="q-b q-b--line q-b--sm" href="#gate"><span class="cs-icon" aria-hidden="true">play_arrow</span>شاهد محاضرة مجانية</a><a class="q-b q-b--sm" href="#pricing" style="color: #062985">الخطط والأسعار<span class="cs-icon" aria-hidden="true">arrow_downward</span></a></div></div></div><section id="pricing" class="q-sec" style="background: #ffffff; border-top: 1px solid #E2E8F0;"><div class="q-w"><div class="q-price">
+<input class="sr ce" type="radio" name="cur" id="cur-e" checked="" aria-label="مصر"><input class="sr cu" type="radio" name="cur" id="cur-u" aria-label="خارج مصر">
+<div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 32px; flex-wrap: wrap">
+<div class="q-head"><span class="q-k">التوجيه الأكاديمي الشفاف</span><h2 class="q-h2">اختر خطة السداد التي تناسبك</h2><p class="q-lead">بدون فوائد وبدون رسوم خفية. الرقم الكبير هو ما تدفعه اليوم. <span class="ph">[[سعر المسار تجريبي، تأكيد]]</span></p></div>
+<div class="q-cur" role="radiogroup" aria-label="العملة" style="margin-bottom: 64px"><label class="le" for="cur-e">مصر (EGP)</label><label class="lu" for="cur-u">خارج مصر (USD)</label></div>
+</div>
+
+<div class="q-plans q-plans--egp"><div class="q-plan">
+<span class="q-plan__e">دفعة واحدة</span><h3>السداد الكامل</h3><div class="q-plan__today"><small>تدفع اليوم</small><bdi>35,000</bdi><span class="cur">ج.م</span></div><div class="q-plan__rest"><span class="ph">[[حافز السداد الكامل]]</span></div>
+<a class="q-b q-b--line q-b--sm" href="#" style="justify-content: center">اختر الخطة</a>
+<div class="q-plan__tot">الإجمالي: <bdi>35,000</bdi> ج.م</div></div><div class="q-plan">
+<span class="q-plan__e"><bdi>3</bdi> أشهر</span><h3>تقسيط <bdi>3</bdi> أشهر</h3><div class="q-plan__today"><small>تدفع اليوم</small><bdi>14,000</bdi><span class="cur">ج.م</span></div><div class="q-plan__rest">ثم دفعتان × <bdi>10,500</bdi> ج.م</div>
+<a class="q-b q-b--line q-b--sm" href="#" style="justify-content: center">اختر الخطة</a>
+<div class="q-plan__tot">الإجمالي: <bdi>35,000</bdi> ج.م</div></div><div class="q-plan q-plan--rec"><span class="q-plan__rec">الخطة المقترحة</span>
+<span class="q-plan__e"><bdi>6</bdi> أشهر</span><h3>تقسيط <bdi>6</bdi> أشهر</h3><div class="q-plan__today"><small>تدفع اليوم</small><bdi>17,500</bdi><span class="cur">ج.م</span></div><div class="q-plan__rest">ثم <bdi>5</bdi> دفعات × <bdi>3,500</bdi> ج.م</div>
+<a class="q-b q-b--fill q-b--sm" href="#" style="justify-content: center">اختر الخطة المقترحة</a>
+<div class="q-plan__tot">الإجمالي: <bdi>35,000</bdi> ج.م</div></div><div class="q-plan">
+<span class="q-plan__e"><bdi>12</bdi> شهرًا</span><h3>تقسيط <bdi>12</bdi> شهرًا</h3><div class="q-plan__today"><small>تدفع اليوم</small><bdi>21,000</bdi><span class="cur">ج.م</span></div><div class="q-plan__rest">ثم <bdi>11</bdi> دفعة × <bdi>1,273</bdi> ج.م</div>
+<a class="q-b q-b--line q-b--sm" href="#" style="justify-content: center">اختر الخطة</a>
+<div class="q-plan__tot">الإجمالي: <bdi>35,000</bdi> ج.م</div></div></div>
+<div class="q-plans q-plans--usd"><div class="q-plan">
+<span class="q-plan__e">دفعة واحدة</span><h3>السداد الكامل</h3><div class="q-plan__today"><small>تدفع اليوم</small><span class="ph">[[دفعة اليوم بالدولار]]</span></div><div class="q-plan__rest"><span class="ph">[[حافز السداد الكامل]]</span></div>
+<a class="q-b q-b--line q-b--sm" href="#" style="justify-content: center">اختر الخطة</a>
+<div class="q-plan__tot">الإجمالي: <span class="ph">[[الإجمالي بالدولار]]</span></div></div><div class="q-plan">
+<span class="q-plan__e"><bdi>3</bdi> أشهر</span><h3>تقسيط <bdi>3</bdi> أشهر</h3><div class="q-plan__today"><small>تدفع اليوم</small><span class="ph">[[دفعة اليوم بالدولار]]</span></div><div class="q-plan__rest"><span class="ph">[[الدفعات المتبقية بالدولار]]</span></div>
+<a class="q-b q-b--line q-b--sm" href="#" style="justify-content: center">اختر الخطة</a>
+<div class="q-plan__tot">الإجمالي: <span class="ph">[[الإجمالي بالدولار]]</span></div></div><div class="q-plan q-plan--rec"><span class="q-plan__rec">الخطة المقترحة</span>
+<span class="q-plan__e"><bdi>6</bdi> أشهر</span><h3>تقسيط <bdi>6</bdi> أشهر</h3><div class="q-plan__today"><small>تدفع اليوم</small><span class="ph">[[دفعة اليوم بالدولار]]</span></div><div class="q-plan__rest"><span class="ph">[[الدفعات المتبقية بالدولار]]</span></div>
+<a class="q-b q-b--fill q-b--sm" href="#" style="justify-content: center">اختر الخطة المقترحة</a>
+<div class="q-plan__tot">الإجمالي: <span class="ph">[[الإجمالي بالدولار]]</span></div></div><div class="q-plan">
+<span class="q-plan__e"><bdi>12</bdi> شهرًا</span><h3>تقسيط <bdi>12</bdi> شهرًا</h3><div class="q-plan__today"><small>تدفع اليوم</small><span class="ph">[[دفعة اليوم بالدولار]]</span></div><div class="q-plan__rest"><span class="ph">[[الدفعات المتبقية بالدولار]]</span></div>
+<a class="q-b q-b--line q-b--sm" href="#" style="justify-content: center">اختر الخطة</a>
+<div class="q-plan__tot">الإجمالي: <span class="ph">[[الإجمالي بالدولار]]</span></div></div></div>
+<div class="q-trust2"><span><span class="cs-icon" aria-hidden="true">account_balance_wallet</span>إنستاباي</span><span><span class="cs-icon" aria-hidden="true">storefront</span>فوري</span><span><span class="cs-icon" aria-hidden="true">credit_card</span>البطاقات</span><span><span class="cs-icon" aria-hidden="true">percent</span>بدون فوائد</span><span><span class="cs-icon" aria-hidden="true">verified_user</span>ضمان استرداد <span class="ph">[[المدة، تأكيد]]</span></span><span><span class="cs-icon" aria-hidden="true">lock</span>دفع آمن عبر Paymob</span></div>
+<p class="q-note" style="text-align: center; margin-top: 16px"><a class="q-a" href="#" style="font-size: 14px"><span class="cs-icon" aria-hidden="true">chat</span>لديك سؤال عن السداد؟ تواصل معنا على واتساب</a></p>
+</div></div></section><section class="q-sec" style="background: #FAF9F6; border-top: 1px solid #E2E8F0;"><div class="q-w"><div class="q-head"><span class="q-k">قصص موثّقة</span><h2 class="q-h2">ثلاث قصص من طلاب المسار</h2></div><div class="q-ls"><article class="q-lc q-rv-in"><div class="q-lc__m" style="aspect-ratio: 16 / 9; background: #0A101D"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" role="img" aria-label="ملصق فيديو قصة طالب رقم 1 مع زر تشغيل" style="direction: ltr; display: block"><rect width="1920" height="1080" fill="#0A101D"></rect><path d="M1144 0V1080M1168 0V1080M1192 0V1080M1216 0V1080M1240 0V1080M1264 0V1080M1288 0V1080M1312 0V1080M1336 0V1080M1360 0V1080M1384 0V1080M1408 0V1080M1432 0V1080M1456 0V1080M1480 0V1080M1504 0V1080M1528 0V1080M1552 0V1080M1576 0V1080M1600 0V1080M1624 0V1080M1648 0V1080M1672 0V1080M1696 0V1080M1720 0V1080M1744 0V1080M1768 0V1080M1792 0V1080M1816 0V1080M1840 0V1080M1864 0V1080M1888 0V1080M1912 0V1080M1120 24H1920M1120 48H1920M1120 72H1920M1120 96H1920M1120 120H1920M1120 144H1920M1120 168H1920M1120 192H1920M1120 216H1920M1120 240H1920M1120 264H1920M1120 288H1920M1120 312H1920M1120 336H1920M1120 360H1920M1120 384H1920M1120 408H1920M1120 432H1920M1120 456H1920M1120 480H1920M1120 504H1920M1120 528H1920M1120 552H1920M1120 576H1920M1120 600H1920M1120 624H1920M1120 648H1920M1120 672H1920M1120 696H1920M1120 720H1920M1120 744H1920M1120 768H1920M1120 792H1920M1120 816H1920M1120 840H1920M1120 864H1920M1120 888H1920M1120 912H1920M1120 936H1920M1120 960H1920M1120 984H1920M1120 1008H1920M1120 1032H1920M1120 1056H1920" stroke="rgba(165,180,252,0.06)" stroke-width="1" fill="none"></path><rect x="0" y="0" width="1120" height="1080" fill="#111827"></rect><text x="560.0" y="700.0" font-family="JetBrains Mono, monospace" font-size="18.00" font-weight="400" fill="#94A3B8" text-anchor="middle" letter-spacing="0">[[STILL]]</text><text x="560.0" y="736.0" direction="rtl" unicode-bidi="embed" font-family="IBM Plex Sans Arabic, sans-serif" font-size="20" font-weight="400" fill="#94A3B8" text-anchor="middle" letter-spacing="0">الطالب أمام الكاميرا</text><circle cx="560" cy="540" r="56" fill="#FFFFFF"></circle><path d="M544 516 L586 540 L544 564 Z" fill="#062985"></path><line x1="1120.0" y1="0.0" x2="1120.0" y2="1080.0" stroke="#1E293B" stroke-width="1" vector-effect="non-scaling-stroke"></line><text x="1728.0" y="250.0" font-family="JetBrains Mono, monospace" font-size="16.00" font-weight="500" fill="#A5B4FC" text-anchor="end" letter-spacing="0">STUDENT STORY</text><text x="1728.0" y="342.0" direction="rtl" unicode-bidi="embed" font-family="IBM Plex Sans Arabic, sans-serif" font-size="64" font-weight="700" fill="#E2E8F0" text-anchor="start" letter-spacing="0">[[اسم الطالب]]</text><text x="1728.0" y="404.0" direction="rtl" unicode-bidi="embed" font-family="IBM Plex Sans Arabic, sans-serif" font-size="24" font-weight="400" fill="#94A3B8" text-anchor="start" letter-spacing="0">[[نتيجة محددة واحدة]]</text><text x="1728.0" y="446.0" font-family="JetBrains Mono, monospace" font-size="16.00" font-weight="400" fill="#94A3B8" text-anchor="end" letter-spacing="0">CSkilled · Student Story</text><rect x="1160" y="920" width="292.8" height="40" fill="#0A101D" stroke="#334155" stroke-width="1"></rect><line x1="1230.0" y1="920.0" x2="1230.0" y2="960.0" stroke="#334155" stroke-width="1" vector-effect="non-scaling-stroke"></line><line x1="1367.2" y1="920.0" x2="1367.2" y2="960.0" stroke="#334155" stroke-width="1" vector-effect="non-scaling-stroke"></line><text x="1174.0" y="945.0" font-family="JetBrains Mono, monospace" font-size="14.00" font-weight="700" fill="#E2E8F0" text-anchor="start" letter-spacing="0">ST-01</text><text x="1244.0" y="945.0" font-family="JetBrains Mono, monospace" font-size="14.00" font-weight="400" fill="#E2E8F0" text-anchor="start" letter-spacing="0">STUDENT STORY</text><text x="1381.2" y="944.5" font-family="JetBrains Mono, monospace" font-size="12.00" font-weight="400" fill="#94A3B8" text-anchor="start" letter-spacing="0">CSkilled</text><rect x="1700" y="932" width="28" height="28" rx="4" fill="#062985"></rect><text x="1714" y="950.5" font-family="JetBrains Mono, monospace" font-size="11.5" font-weight="700" fill="#FFFFFF" text-anchor="middle">CS</text></svg><button class="q-gate__hit" style="border: 0; background: transparent" aria-label="تشغيل قصة طالب 1"></button></div>
+<div class="q-lc__b"><h3><span class="ph">[[اسم الطالب]]</span></h3><span class="q-note"><span class="ph">[[الوظيفة · الشركة أو الجامعة]]</span></span>
+<div class="q-tags"><span class="q-tag q-tag--o">قبل: <span class="ph">[[الوضع قبل المسار]]</span></span><span class="q-tag">بعد: <span class="ph">[[نتيجة محددة واحدة]]</span></span></div></div></article><article class="q-lc q-rv-in"><div class="q-lc__m" style="aspect-ratio: 16 / 9; background: #0A101D"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" role="img" aria-label="ملصق فيديو قصة طالب رقم 2 مع زر تشغيل" style="direction: ltr; display: block"><rect width="1920" height="1080" fill="#0A101D"></rect><path d="M1144 0V1080M1168 0V1080M1192 0V1080M1216 0V1080M1240 0V1080M1264 0V1080M1288 0V1080M1312 0V1080M1336 0V1080M1360 0V1080M1384 0V1080M1408 0V1080M1432 0V1080M1456 0V1080M1480 0V1080M1504 0V1080M1528 0V1080M1552 0V1080M1576 0V1080M1600 0V1080M1624 0V1080M1648 0V1080M1672 0V1080M1696 0V1080M1720 0V1080M1744 0V1080M1768 0V1080M1792 0V1080M1816 0V1080M1840 0V1080M1864 0V1080M1888 0V1080M1912 0V1080M1120 24H1920M1120 48H1920M1120 72H1920M1120 96H1920M1120 120H1920M1120 144H1920M1120 168H1920M1120 192H1920M1120 216H1920M1120 240H1920M1120 264H1920M1120 288H1920M1120 312H1920M1120 336H1920M1120 360H1920M1120 384H1920M1120 408H1920M1120 432H1920M1120 456H1920M1120 480H1920M1120 504H1920M1120 528H1920M1120 552H1920M1120 576H1920M1120 600H1920M1120 624H1920M1120 648H1920M1120 672H1920M1120 696H1920M1120 720H1920M1120 744H1920M1120 768H1920M1120 792H1920M1120 816H1920M1120 840H1920M1120 864H1920M1120 888H1920M1120 912H1920M1120 936H1920M1120 960H1920M1120 984H1920M1120 1008H1920M1120 1032H1920M1120 1056H1920" stroke="rgba(165,180,252,0.06)" stroke-width="1" fill="none"></path><rect x="0" y="0" width="1120" height="1080" fill="#111827"></rect><text x="560.0" y="700.0" font-family="JetBrains Mono, monospace" font-size="18.00" font-weight="400" fill="#94A3B8" text-anchor="middle" letter-spacing="0">[[STILL]]</text><text x="560.0" y="736.0" direction="rtl" unicode-bidi="embed" font-family="IBM Plex Sans Arabic, sans-serif" font-size="20" font-weight="400" fill="#94A3B8" text-anchor="middle" letter-spacing="0">الطالب أمام الكاميرا</text><circle cx="560" cy="540" r="56" fill="#FFFFFF"></circle><path d="M544 516 L586 540 L544 564 Z" fill="#062985"></path><line x1="1120.0" y1="0.0" x2="1120.0" y2="1080.0" stroke="#1E293B" stroke-width="1" vector-effect="non-scaling-stroke"></line><text x="1728.0" y="250.0" font-family="JetBrains Mono, monospace" font-size="16.00" font-weight="500" fill="#A5B4FC" text-anchor="end" letter-spacing="0">STUDENT STORY</text><text x="1728.0" y="342.0" direction="rtl" unicode-bidi="embed" font-family="IBM Plex Sans Arabic, sans-serif" font-size="64" font-weight="700" fill="#E2E8F0" text-anchor="start" letter-spacing="0">[[اسم الطالب]]</text><text x="1728.0" y="404.0" direction="rtl" unicode-bidi="embed" font-family="IBM Plex Sans Arabic, sans-serif" font-size="24" font-weight="400" fill="#94A3B8" text-anchor="start" letter-spacing="0">[[نتيجة محددة واحدة]]</text><text x="1728.0" y="446.0" font-family="JetBrains Mono, monospace" font-size="16.00" font-weight="400" fill="#94A3B8" text-anchor="end" letter-spacing="0">CSkilled · Student Story</text><rect x="1160" y="920" width="292.8" height="40" fill="#0A101D" stroke="#334155" stroke-width="1"></rect><line x1="1230.0" y1="920.0" x2="1230.0" y2="960.0" stroke="#334155" stroke-width="1" vector-effect="non-scaling-stroke"></line><line x1="1367.2" y1="920.0" x2="1367.2" y2="960.0" stroke="#334155" stroke-width="1" vector-effect="non-scaling-stroke"></line><text x="1174.0" y="945.0" font-family="JetBrains Mono, monospace" font-size="14.00" font-weight="700" fill="#E2E8F0" text-anchor="start" letter-spacing="0">ST-02</text><text x="1244.0" y="945.0" font-family="JetBrains Mono, monospace" font-size="14.00" font-weight="400" fill="#E2E8F0" text-anchor="start" letter-spacing="0">STUDENT STORY</text><text x="1381.2" y="944.5" font-family="JetBrains Mono, monospace" font-size="12.00" font-weight="400" fill="#94A3B8" text-anchor="start" letter-spacing="0">CSkilled</text><rect x="1700" y="932" width="28" height="28" rx="4" fill="#062985"></rect><text x="1714" y="950.5" font-family="JetBrains Mono, monospace" font-size="11.5" font-weight="700" fill="#FFFFFF" text-anchor="middle">CS</text></svg><button class="q-gate__hit" style="border: 0; background: transparent" aria-label="تشغيل قصة طالب 2"></button></div>
+<div class="q-lc__b"><h3><span class="ph">[[اسم الطالب]]</span></h3><span class="q-note"><span class="ph">[[الوظيفة · الشركة أو الجامعة]]</span></span>
+<div class="q-tags"><span class="q-tag q-tag--o">قبل: <span class="ph">[[الوضع قبل المسار]]</span></span><span class="q-tag">بعد: <span class="ph">[[نتيجة محددة واحدة]]</span></span></div></div></article><article class="q-lc q-rv-in"><div class="q-lc__m" style="aspect-ratio: 16 / 9; background: #0A101D"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" role="img" aria-label="ملصق فيديو قصة طالب رقم 3 مع زر تشغيل" style="direction: ltr; display: block"><rect width="1920" height="1080" fill="#0A101D"></rect><path d="M1144 0V1080M1168 0V1080M1192 0V1080M1216 0V1080M1240 0V1080M1264 0V1080M1288 0V1080M1312 0V1080M1336 0V1080M1360 0V1080M1384 0V1080M1408 0V1080M1432 0V1080M1456 0V1080M1480 0V1080M1504 0V1080M1528 0V1080M1552 0V1080M1576 0V1080M1600 0V1080M1624 0V1080M1648 0V1080M1672 0V1080M1696 0V1080M1720 0V1080M1744 0V1080M1768 0V1080M1792 0V1080M1816 0V1080M1840 0V1080M1864 0V1080M1888 0V1080M1912 0V1080M1120 24H1920M1120 48H1920M1120 72H1920M1120 96H1920M1120 120H1920M1120 144H1920M1120 168H1920M1120 192H1920M1120 216H1920M1120 240H1920M1120 264H1920M1120 288H1920M1120 312H1920M1120 336H1920M1120 360H1920M1120 384H1920M1120 408H1920M1120 432H1920M1120 456H1920M1120 480H1920M1120 504H1920M1120 528H1920M1120 552H1920M1120 576H1920M1120 600H1920M1120 624H1920M1120 648H1920M1120 672H1920M1120 696H1920M1120 720H1920M1120 744H1920M1120 768H1920M1120 792H1920M1120 816H1920M1120 840H1920M1120 864H1920M1120 888H1920M1120 912H1920M1120 936H1920M1120 960H1920M1120 984H1920M1120 1008H1920M1120 1032H1920M1120 1056H1920" stroke="rgba(165,180,252,0.06)" stroke-width="1" fill="none"></path><rect x="0" y="0" width="1120" height="1080" fill="#111827"></rect><text x="560.0" y="700.0" font-family="JetBrains Mono, monospace" font-size="18.00" font-weight="400" fill="#94A3B8" text-anchor="middle" letter-spacing="0">[[STILL]]</text><text x="560.0" y="736.0" direction="rtl" unicode-bidi="embed" font-family="IBM Plex Sans Arabic, sans-serif" font-size="20" font-weight="400" fill="#94A3B8" text-anchor="middle" letter-spacing="0">الطالب أمام الكاميرا</text><circle cx="560" cy="540" r="56" fill="#FFFFFF"></circle><path d="M544 516 L586 540 L544 564 Z" fill="#062985"></path><line x1="1120.0" y1="0.0" x2="1120.0" y2="1080.0" stroke="#1E293B" stroke-width="1" vector-effect="non-scaling-stroke"></line><text x="1728.0" y="250.0" font-family="JetBrains Mono, monospace" font-size="16.00" font-weight="500" fill="#A5B4FC" text-anchor="end" letter-spacing="0">STUDENT STORY</text><text x="1728.0" y="342.0" direction="rtl" unicode-bidi="embed" font-family="IBM Plex Sans Arabic, sans-serif" font-size="64" font-weight="700" fill="#E2E8F0" text-anchor="start" letter-spacing="0">[[اسم الطالب]]</text><text x="1728.0" y="404.0" direction="rtl" unicode-bidi="embed" font-family="IBM Plex Sans Arabic, sans-serif" font-size="24" font-weight="400" fill="#94A3B8" text-anchor="start" letter-spacing="0">[[نتيجة محددة واحدة]]</text><text x="1728.0" y="446.0" font-family="JetBrains Mono, monospace" font-size="16.00" font-weight="400" fill="#94A3B8" text-anchor="end" letter-spacing="0">CSkilled · Student Story</text><rect x="1160" y="920" width="292.8" height="40" fill="#0A101D" stroke="#334155" stroke-width="1"></rect><line x1="1230.0" y1="920.0" x2="1230.0" y2="960.0" stroke="#334155" stroke-width="1" vector-effect="non-scaling-stroke"></line><line x1="1367.2" y1="920.0" x2="1367.2" y2="960.0" stroke="#334155" stroke-width="1" vector-effect="non-scaling-stroke"></line><text x="1174.0" y="945.0" font-family="JetBrains Mono, monospace" font-size="14.00" font-weight="700" fill="#E2E8F0" text-anchor="start" letter-spacing="0">ST-03</text><text x="1244.0" y="945.0" font-family="JetBrains Mono, monospace" font-size="14.00" font-weight="400" fill="#E2E8F0" text-anchor="start" letter-spacing="0">STUDENT STORY</text><text x="1381.2" y="944.5" font-family="JetBrains Mono, monospace" font-size="12.00" font-weight="400" fill="#94A3B8" text-anchor="start" letter-spacing="0">CSkilled</text><rect x="1700" y="932" width="28" height="28" rx="4" fill="#062985"></rect><text x="1714" y="950.5" font-family="JetBrains Mono, monospace" font-size="11.5" font-weight="700" fill="#FFFFFF" text-anchor="middle">CS</text></svg><button class="q-gate__hit" style="border: 0; background: transparent" aria-label="تشغيل قصة طالب 3"></button></div>
+<div class="q-lc__b"><h3><span class="ph">[[اسم الطالب]]</span></h3><span class="q-note"><span class="ph">[[الوظيفة · الشركة أو الجامعة]]</span></span>
+<div class="q-tags"><span class="q-tag q-tag--o">قبل: <span class="ph">[[الوضع قبل المسار]]</span></span><span class="q-tag">بعد: <span class="ph">[[نتيجة محددة واحدة]]</span></span></div></div></article></div><p class="q-note" style="margin-top: 20px">النتائج تختلف من طالب لآخر، ولا نقدّم وعودًا وظيفية.</p></div></section><section class="q-sec" style="background: #ffffff; border-top: 1px solid #E2E8F0;"><div class="q-w"><div style="max-width: 880px; margin-inline: auto"><div class="q-head q-head--c"><span class="q-k">أسئلة شائعة</span><h2 class="q-h2">أسئلة تُطرح قبل التسجيل</h2></div><details class="q-q" open=""><summary>هل أستطيع البدء دون أي خبرة سابقة؟<span class="cs-icon" aria-hidden="true">add</span></summary><p>نعم. المسار يبدأ من أول سطر في Python ولا يفترض معرفة سابقة.</p></details><details class="q-q"><summary>كم يستغرق المسار كاملًا؟<span class="cs-icon" aria-hidden="true">add</span></summary><p><span class="ph">[[تأكيد: المدة المتوقعة وعدد الساعات الأسبوعية]]</span>. الدراسة ذاتية الإيقاع.</p></details><details class="q-q"><summary>أعرف Python بالفعل، هل أبدأ من الأول؟<span class="cs-icon" aria-hidden="true">add</span></summary><p><span class="ph">[[تأكيد: سياسة تخطّي دبلومة]]</span></p></details><details class="q-q"><summary>هل أستطيع شراء دبلومة واحدة فقط؟<span class="cs-icon" aria-hidden="true">add</span></summary><p>نعم، كل دبلومة متاحة منفردة، والمسار يجمعها بترتيب واحد.</p></details><details class="q-q"><summary>ما مدة صلاحية الوصول إلى المحتوى؟<span class="cs-icon" aria-hidden="true">add</span></summary><p><span class="ph">[[تأكيد]]</span></p></details><details class="q-q"><summary>هل أحصل على شهادة؟<span class="cs-icon" aria-hidden="true">add</span></summary><p><span class="ph">[[تأكيد]]</span></p></details><details class="q-q"><summary>ما سياسة الاسترداد؟<span class="cs-icon" aria-hidden="true">add</span></summary><p><span class="ph">[[تأكيد]]</span></p></details><details class="q-q"><summary>ما طرق السداد المتاحة؟<span class="cs-icon" aria-hidden="true">add</span></summary><p>إنستاباي وفوري والبطاقات البنكية، مع تقسيط حتى <bdi>12</bdi> شهرًا بدون فوائد.</p></details></div></div></section><section class="q-sec" style="background: #ffffff; padding-block: 96px; border-top: 1px solid #E2E8F0">
+<div class="q-w">
+<div class="q-end q-rv-in">
+<div class="q-end__sh" aria-hidden="true" style="width: 260px; height: 260px; background: #2440DC; top: -90px; right: -70px; rotate: 18deg"></div>
+<div class="q-end__sh" aria-hidden="true" style="width: 200px; height: 200px; background: rgba(235,237,255,0.12); bottom: -80px; left: -40px; rotate: -16deg"></div>
+<span class="q-k" style="color: #C7D2FE; position: relative">انضم إلى مسار الذكاء الاصطناعي</span>
+<h2 class="q-h2" style="position: relative">ابدأ بأول محاضرة مجانية اليوم</h2>
+<p class="q-lead" style="position: relative">ادرس مع <span class="ph">[[عدد الطلاب]]</span> طالب في مجتمع واحد. <bdi>4</bdi> دبلومات · <bdi>292</bdi> محاضرة · <bdi dir="ltr">+370</bdi> ساعة.</p>
+<div style="display: flex; gap: 12px; position: relative"><a class="q-b q-b--white" href="#gate"><span class="cs-icon ic-fill" aria-hidden="true">play_circle</span>ابدأ محاضرة مجانية</a><a class="q-b q-b--ghostw" href="#pricing">الخطط والأسعار</a></div>
+<div class="q-reas" style="position: relative"><span><span class="cs-icon" aria-hidden="true">lock_open</span>بدون تسجيل</span><span><span class="cs-icon" aria-hidden="true">percent</span>تقسيط بدون فوائد حتى <bdi>12</bdi> شهرًا</span><span><span class="cs-icon" aria-hidden="true">translate</span>بالعربية مع المصطلح الإنجليزي</span></div>
+</div>
+</div>
+</section>
+</div>
+<!-- 8. PRINCIPLE STRIP -->
+<section class="cs-section" style="flex: none; padding-block: 32px">
+<div class="cs-container">
+<div class="cs-principle"><span class="cs-icon">shield</span>مبدأ الأكاديمية: لا وعود وظيفية خيالية، بل تأهيل هندسي متين.</div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer class="cs-footer" style="flex: 1 0 auto; border-top: 1px solid #e2e8f0">
+<div class="cs-container">
+<div style="display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1.5fr) minmax(0, 1fr); gap: 32px">
+<div style="display: flex; flex-direction: column; gap: 14px">
+<a class="cs-logo cs-logo--compact" href="#"><span class="cs-logo__mark">CS</span><span class="cs-logo__text"><span class="cs-logo__name">CSkilled</span></span></a>
+<p class="cs-small" style="max-width: 300px">تعليم برمجة وذكاء اصطناعي بعمق هندسي، بالعربية.</p>
+</div>
+<nav aria-label="المسارات" style="display: flex; flex-direction: column">
+<div style="font-size: 14px; font-weight: 700; margin-bottom: 8px">المسارات</div>
+<a class="foot-link" href="#">مسار Python</a>
+<a class="foot-link" href="#">مسار C++</a>
+<a class="foot-link" href="#">مسار الذكاء الاصطناعي</a>
+</nav>
+<nav aria-label="الدبلومات" style="display: flex; flex-direction: column">
+<div style="font-size: 14px; font-weight: 700; margin-bottom: 8px">الدبلومات</div>
+<a class="foot-link" href="#">البرمجة بلغة Python</a>
+<a class="foot-link" href="#">هياكل البيانات والخوارزميات بلغة Python</a>
+<a class="foot-link" href="#">البرمجة والبرمجة الكائنية بلغة C++</a>
+<a class="foot-link" href="#">هياكل البيانات والخوارزميات بلغة C++</a>
+<a class="foot-link" href="#">تعلّم الآلة</a>
+<a class="foot-link" href="#">التعلّم العميق</a>
+</nav>
+<nav aria-label="الأكاديمية" style="display: flex; flex-direction: column">
+<div style="font-size: 14px; font-weight: 700; margin-bottom: 8px">الأكاديمية</div>
+<a class="foot-link" href="#">المدرّس</a>
+<a class="foot-link" href="#">المجتمع</a>
+<a class="foot-link" href="#">الأسئلة الشائعة</a>
+<a class="foot-link" href="#">تواصل معنا</a>
+</nav>
+</div>
+<div style="margin-top: 32px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+<div class="cs-info-strip">
+<span class="cs-info-strip__label">طرق الدفع</span>
+<span class="cs-info-strip__item"><span class="cs-icon">account_balance_wallet</span>إنستاباي</span>
+<span class="cs-info-strip__item"><span class="cs-icon">storefront</span>فوري</span>
+<span class="cs-info-strip__item"><span class="cs-icon">credit_card</span>البطاقات</span>
+</div>
+<div style="display: flex; align-items: center; gap: 20px" dir="ltr">
+<a class="social" href="#"><span class="cs-icon">smart_display</span>YouTube</a>
+<a class="social" href="#"><span class="cs-icon">send</span>Telegram</a>
+<a class="social" href="#"><span class="cs-icon">forum</span>Discord</a>
+<a class="social" href="#"><span class="cs-icon">work</span>LinkedIn</a>
+<a class="social" href="#"><span class="cs-icon">groups</span>Facebook</a>
+</div>
+</div>
+<div style="margin-top: 20px; padding-top: 16px; border-top: 1px solid #e2e8f0; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #475569">© <bdi>2026</bdi> CSkilled · <a class="foot-link" style="font-size: 11px" href="#">الشروط</a> · <a class="foot-link" style="font-size: 11px" href="#">الخصوصية</a> · <a class="foot-link" style="font-size: 11px" href="#">سياسة الاسترداد</a></div>
+</div>
+</footer>
+
+<a class="wa" href="#" aria-label="مساعدة عبر واتساب"><span class="cs-icon cs-icon--primary" style="font-size: 24px">chat</span></a>
+</div>
+<script>
+(function () {
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+
+  // Free-lecture gate: states A / B / C
+  var gate = $('#gate');
+  function setGate(s) {
+    $$('[data-gate]').forEach(function (el) { el.hidden = el.getAttribute('data-gate') !== s; });
+  }
+  $$('[data-on="openGate"]').forEach(function (b) {
+    b.addEventListener('click', function (e) {
+      e.preventDefault(); setGate('B');
+      if (gate) gate.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  });
+  $$('[data-on="back"]').forEach(function (b) { b.addEventListener('click', function () { setGate('A'); showErr(false); }); });
+  var email = $('#gate-email');
+  var err = $('#gate-email-err');
+  var valid = function (v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v || ''); };
+  function showErr(on) {
+    if (!email || !err) return;
+    err.hidden = !on; email.classList.toggle('is-error', on); email.setAttribute('aria-invalid', on ? 'true' : 'false');
+  }
+  showErr(false);
+  $$('form[data-on="submit"]').forEach(function (f) {
+    f.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!valid(email && email.value)) showErr(true); else { showErr(false); setGate('C'); }
+    });
+  });
+  if (email) email.addEventListener('input', function () { if (!err.hidden) showErr(!valid(email.value)); });
+
+  // Segmented switches that swap variants: [data-variants] groups
+  $$('[data-switch]').forEach(function (group) {
+    var name = group.getAttribute('data-switch');
+    $$('button', group).forEach(function (btn, i) {
+      btn.addEventListener('click', function () {
+        $$('button', group).forEach(function (b, j) { b.setAttribute('aria-pressed', String(i === j)); });
+        $$('[data-variant-of="' + name + '"]').forEach(function (v) { v.hidden = v.getAttribute('data-variant') !== String(i); });
+      });
+    });
+  });
+
+  // Sticky actions bar
+  var sbar = $('.sbar');
+  if (sbar && 'IntersectionObserver' in window) {
+    sbar.hidden = true;
+    var vis = { hero: true, pricing: false, closing: false };
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { vis[e.target.getAttribute('data-watch')] = e.isIntersecting; });
+      sbar.hidden = !(!vis.hero && !vis.pricing && !vis.closing);
+    });
+    $$('[data-watch]').forEach(function (el) { io.observe(el); });
+  }
+
+  // Contact form
+  var cform = document.querySelector('[data-cstate="form"] form');
+  if (cform) {
+    var ce = document.getElementById('c-email'), cerr = document.getElementById('c-email-err');
+    var cshow = function (on) { cerr.hidden = !on; ce.classList.toggle('is-error', on); ce.setAttribute('aria-invalid', on ? 'true' : 'false'); };
+    cshow(false);
+    cform.addEventListener('submit', function (e) { e.preventDefault(); if (!valid(ce.value)) cshow(true); else { cshow(false); document.querySelector('[data-cstate="form"]').hidden = true; document.querySelector('[data-cstate="sent"]').hidden = false; } });
+    ce.addEventListener('input', function () { if (!cerr.hidden) cshow(!valid(ce.value)); });
+    var creset = document.querySelector('[data-cstate="sent"] [data-on="reset"]');
+    if (creset) creset.addEventListener('click', function () { cform.reset(); document.querySelector('[data-cstate="form"]').hidden = false; document.querySelector('[data-cstate="sent"]').hidden = true; });
+  }
+  // FAQ filter
+  var fq = document.getElementById('faq-q');
+  if (fq) {
+    var cat = 0;
+    var emptyBox = document.querySelector('[data-on="clear"]'); emptyBox = emptyBox && emptyBox.closest('.cs-card');
+    function applyFaq() {
+      var q = fq.value.trim(), any = false;
+      $$('.faq-group').forEach(function (g) {
+        var inCat = cat === 0 || String(cat) === g.getAttribute('data-group'), n = 0;
+        $$('details', g).forEach(function (d) { var ok = inCat && (!q || d.textContent.indexOf(q) !== -1); d.hidden = !ok; if (ok) n++; });
+        g.hidden = n === 0; if (n) any = true;
+      });
+      if (emptyBox) emptyBox.hidden = any;
+      $$('.cat').forEach(function (b) { b.setAttribute('aria-pressed', String(Number(b.getAttribute('data-cat')) === cat)); });
+    }
+    fq.addEventListener('input', applyFaq);
+    $$('.cat').forEach(function (b) { b.addEventListener('click', function () { cat = Number(b.getAttribute('data-cat')); applyFaq(); }); });
+    var clr = document.querySelector('[data-on="clear"]');
+    if (clr) clr.addEventListener('click', function () { fq.value = ''; cat = 0; applyFaq(); });
+    applyFaq();
+  }
+
+  // Carousel
+  var track = $('[data-carousel]');
+  if (track) {
+    var total = track.children.length, visible = 3, active = 0;
+    var counter = $('[data-carousel-counter]');
+    var bars = $$('.bar');
+    var prev = $('[data-on="prev"]'), next = $('[data-on="next"]');
+    var pad = function (n) { return (n < 10 ? '0' : '') + n; };
+    function paint() {
+      var perView = window.matchMedia('(max-width: 860px)').matches ? 1 : visible;
+      var offset = Math.min(active, total - perView);
+      track.style.transform = 'translateX(calc((100% + 24px) / ' + perView + ' * ' + offset + '))';
+      if (counter) counter.textContent = pad(active + 1) + ' / ' + pad(total);
+      bars.forEach(function (b, i) { b.className = i === active ? 'bar bar--on' : 'bar'; });
+      prev.setAttribute('aria-disabled', String(active === 0));
+      next.setAttribute('aria-disabled', String(active === total - 1));
+    }
+    prev.addEventListener('click', function () { if (active > 0) { active--; paint(); } });
+    next.addEventListener('click', function () { if (active < total - 1) { active++; paint(); } });
+    window.addEventListener('resize', paint);
+    paint();
+  }
+})();
+</script>
+</body>
+</html>
