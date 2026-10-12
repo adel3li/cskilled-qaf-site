@@ -19,7 +19,8 @@ Static Arabic (RTL) marketing site for CSkilled, deployed on Vercel. No build st
 
 - `site.js`
   - **`LINKS`**: the WhatsApp, Telegram, Discord, LinkedIn, Facebook, Google Scholar and login URLs used by every button marked `data-link="…"`. Fill these in once and every page updates. Empty values fall back to an in-site page (`/contact` or `/community`); LinkedIn, Facebook and Scholar are hidden while empty.
-  - Mobile menu (hamburger under 1180px).
+  - Mobile menu (hamburger under 1180px) for the inner pages. The home page has its own menu and responsive styles, so it loads `site.js` only.
+  - Home-page quiz («ابدأ رحلتك»): picks a diploma from the visitor's answers and points «ابدأ المشاهدة الآن» at that diploma's free first lecture.
   - Contact form: validates the e-mail, opens the visitor's mail app addressed to `support@cskilled.com`, and pre-fills the message when the visitor arrives from a pricing button (`/contact?program=…&plan=…&currency=…`).
 - `site.css`: mobile/tablet layout for the page components, plus the mobile menu styles.
 - `favicon.svg`, `og-image.png`: browser icon and social share image.

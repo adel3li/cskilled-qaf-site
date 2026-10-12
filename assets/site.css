@@ -3,8 +3,8 @@ html{scroll-behavior:smooth}
 html,body{overflow-x:clip}
 [id]{scroll-margin-top:96px}
 
-.q-burger{display:none;align-items:center;justify-content:center;width:44px;height:44px;margin-inline-start:auto;border:1px solid #E2E8F0;border-radius:8px;background:#fff;color:#0F172A;cursor:pointer;flex:none}
-.q-burger .cs-icon{font-size:24px}
+.q-jsburger{display:none;align-items:center;justify-content:center;width:44px;height:44px;margin-inline-start:auto;border:1px solid #E2E8F0;border-radius:8px;background:#fff;color:#0F172A;cursor:pointer;flex:none}
+.q-jsburger .cs-icon{font-size:24px}
 .q-drawer{position:fixed;inset:72px 0 0 0;z-index:70;background:#fff;padding:16px 16px 32px;overflow-y:auto;border-top:1px solid #E2E8F0;display:flex;flex-direction:column;gap:4px}
 .q-drawer[hidden]{display:none}
 .q-drawer a{display:flex;align-items:center;gap:8px;min-height:52px;padding:0 12px;border-radius:8px;font-size:17px;font-weight:500;color:#0F172A;text-decoration:none}
@@ -16,8 +16,8 @@ body.q-menu-open{overflow:hidden}
 @media (max-width: 1180px){
   .q-nav__in{gap:16px;height:72px}
   .q-nav__in > nav,
-  .q-nav__in > div:last-of-type:not(.q-burger){display:none !important}
-  .q-burger{display:inline-flex}
+  .q-nav__in > div:last-of-type:not(.q-jsburger){display:none !important}
+  .q-jsburger{display:inline-flex}
 }
 @media (max-width: 860px){
   /* Inline multi-column grids in footers / cards collapse on phones */

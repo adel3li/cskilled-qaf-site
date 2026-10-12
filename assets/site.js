@@ -32,9 +32,9 @@
 
   // 2. Mobile menu
   var bar = document.querySelector('.q-nav__in');
-  if (bar) {
+  if (bar && !bar.querySelector('.q-burger')) { // pages with their own menu (the home page) keep it
     var btn = document.createElement('button');
-    btn.type = 'button'; btn.className = 'q-burger';
+    btn.type = 'button'; btn.className = 'q-jsburger';
     btn.setAttribute('aria-label', 'القائمة'); btn.setAttribute('aria-expanded', 'false');
     btn.innerHTML = '<span class="cs-icon" aria-hidden="true">menu</span>';
     var drawer = document.createElement('nav');
@@ -68,6 +68,30 @@
     var w = document.createElement('div'); w.className = 'q-tblwrap';
     t.parentNode.insertBefore(w, t); w.appendChild(t);
   });
+
+  // Home-page quiz: recommend a diploma from the answers and link its free first lecture
+  var go = document.querySelector('[data-qz-go]');
+  if (go) {
+    var NAMES = { 'diploma-python': 'البرمجة بلغة Python', 'diploma-dsa-python': 'هياكل البيانات والخوارزميات بلغة Python',
+      'diploma-cpp': 'البرمجة والبرمجة الكائنية بلغة C++', 'diploma-dsa-cpp': 'هياكل البيانات والخوارزميات بلغة C++',
+      'diploma-ml': 'تعلّم الآلة', 'diploma-dl': 'التعلّم العميق' };
+    var on = function (id) { var el = document.getElementById(id); return !!(el && el.checked); };
+    var pick = function () {
+      var lvl = on('l-4') ? 4 : on('l-3') ? 3 : on('l-2') ? 2 : 1;
+      var comp = on('g-comp');
+      var d, why;
+      if (on('f-dl') && lvl >= 4) { d = 'diploma-dl'; why = 'لأن مستواك يسمح لك أن تبدأ من التعلّم العميق مباشرة.'; }
+      else if ((on('f-ai') || on('f-ml') || on('f-dl')) && lvl >= 3) { d = 'diploma-ml'; why = 'لأن لديك أساسًا برمجيًا يكفي لتبدأ تعلّم الآلة.'; }
+      else if (lvl >= 3) { d = comp ? 'diploma-dsa-cpp' : 'diploma-dsa-python'; why = 'لأن الخطوة التالية بعد الأساسيات هي هياكل البيانات والخوارزميات.'; }
+      else { d = comp ? 'diploma-cpp' : 'diploma-python'; why = comp ? 'لأن C++ هي لغة المسابقات، وتبدأ فيها من الصفر.' : 'لأنها تبدأ معك من أول سطر، وهي أساس مسار الذكاء الاصطناعي.'; }
+      go.href = '/' + d + '#gate';
+      $$('.qz__card b').forEach(function (b) { b.textContent = 'المحاضرة الأولى من ' + NAMES[d]; });
+      $$('.qz__card b + span').forEach(function (sp) { sp.textContent = why; });
+      $$('.qz__s6 .q-note').forEach(function (n) { n.innerHTML = NAMES[d] + ' · المحاضرة <bdi>01</bdi>'; });
+    };
+    document.addEventListener('change', function (e) { if (e.target.closest && e.target.closest('.qz__opts')) pick(); });
+    pick();
+  }
 
   // 3. Contact form (contact page): prefill from ?program=&plan=&currency=, validate, send by e-mail
   var form = document.querySelector('form.q-form');
