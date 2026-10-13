@@ -69,6 +69,20 @@
     t.parentNode.insertBefore(w, t); w.appendChild(t);
   });
 
+  // Home page: header links that open the quiz (#qz) or pick a catalog tab (data-ct)
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href="#qz"], a[data-ct]');
+    if (!a) return;
+    var mn = document.getElementById('mn'); if (mn) mn.checked = false;
+    if (a.getAttribute('href') === '#qz') {
+      var qz = document.getElementById('qz');
+      if (qz) { e.preventDefault(); qz.checked = true; qz.dispatchEvent(new Event('change', { bubbles: true })); }
+    } else {
+      var tab = document.getElementById(a.getAttribute('data-ct'));
+      if (tab) { tab.checked = true; tab.dispatchEvent(new Event('change', { bubbles: true })); }
+    }
+  });
+
   // Home-page quiz: recommend a diploma from the answers and link its free first lecture
   var go = document.querySelector('[data-qz-go]');
   if (go) {
