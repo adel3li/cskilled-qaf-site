@@ -1567,38 +1567,31 @@ html{scroll-behavior:smooth}
 .q-por__sh{position:absolute;width:62%;height:70%;left:-12%;bottom:-14%;background:#2440DC;border-radius:16px;rotate:-14deg}
 .q-por__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%}
 .q-por__tag{position:absolute;top:16px;inset-inline-end:16px;padding:6px 12px;border-radius:999px;background:#062985;color:#fff;font-family:var(--cs-font-mono);font-size:12px;font-weight:600}
-.q-mq{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
-.q-mq__t{display:flex;width:max-content}
+.q-mq__t{display:flex}
 .q-mq--st{margin-bottom:32px}
-.q-mq--st .q-mq__t{padding-block:4px}
-.q-mq__c{flex:none;width:240px;margin-inline-end:16px;padding:20px;border:1px solid var(--line);border-radius:8px;background:#fff;display:flex;flex-direction:column;gap:6px}
+.q-mq--st .q-mq__t{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:16px}
+.q-mq__c{min-width:0;padding:20px;border:1px solid var(--line);border-radius:8px;background:#fff;display:flex;flex-direction:column;gap:6px}
 .q-mq__c b{font-family:var(--cs-font-mono);font-size:28px;line-height:1.2;color:var(--navy)}
 .q-mq__c b small{font-family:'IBM Plex Sans Arabic',sans-serif;font-size:15px;font-weight:600;margin-inline-start:4px}
 .q-mq__c > span{font-size:13px;color:var(--mut)}
-.q-logos__in--mq{flex-wrap:nowrap}
+.q-logos__in--mq{flex-wrap:wrap;gap:20px 32px}
 .q-logos__in--mq .q-logos__l{flex:none}
 .q-mq--wm{flex:1 1 auto;min-width:0}
-.q-mq .q-wm{align-items:center}
+.q-mq--wm .q-wm{align-items:center}
 .q-wm__i{width:26px;height:26px;flex:none}
 .q-wm__ibm{color:#0F62FE !important;font-weight:800;letter-spacing:.06em;background:repeating-linear-gradient(180deg,#0F62FE 0 3px,transparent 3px 5px);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
 .q-wm__sfu{color:#A6192E !important;font-weight:800}
 .q-wm__icpc{color:#1D4E89 !important;font-weight:800}
-.q-mq__g{display:flex;align-items:center;gap:56px;padding-inline-end:56px}
-@media (prefers-reduced-motion: no-preference){
-  .q-mq--st .q-mq__t{animation:q5mq 45s linear infinite}
-  .q-mq--wm .q-mq__t{animation:q5mq 35s linear infinite}
-  .q-mq:hover .q-mq__t{animation-play-state:paused}
-}
-@media (prefers-reduced-motion: reduce){
-  .q-mq__t{flex-wrap:wrap;width:auto}
-  .q-mq [aria-hidden="true"]{display:none}
-}
+.q-mq__c .q-soc{flex-wrap:wrap}
+.q-mq__g{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px 36px}
+@media (max-width:1100px){.q-mq--st .q-mq__t{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:860px){
+  .q-mq--st .q-mq__t{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .q-mq__c{padding:16px}
+  .q-mq__c b{font-size:24px}
   .q-logos__in--mq{flex-direction:column;align-items:stretch;gap:16px}
   .q-logos__in--mq .q-logos__l{max-width:none;text-align:center}
-  .q-mq__c{width:200px;padding:16px}
-  .q-mq__c b{font-size:24px}
-  .q-mq__g{gap:36px;padding-inline-end:36px}
+  .q-mq__g{justify-content:center;gap:16px 28px}
 }
 </style>
 <section class="q-logos" aria-label="أرقام CSkilled" style="padding-block: 40px">
@@ -1610,14 +1603,8 @@ html{scroll-behavior:smooth}
 <div class="q-mq__c"><b><bdi dir="ltr" aria-label="+20">+<span class="cnt" style="--n: 20" aria-hidden="true"></span></bdi><small>سنة</small></b><span>في تدريس البرمجة</span></div>
 <div class="q-mq__c"><b><bdi dir="ltr" aria-label="+5000">+<span class="cnt" style="--n: 5000" aria-hidden="true"></span></bdi></b><span>طالب درسوا معنا</span></div>
 <div class="q-mq__c"><b><bdi dir="ltr" aria-label="33"><span class="cnt" style="--n: 33" aria-hidden="true"></span></bdi><small>ألف</small></b><span>متابع على منصّات التواصل</span><span class="q-soc" aria-label="YouTube و Telegram و Discord و LinkedIn و Facebook"><span class="cs-icon" aria-hidden="true">smart_display</span><span class="cs-icon" aria-hidden="true">send</span><span class="cs-icon" aria-hidden="true">forum</span><span class="cs-icon" aria-hidden="true">work</span><span class="cs-icon" aria-hidden="true">groups</span></span></div>
-<div class="q-mq__c" aria-hidden="true"><b><bdi dir="ltr" aria-label="6"><span class="cnt" style="--n: 6" aria-hidden="true"></span></bdi></b><span>دبلومات متدرجة</span></div>
-<div class="q-mq__c" aria-hidden="true"><b><bdi dir="ltr" aria-label="387"><span class="cnt" style="--n: 387" aria-hidden="true"></span></bdi></b><span>محاضرة مسجّلة</span></div>
-<div class="q-mq__c" aria-hidden="true"><b><bdi dir="ltr" aria-label="+525">+<span class="cnt" style="--n: 525" aria-hidden="true"></span></bdi></b><span>ساعة شرح</span></div>
-<div class="q-mq__c" aria-hidden="true"><b><bdi dir="ltr" aria-label="+20">+<span class="cnt" style="--n: 20" aria-hidden="true"></span></bdi><small>سنة</small></b><span>في تدريس البرمجة</span></div>
-<div class="q-mq__c" aria-hidden="true"><b><bdi dir="ltr" aria-label="+5000">+<span class="cnt" style="--n: 5000" aria-hidden="true"></span></bdi></b><span>طالب درسوا معنا</span></div>
-<div class="q-mq__c" aria-hidden="true"><b><bdi dir="ltr" aria-label="33"><span class="cnt" style="--n: 33" aria-hidden="true"></span></bdi><small>ألف</small></b><span>متابع على منصّات التواصل</span><span class="q-soc" aria-label="YouTube و Telegram و Discord و LinkedIn و Facebook"><span class="cs-icon" aria-hidden="true">smart_display</span><span class="cs-icon" aria-hidden="true">send</span><span class="cs-icon" aria-hidden="true">forum</span><span class="cs-icon" aria-hidden="true">work</span><span class="cs-icon" aria-hidden="true">groups</span></span></div>
 </div></div>
-<div class="q-logos__in q-logos__in--mq"><span class="q-logos__l">خبرة صناعية وأكاديمية خلف كل دبلومة</span><div class="q-mq q-mq--wm"><div class="q-mq__t"><div class="q-mq__g"><span class="q-wm"><svg class="q-wm__i" viewBox="0 0 24 24" aria-hidden="true"><path fill="#76B900" d="M8.948 8.798v-1.43a6.7 6.7 0 0 1 .424-.018c3.922-.124 6.493 3.374 6.493 3.374s-2.774 3.851-5.75 3.851c-.398 0-.787-.062-1.158-.185v-4.346c1.528.185 1.837.857 2.747 2.385l2.04-1.714s-1.492-1.952-4-1.952a6.016 6.016 0 0 0-.796.035m0-4.735v2.138l.424-.027c5.45-.185 9.01 4.47 9.01 4.47s-4.08 4.964-8.33 4.964c-.37 0-.733-.035-1.095-.097v1.325c.3.035.61.062.91.062 3.957 0 6.82-2.023 9.593-4.408.459.371 2.34 1.263 2.73 1.652-2.633 2.208-8.772 3.984-12.253 3.984-.335 0-.653-.018-.971-.053v1.864H24V4.063zm0 10.326v1.131c-3.657-.654-4.673-4.46-4.673-4.46s1.758-1.944 4.673-2.262v1.237H8.94c-1.528-.186-2.73 1.245-2.73 1.245s.68 2.412 2.739 3.11M2.456 10.9s2.164-3.197 6.5-3.533V6.201C4.153 6.59 0 10.653 0 10.653s2.35 6.802 8.948 7.42v-1.237c-4.84-.6-6.492-5.936-6.492-5.936z"/></svg><span dir="ltr">NVIDIA</span><small>حاليًا</small></span><span class="q-wm"><svg class="q-wm__i" viewBox="0 0 24 24" aria-hidden="true"><path fill="#FF0000" d="M3.67 6.14S1.82 7.91 1.72 9.78v.35c.08 1.51 1.22 2.4 1.22 2.4 1.83 1.79 6.26 4.04 7.3 4.55 0 0 .06.03.1-.01l.02-.04v-.04C7.52 10.8 3.67 6.14 3.67 6.14zM9.65 18.6c-.02-.08-.1-.08-.1-.08l-7.38.26c.8 1.43 2.15 2.53 3.56 2.2.96-.25 3.16-1.78 3.88-2.3.06-.05.04-.09.04-.09zm.08-.78C6.49 15.63.21 12.28.21 12.28c-.15.46-.2.9-.21 1.3v.07c0 1.07.4 1.82.4 1.82.8 1.69 2.34 2.2 2.34 2.2.7.3 1.4.31 1.4.31.12.02 4.4 0 5.54 0 .05 0 .08-.05.08-.05v-.06c0-.03-.03-.05-.03-.05zM9.06 3.19a3.42 3.42 0 00-2.57 3.15v.41c.03.6.16 1.05.16 1.05.66 2.9 3.86 7.65 4.55 8.65.05.05.1.03.1.03a.1.1 0 00.06-.1c1.06-10.6-1.11-13.42-1.11-13.42-.32.02-1.19.23-1.19.23zm8.299 2.27s-.49-1.8-2.44-2.28c0 0-.57-.14-1.17-.22 0 0-2.18 2.81-1.12 13.43.01.07.06.08.06.08.07.03.1-.03.1-.03.72-1.03 3.9-5.76 4.55-8.64 0 0 .36-1.4.02-2.34zm-2.92 13.07s-.07 0-.09.05c0 0-.01.07.03.1.7.51 2.85 2 3.88 2.3 0 0 .16.05.43.06h.14c.69-.02 1.9-.37 3-2.26l-7.4-.25zm7.83-8.41c.14-2.06-1.94-3.97-1.94-3.98 0 0-3.85 4.66-6.67 10.8 0 0-.03.08.02.13l.04.01h.06c1.06-.53 5.46-2.77 7.28-4.54 0 0 1.15-.93 1.21-2.42zm1.52 2.14s-6.28 3.37-9.52 5.55c0 0-.05.04-.03.11 0 0 .03.06.07.06 1.16 0 5.56 0 5.67-.02 0 0 .57-.02 1.27-.29 0 0 1.56-.5 2.37-2.27 0 0 .73-1.45.17-3.14z"/></svg><span dir="ltr">Huawei</span></span><span class="q-wm"><svg class="q-wm__i" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"/></svg><span dir="ltr">Google</span></span><span class="q-wm"><svg class="q-wm__i" viewBox="0 0 24 24" aria-hidden="true"><path fill="#F25022" d="M1 1h10.5v10.5H1z"/><path fill="#7FBA00" d="M12.5 1H23v10.5H12.5z"/><path fill="#00A4EF" d="M1 12.5h10.5V23H1z"/><path fill="#FFB900" d="M12.5 12.5H23V23H12.5z"/></svg><span dir="ltr">Microsoft</span></span><span class="q-wm"><span dir="ltr" class="q-wm__ibm">IBM</span></span><span class="q-wm"><span dir="ltr" class="q-wm__sfu">SFU</span><small>دكتوراه</small></span><span class="q-wm"><span dir="ltr" class="q-wm__icpc">ICPC</span><small>نهائيات <bdi>2011</bdi></small></span></div><div class="q-mq__g" aria-hidden="true"><span class="q-wm"><svg class="q-wm__i" viewBox="0 0 24 24" aria-hidden="true"><path fill="#76B900" d="M8.948 8.798v-1.43a6.7 6.7 0 0 1 .424-.018c3.922-.124 6.493 3.374 6.493 3.374s-2.774 3.851-5.75 3.851c-.398 0-.787-.062-1.158-.185v-4.346c1.528.185 1.837.857 2.747 2.385l2.04-1.714s-1.492-1.952-4-1.952a6.016 6.016 0 0 0-.796.035m0-4.735v2.138l.424-.027c5.45-.185 9.01 4.47 9.01 4.47s-4.08 4.964-8.33 4.964c-.37 0-.733-.035-1.095-.097v1.325c.3.035.61.062.91.062 3.957 0 6.82-2.023 9.593-4.408.459.371 2.34 1.263 2.73 1.652-2.633 2.208-8.772 3.984-12.253 3.984-.335 0-.653-.018-.971-.053v1.864H24V4.063zm0 10.326v1.131c-3.657-.654-4.673-4.46-4.673-4.46s1.758-1.944 4.673-2.262v1.237H8.94c-1.528-.186-2.73 1.245-2.73 1.245s.68 2.412 2.739 3.11M2.456 10.9s2.164-3.197 6.5-3.533V6.201C4.153 6.59 0 10.653 0 10.653s2.35 6.802 8.948 7.42v-1.237c-4.84-.6-6.492-5.936-6.492-5.936z"/></svg><span dir="ltr">NVIDIA</span><small>حاليًا</small></span><span class="q-wm"><svg class="q-wm__i" viewBox="0 0 24 24" aria-hidden="true"><path fill="#FF0000" d="M3.67 6.14S1.82 7.91 1.72 9.78v.35c.08 1.51 1.22 2.4 1.22 2.4 1.83 1.79 6.26 4.04 7.3 4.55 0 0 .06.03.1-.01l.02-.04v-.04C7.52 10.8 3.67 6.14 3.67 6.14zM9.65 18.6c-.02-.08-.1-.08-.1-.08l-7.38.26c.8 1.43 2.15 2.53 3.56 2.2.96-.25 3.16-1.78 3.88-2.3.06-.05.04-.09.04-.09zm.08-.78C6.49 15.63.21 12.28.21 12.28c-.15.46-.2.9-.21 1.3v.07c0 1.07.4 1.82.4 1.82.8 1.69 2.34 2.2 2.34 2.2.7.3 1.4.31 1.4.31.12.02 4.4 0 5.54 0 .05 0 .08-.05.08-.05v-.06c0-.03-.03-.05-.03-.05zM9.06 3.19a3.42 3.42 0 00-2.57 3.15v.41c.03.6.16 1.05.16 1.05.66 2.9 3.86 7.65 4.55 8.65.05.05.1.03.1.03a.1.1 0 00.06-.1c1.06-10.6-1.11-13.42-1.11-13.42-.32.02-1.19.23-1.19.23zm8.299 2.27s-.49-1.8-2.44-2.28c0 0-.57-.14-1.17-.22 0 0-2.18 2.81-1.12 13.43.01.07.06.08.06.08.07.03.1-.03.1-.03.72-1.03 3.9-5.76 4.55-8.64 0 0 .36-1.4.02-2.34zm-2.92 13.07s-.07 0-.09.05c0 0-.01.07.03.1.7.51 2.85 2 3.88 2.3 0 0 .16.05.43.06h.14c.69-.02 1.9-.37 3-2.26l-7.4-.25zm7.83-8.41c.14-2.06-1.94-3.97-1.94-3.98 0 0-3.85 4.66-6.67 10.8 0 0-.03.08.02.13l.04.01h.06c1.06-.53 5.46-2.77 7.28-4.54 0 0 1.15-.93 1.21-2.42zm1.52 2.14s-6.28 3.37-9.52 5.55c0 0-.05.04-.03.11 0 0 .03.06.07.06 1.16 0 5.56 0 5.67-.02 0 0 .57-.02 1.27-.29 0 0 1.56-.5 2.37-2.27 0 0 .73-1.45.17-3.14z"/></svg><span dir="ltr">Huawei</span></span><span class="q-wm"><svg class="q-wm__i" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"/></svg><span dir="ltr">Google</span></span><span class="q-wm"><svg class="q-wm__i" viewBox="0 0 24 24" aria-hidden="true"><path fill="#F25022" d="M1 1h10.5v10.5H1z"/><path fill="#7FBA00" d="M12.5 1H23v10.5H12.5z"/><path fill="#00A4EF" d="M1 12.5h10.5V23H1z"/><path fill="#FFB900" d="M12.5 12.5H23V23H12.5z"/></svg><span dir="ltr">Microsoft</span></span><span class="q-wm"><span dir="ltr" class="q-wm__ibm">IBM</span></span><span class="q-wm"><span dir="ltr" class="q-wm__sfu">SFU</span><small>دكتوراه</small></span><span class="q-wm"><span dir="ltr" class="q-wm__icpc">ICPC</span><small>نهائيات <bdi>2011</bdi></small></span></div></div></div></div>
+<div class="q-logos__in q-logos__in--mq"><span class="q-logos__l">خبرة صناعية وأكاديمية خلف كل دبلومة</span><div class="q-mq q-mq--wm"><div class="q-mq__t"><div class="q-mq__g"><span class="q-wm"><svg class="q-wm__i" viewBox="0 0 24 24" aria-hidden="true"><path fill="#76B900" d="M8.948 8.798v-1.43a6.7 6.7 0 0 1 .424-.018c3.922-.124 6.493 3.374 6.493 3.374s-2.774 3.851-5.75 3.851c-.398 0-.787-.062-1.158-.185v-4.346c1.528.185 1.837.857 2.747 2.385l2.04-1.714s-1.492-1.952-4-1.952a6.016 6.016 0 0 0-.796.035m0-4.735v2.138l.424-.027c5.45-.185 9.01 4.47 9.01 4.47s-4.08 4.964-8.33 4.964c-.37 0-.733-.035-1.095-.097v1.325c.3.035.61.062.91.062 3.957 0 6.82-2.023 9.593-4.408.459.371 2.34 1.263 2.73 1.652-2.633 2.208-8.772 3.984-12.253 3.984-.335 0-.653-.018-.971-.053v1.864H24V4.063zm0 10.326v1.131c-3.657-.654-4.673-4.46-4.673-4.46s1.758-1.944 4.673-2.262v1.237H8.94c-1.528-.186-2.73 1.245-2.73 1.245s.68 2.412 2.739 3.11M2.456 10.9s2.164-3.197 6.5-3.533V6.201C4.153 6.59 0 10.653 0 10.653s2.35 6.802 8.948 7.42v-1.237c-4.84-.6-6.492-5.936-6.492-5.936z"/></svg><span dir="ltr">NVIDIA</span><small>حاليًا</small></span><span class="q-wm"><svg class="q-wm__i" viewBox="0 0 24 24" aria-hidden="true"><path fill="#FF0000" d="M3.67 6.14S1.82 7.91 1.72 9.78v.35c.08 1.51 1.22 2.4 1.22 2.4 1.83 1.79 6.26 4.04 7.3 4.55 0 0 .06.03.1-.01l.02-.04v-.04C7.52 10.8 3.67 6.14 3.67 6.14zM9.65 18.6c-.02-.08-.1-.08-.1-.08l-7.38.26c.8 1.43 2.15 2.53 3.56 2.2.96-.25 3.16-1.78 3.88-2.3.06-.05.04-.09.04-.09zm.08-.78C6.49 15.63.21 12.28.21 12.28c-.15.46-.2.9-.21 1.3v.07c0 1.07.4 1.82.4 1.82.8 1.69 2.34 2.2 2.34 2.2.7.3 1.4.31 1.4.31.12.02 4.4 0 5.54 0 .05 0 .08-.05.08-.05v-.06c0-.03-.03-.05-.03-.05zM9.06 3.19a3.42 3.42 0 00-2.57 3.15v.41c.03.6.16 1.05.16 1.05.66 2.9 3.86 7.65 4.55 8.65.05.05.1.03.1.03a.1.1 0 00.06-.1c1.06-10.6-1.11-13.42-1.11-13.42-.32.02-1.19.23-1.19.23zm8.299 2.27s-.49-1.8-2.44-2.28c0 0-.57-.14-1.17-.22 0 0-2.18 2.81-1.12 13.43.01.07.06.08.06.08.07.03.1-.03.1-.03.72-1.03 3.9-5.76 4.55-8.64 0 0 .36-1.4.02-2.34zm-2.92 13.07s-.07 0-.09.05c0 0-.01.07.03.1.7.51 2.85 2 3.88 2.3 0 0 .16.05.43.06h.14c.69-.02 1.9-.37 3-2.26l-7.4-.25zm7.83-8.41c.14-2.06-1.94-3.97-1.94-3.98 0 0-3.85 4.66-6.67 10.8 0 0-.03.08.02.13l.04.01h.06c1.06-.53 5.46-2.77 7.28-4.54 0 0 1.15-.93 1.21-2.42zm1.52 2.14s-6.28 3.37-9.52 5.55c0 0-.05.04-.03.11 0 0 .03.06.07.06 1.16 0 5.56 0 5.67-.02 0 0 .57-.02 1.27-.29 0 0 1.56-.5 2.37-2.27 0 0 .73-1.45.17-3.14z"/></svg><span dir="ltr">Huawei</span></span><span class="q-wm"><svg class="q-wm__i" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"/></svg><span dir="ltr">Google</span></span><span class="q-wm"><svg class="q-wm__i" viewBox="0 0 24 24" aria-hidden="true"><path fill="#F25022" d="M1 1h10.5v10.5H1z"/><path fill="#7FBA00" d="M12.5 1H23v10.5H12.5z"/><path fill="#00A4EF" d="M1 12.5h10.5V23H1z"/><path fill="#FFB900" d="M12.5 12.5H23V23H12.5z"/></svg><span dir="ltr">Microsoft</span></span><span class="q-wm"><span dir="ltr" class="q-wm__ibm">IBM</span></span><span class="q-wm"><span dir="ltr" class="q-wm__sfu">SFU</span><small>دكتوراه</small></span><span class="q-wm"><span dir="ltr" class="q-wm__icpc">ICPC</span><small>نهائيات <bdi>2011</bdi></small></span></div></div></div></div>
 </div>
 </section>
 <section id="catalog" class="q-sec q-cat" style="background: #FAF9F6; border-top: 1px solid #E2E8F0">
@@ -1690,16 +1677,16 @@ html{scroll-behavior:smooth}
 <section class="q-sec" style="background: #FAF9F6; border-top: 1px solid #E2E8F0">
 <div class="q-w">
 <style>
-.q-vs{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:24px;align-items:start;max-width:1080px;margin-inline:auto}
+.q-vs{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:24px;align-items:start;max-width:1080px;margin-inline:auto}
 .q-vs__box{border-radius:12px;padding:28px}
 .q-vs__box h3{display:flex;align-items:center;gap:10px;margin:0 0 16px;padding-bottom:16px;font-size:20px;line-height:1.5}
 .q-vs__box ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
-.q-vs__bad{background:#FEF5F5;border:1.5px solid #F5C6C6;color:#7F1D1D}
-.q-vs__bad h3{color:#991B1B;border-bottom:1px solid #F5C6C6}
+.q-vs__bad{background:#FFFAFA;border:1px solid #FBE3E3;color:#9B4A4A}
+.q-vs__bad h3{color:#C24141;border-bottom:1px solid #FBE3E3}
 .q-vs__bad li{position:relative;padding-inline-start:16px;font-size:15px;line-height:1.9}
 .q-vs__bad li + li{margin-top:6px}
-.q-vs__bad li::before{content:"•";position:absolute;inset-inline-start:0;color:#991B1B;font-weight:700}
-.q-vs__bad b{color:#991B1B}
+.q-vs__bad li::before{content:"•";position:absolute;inset-inline-start:0;color:#E08585;font-weight:700}
+.q-vs__bad b{color:#C24141}
 .q-vs__good{background:#0B2A8A;border:2px solid #2440DC;color:#fff;box-shadow:0 24px 48px rgba(11,42,138,0.18)}
 .q-vs__good h3{color:#fff;border-bottom:1px solid rgba(255,255,255,0.18)}
 .q-vs__good ul{gap:10px}
@@ -1710,10 +1697,10 @@ html{scroll-behavior:smooth}
 </style>
 <div class="q-head q-head--c"><h2 class="q-h2">لماذا CSkilled، وليس مصادر متفرقة؟</h2><p class="q-lead">مقارنة سريعة بين التشتت وبين المسار الهندسي المتكامل.</p></div>
 <div class="q-vs">
-<div class="q-vs__box q-vs__good"><h3><span aria-hidden="true">✓</span>ماذا تحصل عليه في منصة CSkilled؟</h3><ul>
-<li><span><b>العمق الرياضي:</b> يشرح الاشتقاق والمعادلة قبل المكتبة</span></li><li><span><b>حجم الممارسة:</b> مئات المسائل المصحّحة مع الحل</span></li><li><span><b>اللغة:</b> عربية واضحة مع المصطلح الإنجليزي</span></li><li><span><b>ترتيب المنهج:</b> <bdi>387</bdi> محاضرة في <bdi>6</bdi> دبلومات مرتّبة</span></li><li><span><b>المدرّس:</b> مهندس واحد يعمل في NVIDIA • PhD</span></li><li><span><b>المشاريع:</b> مشاريع كاملة من الفكرة حتى النشر</span></li><li><span><b>المجتمع والدعم:</b> مجتمع نشط وإجابات على الأسئلة</span></li><li><span><b>السداد:</b> تقسيط بلا فوائد حتى <bdi>12</bdi> شهرًا</span></li></ul></div>
 <div class="q-vs__box q-vs__bad"><h3><span aria-hidden="true">✕</span>المصادر المتفرقة (يوتيوب / دورات عامة / معسكرات)</h3><ul>
 <li><b>العمق والمنهج:</b> إما سطحي وغير مرتب، أو مضغوط ومحدود بالوقت.</li><li><b>الممارسة والمشاريع:</b> مسائل قليلة غير مصححة ومشاريع صغيرة غير مكتملة.</li><li><b>اللغة والمدرّس:</b> مستوى متفاوت، أو إنجليزي فقط يصعب استيعابه.</li><li><b>الدعم والسداد:</b> تعليقات عامة بدون توجيه، أو اشتراكات دولارية ومعسكرات باهظة.</li></ul></div>
+<div class="q-vs__box q-vs__good"><h3><span aria-hidden="true">✓</span>ماذا تحصل عليه في منصة CSkilled؟</h3><ul>
+<li><span><b>العمق الرياضي:</b> يشرح الاشتقاق والمعادلة قبل المكتبة</span></li><li><span><b>حجم الممارسة:</b> مئات المسائل المصحّحة مع الحل</span></li><li><span><b>اللغة:</b> عربية واضحة مع المصطلح الإنجليزي</span></li><li><span><b>ترتيب المنهج:</b> <bdi>387</bdi> محاضرة في <bdi>6</bdi> دبلومات مرتّبة</span></li><li><span><b>المدرّس:</b> مهندس واحد يعمل في NVIDIA • PhD</span></li><li><span><b>المشاريع:</b> مشاريع كاملة من الفكرة حتى النشر</span></li><li><span><b>المجتمع والدعم:</b> مجتمع نشط وإجابات على الأسئلة</span></li><li><span><b>السداد:</b> تقسيط بلا فوائد حتى <bdi>12</bdi> شهرًا</span></li></ul></div>
 </div>
 </div>
 </section>
