@@ -19,6 +19,16 @@
 
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
 
+  // Reveal animations and counters: start when scrolled into view, then play to the end on a timer
+  (function () {
+    var els = $$('.cnt, .q-rv-in');
+    if (!('IntersectionObserver' in window)) { els.forEach(function (el) { el.classList.add('is-in'); }); return; }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } });
+    }, { threshold: 0.15 });
+    els.forEach(function (el) { io.observe(el); });
+  })();
+
   // 1. External links
   $$('a[data-link]').forEach(function (a) {
     var key = a.getAttribute('data-link'), url = LINKS[key];

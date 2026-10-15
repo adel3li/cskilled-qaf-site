@@ -6,6 +6,7 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="utf-8">
+<script>document.documentElement.classList.add('anim-js')</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>CSkilled — دبلومة هياكل البيانات والخوارزميات بلغة Python</title>
 <meta property="og:image" content="/assets/og-image.png">
@@ -1029,10 +1030,9 @@ bdi{font-family:var(--cs-font-mono);font-variant-numeric:tabular-nums}
   .q-shape{animation:q5float 9s ease-in-out infinite}
   .q-shape:nth-of-type(2){animation-duration:11s;animation-delay:-3s}
   .cnt{animation:q5cnt 1800ms cubic-bezier(.2,.7,.2,1) 300ms both}
-  @supports (animation-timeline: view()){
-    .q-rv-in{animation:q5rise linear both;animation-timeline:view();animation-range:entry 0% entry 65%}
-    .cnt{animation:q5cnt linear both;animation-timeline:view();animation-range:entry 20% cover 40%}
-  }
+  .q-rv-in{animation:q5rise 800ms cubic-bezier(.2,.7,.2,1) both}
+  /* play once, on a timer, when scrolled into view (assets/site.js adds .is-in) */
+  .anim-js .cnt:not(.is-in),.anim-js .q-rv-in:not(.is-in){animation-play-state:paused}
 }
 
 /* ===== v6 · Qaf family: inner pages ===== */
@@ -1319,7 +1319,8 @@ html{scroll-behavior:smooth}
 <div style="display: flex; align-items: center; gap: 8px"><a href="/contact" style="display: inline-flex; align-items: center; gap: 6px; height: 42px; padding: 0 12px; color: #334155; text-decoration: none; font-size: 15px" data-link="login"><span class="cs-icon" aria-hidden="true">login</span>تسجيل الدخول</a><a class="q-b q-b--line q-b--sm" href="/#catalog">ابدأ مجانًا</a></div>
 </div>
 </header>
-<section class="q-ph-hero">
+<section class="q-ph-hero"><style>.q-av--img{padding:0;overflow:hidden}.q-av--img img{width:100%;height:100%;object-fit:cover;border-radius:999px;display:block}.q-hero-side{gap:20px}</style>
+
 <div class="q-shape" aria-hidden="true" style="width: 200px; height: 260px; background: #EBEDFF; top: -60px; left: -70px; rotate: -12deg"></div>
 <div class="q-w q-split">
 <div class="q-stack">
@@ -1329,9 +1330,8 @@ html{scroll-behavior:smooth}
 <p class="q-sub q-up" style="--d: 140ms">من كود يعمل إلى كود صحيح وسريع</p>
 <p class="q-lead q-up" style="--d: 200ms; font-size: 17px">تتعلّم تحليل التعقيد (Complexity Analysis)، ثم تبني هياكل البيانات بيدك: القوائم المترابطة (Linked Lists) والأشجار (Trees) والجداول التجزيئية (Hash Tables) والمخططات (Graphs)، وتعرف متى تختار كلًّا منها.</p>
 <div class="q-mx q-up" style="--d: 260ms"><div><b><bdi>43</bdi></b><span>محاضرة</span></div><div><b><bdi dir="ltr">+45</bdi></b><span>ساعة</span></div><div><b><span class="ph">[[عدد التمارين]]</span></b><span>تمرين وتحديات متدرجة</span></div><div><b><span class="ph">[[عدد المشاريع]]</span></b><span>مشاريع تطبيقية</span></div></div>
-<div class="q-hero__cta q-up" style="--d: 320ms; justify-content: flex-start"><a class="q-b q-b--fill" href="#gate"><span class="cs-icon ic-fill" aria-hidden="true">play_circle</span>شاهد المحاضرة الأولى مجانًا</a><a class="q-b q-b--line" href="#pricing">الخطط والأسعار<span class="cs-icon" aria-hidden="true">arrow_downward</span></a></div>
-<div class="q-by q-up" style="--d: 380ms"><span class="q-av" aria-hidden="true">م</span><span>يدرّسها <b>د. مصطفى سعد إبراهيم</b> · <span dir="ltr">Senior Vision Engineer, NVIDIA</span></span></div>
 </div>
+<div class="q-stack q-hero-side">
 <div class="q-gate q-up" id="gate" style="--d: 200ms">
 <input class="sr ga" type="radio" name="gate" id="g-a" checked="" aria-label="عرض الفيديو التعريفي"><input class="sr gb" type="radio" name="gate" id="g-b" aria-label="نموذج المحاضرة المجانية"><input class="sr gc" type="radio" name="gate" id="g-c" aria-label="مشغّل المحاضرة">
 <div class="q-g q-g--a">
@@ -1355,24 +1355,32 @@ html{scroll-behavior:smooth}
 <div class="q-gate__f"><div><b>تشاهد الآن: المحاضرة <bdi>01</bdi>، <span class="ph">[[عنوان المحاضرة]]</span></b></div><a class="q-a" href="/track-python#route">المحاضرة المجانية التالية<span class="cs-icon" aria-hidden="true">arrow_back</span></a></div>
 </div>
 </div>
+<div class="q-hero__cta q-up" style="--d: 320ms; justify-content: flex-start"><a class="q-b q-b--fill" href="#gate"><span class="cs-icon ic-fill" aria-hidden="true">play_circle</span>شاهد المحاضرة الأولى مجانًا</a><a class="q-b q-b--line" href="#pricing">الخطط والأسعار<span class="cs-icon" aria-hidden="true">arrow_downward</span></a></div>
+<div class="q-by q-up" style="--d: 380ms"><span class="q-av q-av--img" aria-hidden="true"><img src="/assets/mostafa-avatar.jpg" alt="" width="40" height="40"></span><span>يدرّسها <b>د. مصطفى سعد إبراهيم</b> · <span dir="ltr">Senior Vision Engineer, NVIDIA</span></span></div>
 </div>
-</section><div style="display: flex; flex-direction: column; flex: none"><section class="q-sec" style="background: #FAF9F6; border-top: 1px solid #E2E8F0;"><div class="q-w"><div class="q-split q-split--57" style="align-items: start"><div><div class="q-head"><span class="q-k">مخرجات التعلّم</span><h2 class="q-h2">ماذا ستتعلم</h2></div><ul class="q-ck"><li><span class="cs-icon" aria-hidden="true">check</span><span>تحلّل كفاءة أي حل زمنًا وذاكرة بترميز Big-O.</span></li><li><span class="cs-icon" aria-hidden="true">check</span><span>تبني القوائم المترابطة والمكدّسات والطوابير (Linked Lists, Stacks, Queues) من الصفر.</span></li><li><span class="cs-icon" aria-hidden="true">check</span><span>تحلّ المسائل بالاستدعاء الذاتي (Recursion) بثقة.</span></li><li><span class="cs-icon" aria-hidden="true">check</span><span>تبني أشجار البحث الثنائية (Binary Search Trees) والأشجار المتوازنة (AVL Trees).</span></li><li><span class="cs-icon" aria-hidden="true">check</span><span>تفهم الجداول التجزيئية (Hash Tables) و Tries ومتى تستخدم كلًّا منها.</span></li><li><span class="cs-icon" aria-hidden="true">check</span><span>تمثّل المخططات (Graphs) وتجتازها.</span></li><li><span class="cs-icon" aria-hidden="true">check</span><span>تطبّق خوارزميات الترتيب والبحث وتقارن بينها.</span></li><li><span class="cs-icon" aria-hidden="true">check</span><span>تختار الهيكل الأنسب للمسألة وتبرّر اختيارك.</span></li></ul></div><div style="padding-top: 24px"><div class="q-code q-rv-in"><div class="q-code__bar"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="q-code__file">binary_search.py</span></div>
-<pre><span class="tok-kw">def</span> <span class="tok-def">binary_search</span>(items: <span class="tok-type">list</span>[<span class="tok-type">int</span>], target: <span class="tok-type">int</span>) -&gt; <span class="tok-type">int</span>:
-    low, high = <span class="tok-num">0</span>, <span class="tok-name">len</span>(items) - <span class="tok-num">1</span>
-    <span class="tok-kw">while</span> low &lt;= high:
-        mid = (low + high) // <span class="tok-num">2</span>
-        <span class="tok-kw">if</span> items[mid] == target:
-            <span class="tok-kw">return</span> mid
-        <span class="tok-kw">if</span> items[mid] &lt; target:
-            low = mid + <span class="tok-num">1</span>
-        <span class="tok-kw">else</span>:
-            high = mid - <span class="tok-num">1</span>
-    <span class="tok-kw">return</span> -<span class="tok-num">1</span>   <span class="tok-comment"># O(log n)</span></pre><div class="q-code__foot"><span class="ok"><span class="cs-icon" aria-hidden="true">check_circle</span>pytest: 14/14 passed</span><span>O(log n)</span></div></div></div></div></div></section><section class="q-sec" style="background: #ffffff; border-top: 1px solid #E2E8F0; padding-block: 80px;"><div class="q-w"><div class="q-head"><span class="q-k">أين يعمل طلابنا</span><h2 class="q-h2">طلاب تعلّموا معنا يعملون اليوم في</h2></div><div class="q-cos"><span><span class="ph">[[شركة <bdi>1</bdi>]]</span></span><span><span class="ph">[[شركة <bdi>2</bdi>]]</span></span><span><span class="ph">[[شركة <bdi>3</bdi>]]</span></span><span><span class="ph">[[شركة <bdi>4</bdi>]]</span></span><span><span class="ph">[[شركة <bdi>5</bdi>]]</span></span><span><span class="ph">[[شركة <bdi>6</bdi>]]</span></span></div>
-<p class="q-note" style="margin-top: 14px">أسماء موثّقة بموافقة أصحابها. لا نقدّم وعودًا وظيفية.</p></div></section><section class="q-sec" style="background: #FAF9F6; border-top: 1px solid #E2E8F0;"><div class="q-w"><div class="q-ins">
-<div class="q-card q-rv-in">
-<div class="q-card__top"><span class="q-av" aria-hidden="true">م</span><div><b>د. مصطفى سعد إبراهيم</b><span dir="ltr">Senior Vision Engineer, NVIDIA</span><span dir="ltr">PhD Computer Vision · Simon Fraser University</span></div></div>
-<div class="q-st4"><div><b><bdi dir="ltr" aria-label="+20">+<span class="cnt" style="--n: 20" aria-hidden="true"></span></bdi></b><span>سنة تدريس</span></div><div><b><bdi>15</bdi></b><span>سنة في الذكاء الاصطناعي</span></div><div><b><bdi dir="ltr">+1,000</bdi></b><span>استشهاد بحثي</span></div><div><b><bdi>2011</bdi></b><span>نهائيات ICPC العالمية</span></div></div>
-<div class="q-tags"><span class="q-tag q-tag--o q-tag--m">NVIDIA <span style="font-family: 'IBM Plex Sans Arabic', sans-serif">(حاليًا)</span></span><span class="q-tag q-tag--o q-tag--m">Huawei</span><span class="q-tag q-tag--o q-tag--m">Google</span><span class="q-tag q-tag--o q-tag--m">Microsoft</span><span class="q-tag q-tag--o q-tag--m">IBM</span></div>
+</div>
+</section><div style="display: flex; flex-direction: column; flex: none"><section class="q-sec" style="background: #FAF9F6; border-top: 1px solid #E2E8F0;"><div class="q-w"><div><div><div class="q-head"><span class="q-k">مخرجات التعلّم</span><h2 class="q-h2">ماذا ستتعلم</h2></div><ul class="q-ck"><li><span class="cs-icon" aria-hidden="true">check</span><span>تحلّل كفاءة أي حل زمنًا وذاكرة بترميز Big-O.</span></li><li><span class="cs-icon" aria-hidden="true">check</span><span>تبني القوائم المترابطة والمكدّسات والطوابير (Linked Lists, Stacks, Queues) من الصفر.</span></li><li><span class="cs-icon" aria-hidden="true">check</span><span>تحلّ المسائل بالاستدعاء الذاتي (Recursion) بثقة.</span></li><li><span class="cs-icon" aria-hidden="true">check</span><span>تبني أشجار البحث الثنائية (Binary Search Trees) والأشجار المتوازنة (AVL Trees).</span></li><li><span class="cs-icon" aria-hidden="true">check</span><span>تفهم الجداول التجزيئية (Hash Tables) و Tries ومتى تستخدم كلًّا منها.</span></li><li><span class="cs-icon" aria-hidden="true">check</span><span>تمثّل المخططات (Graphs) وتجتازها.</span></li><li><span class="cs-icon" aria-hidden="true">check</span><span>تطبّق خوارزميات الترتيب والبحث وتقارن بينها.</span></li><li><span class="cs-icon" aria-hidden="true">check</span><span>تختار الهيكل الأنسب للمسألة وتبرّر اختيارك.</span></li></ul></div></div></div></section><section class="q-sec" style="background: #ffffff; border-top: 1px solid #E2E8F0; padding-block: 80px;"><div class="q-w"><div class="q-head"><span class="q-k">أين يعمل طلابنا</span><h2 class="q-h2">طلاب تعلّموا معنا يعملون اليوم في</h2></div><div class="q-cos"><span><span class="ph">[[شركة <bdi>1</bdi>]]</span></span><span><span class="ph">[[شركة <bdi>2</bdi>]]</span></span><span><span class="ph">[[شركة <bdi>3</bdi>]]</span></span><span><span class="ph">[[شركة <bdi>4</bdi>]]</span></span><span><span class="ph">[[شركة <bdi>5</bdi>]]</span></span><span><span class="ph">[[شركة <bdi>6</bdi>]]</span></span></div>
+<p class="q-note" style="margin-top: 14px">أسماء موثّقة بموافقة أصحابها. لا نقدّم وعودًا وظيفية.</p></div></section><section class="q-sec" style="background: #FAF9F6; border-top: 1px solid #E2E8F0;"><style>
+.q-i7__photo{display:flex;flex-direction:column;gap:16px}
+.q-i7__st{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.q-i7__st > div{padding:16px;border-radius:8px;background:var(--lav);display:flex;flex-direction:column;gap:2px}
+.q-i7__st b{font-family:var(--cs-font-mono);font-size:26px;color:var(--navy);line-height:1.2}
+.q-i7__st > div > span{font-size:13px;color:var(--mut)}
+.q-i7__photo{max-width:none;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:end;gap:20px}
+.q-i7__st{grid-template-columns:minmax(0,1fr)}
+.q-i7__photo{display:flex}
+.q-i7__st{grid-template-columns:repeat(3,minmax(0,1fr))}
+.q-i7__st b{font-size:22px}
+.q-por{position:relative;aspect-ratio:4/5;overflow:hidden;border-radius:8px 8px 0 0;background-color:#EBEDFF;background-image:linear-gradient(to right,rgba(6,41,133,0.07) 1px,transparent 1px),linear-gradient(to bottom,rgba(6,41,133,0.07) 1px,transparent 1px);background-size:24px 24px}
+.q-por__sh{position:absolute;width:62%;height:70%;left:-12%;bottom:-14%;background:#2440DC;border-radius:16px;rotate:-14deg}
+.q-por__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+.q-por__tag{position:absolute;top:16px;inset-inline-end:16px;padding:6px 12px;border-radius:999px;background:#062985;color:#fff;font-family:var(--cs-font-mono);font-size:12px;font-weight:600}
+.q-ins .q-i7__photo{width:100%}
+</style>
+<div class="q-w"><div class="q-ins">
+<div class="q-i7__photo q-rv-in">
+<figure class="q-frame" style="margin: 0"><div class="q-por"><span class="q-por__sh" aria-hidden="true"></span><img class="q-por__img" src="/assets/mostafa-saad.jpg" width="960" height="1200" loading="lazy" alt="د. مصطفى سعد إبراهيم يتحدث أمام طلاب CSkilled"><span class="q-por__tag" dir="ltr">NVIDIA · PhD, SFU</span></div><figcaption class="q-frame__cap"><span class="cs-icon" aria-hidden="true">photo_camera</span><strong>د. مصطفى سعد إبراهيم</strong><span class="mono" dir="ltr">Senior Vision Engineer, NVIDIA</span></figcaption></figure>
+<div class="q-i7__st"><div><b><bdi dir="ltr" aria-label="+20">+<span class="cnt" style="--n: 20" aria-hidden="true"></span></bdi></b><span>سنة في تدريس البرمجة</span></div><div><b><bdi dir="ltr" aria-label="+10">+<span class="cnt" style="--n: 10" aria-hidden="true"></span></bdi></b><span>دورات ودبلومات</span></div><div><b><bdi dir="ltr" aria-label="+5000">+<span class="cnt" style="--n: 5000" aria-hidden="true"></span></bdi></b><span>طالب</span></div></div>
 </div>
 <div class="q-stack">
 <div class="q-head"><span class="q-k">من يدرّس لك</span><h2 class="q-h2">د. مصطفى سعد إبراهيم</h2></div>
@@ -1385,7 +1393,42 @@ html{scroll-behavior:smooth}
 <div class="q-rv-in" style="background: #062985; color: #fff"><h3><span class="cs-icon" aria-hidden="true">construction</span> الأدوات</h3><div class="q-tags"><span class="q-tag q-tag--m" dir="ltr">Python <bdi>3.12</bdi>+</span><span class="q-tag q-tag--m"><span class="ph" style="border: 0; padding: 0; background: transparent">[[أدوات أخرى، تأكيد]]</span></span></div></div>
 <div class="q-rv-in" style="background: #EBEDFF"><h3><span class="cs-icon" aria-hidden="true">psychology</span> المفاهيم</h3><div class="q-tags"><span class="q-tag q-tag--o q-tag--m">Big-O</span><span class="q-tag q-tag--o q-tag--m">Linked Lists</span><span class="q-tag q-tag--o q-tag--m">Stacks</span><span class="q-tag q-tag--o q-tag--m">Queues</span><span class="q-tag q-tag--o q-tag--m">Recursion</span><span class="q-tag q-tag--o q-tag--m">Binary Search Trees</span><span class="q-tag q-tag--o q-tag--m">AVL Trees</span><span class="q-tag q-tag--o q-tag--m">Tries</span><span class="q-tag q-tag--o q-tag--m">Hash Tables</span><span class="q-tag q-tag--o q-tag--m">Graphs</span></div></div>
 <div class="q-rv-in" style="background: #FAF9F6; border: 1px solid #E2E8F0"><h3><span class="cs-icon" aria-hidden="true">flag</span> المتطلبات السابقة</h3><p style="margin: 0; font-size: 15px; line-height: 1.8">دبلومة البرمجة بلغة Python أو ما يعادلها</p></div>
-</div></div></section><section class="q-sec" style="background: #ffffff; border-top: 1px solid #E2E8F0;"><div class="q-w"><div class="q-head"><span class="q-k">مقارنة صريحة</span><h2 class="q-h2">لماذا لا يكفي المحتوى المجاني؟</h2></div><table class="q-tbl"><thead><tr><th scope="col">المعيار</th><th scope="col" class="q-us">CSkilled</th><th scope="col">قوائم التشغيل المجانية</th><th scope="col">الدورات العربية العامة</th><th scope="col">المنصّات الإنجليزية</th><th scope="col">المعسكرات التدريبية (Bootcamps)</th></tr></thead><tbody><tr><th scope="row">عمق الشرح</th><td class="q-us"><span class="cs-icon" aria-hidden="true">check</span>تبني كل هيكل بيدك قبل استخدام الجاهز</td><td>متفاوت</td><td>سطحي غالبًا</td><td>عميق</td><td>محدود بالوقت</td></tr><tr><th scope="row">حجم الممارسة</th><td class="q-us"><span class="cs-icon" aria-hidden="true">check</span><span class="ph">[[عدد التمارين]]</span> تمرين متدرج</td><td>قليل وغير مصحَّح</td><td>قليل</td><td>متوسط</td><td>مكثف لأسابيع</td></tr><tr><th scope="row">اللغة</th><td class="q-us"><span class="cs-icon" aria-hidden="true">check</span>عربية مع المصطلح الإنجليزي</td><td>متفاوتة</td><td>عربية</td><td>إنجليزية فقط</td><td>عربية</td></tr><tr><th scope="row">ترتيب المنهج</th><td class="q-us"><span class="cs-icon" aria-hidden="true">check</span><bdi>43</bdi> محاضرة بتسلسل واحد</td><td>غير مرتّب</td><td>مرتّب جزئيًا</td><td>مرتّب</td><td>مرتّب</td></tr><tr><th scope="row">المدرّس</th><td class="q-us"><span class="cs-icon" aria-hidden="true">check</span>مهندس في NVIDIA • ICPC World Finalist</td><td>متفاوت</td><td>متفاوت</td><td>أكاديميون</td><td>متفاوت</td></tr><tr><th scope="row">المشاريع</th><td class="q-us"><span class="cs-icon" aria-hidden="true">check</span><span class="ph">[[عدد المشاريع]]</span> مشاريع تطبيقية</td><td>لا</td><td>مشاريع صغيرة</td><td>مشاريع موجَّهة</td><td>مشاريع سريعة</td></tr><tr><th scope="row">المجتمع والدعم</th><td class="q-us"><span class="cs-icon" aria-hidden="true">check</span>مجتمع نشط وإجابات على الأسئلة</td><td>تعليقات فقط</td><td>محدود</td><td>منتديات عامة</td><td>دفعة محددة المدة</td></tr><tr><th scope="row">السداد</th><td class="q-us"><span class="cs-icon" aria-hidden="true">check</span>تقسيط بدون فوائد، بالجنيه أو الدولار</td><td>مجاني</td><td>سعر منخفض</td><td>اشتراك شهري بالدولار</td><td>سعر أعلى ومواعيد ثابتة</td></tr></tbody></table><p class="q-note" style="margin-top: 14px">مقارنة عامة بحسب النوع، ولا تشير إلى جهة بعينها.</p></div></section><section class="q-sec" style="background: #FAF9F6; border-top: 1px solid #E2E8F0;"><div class="q-w"><div class="q-head"><span class="q-k">آراء الطلاب</span><h2 class="q-h2">ماذا يكتب طلاب الدبلومة</h2></div><div class="q-rf"><article class="q-rc q-rc--big q-rv-in"><p>«الدبلومة علّمتني أحلل الـ Complexity قبل ما أكتب، وأختار الهيكل المناسب من الأول.»</p><div class="q-rc__by"><span class="q-av" aria-hidden="true">س</span><div><b>سارة محمود</b><span>تعليق على Facebook</span></div><em>هياكل البيانات والخوارزميات بلغة Python</em></div></article><article class="q-rc q-rc--ph q-rv-in"><span class="cs-icon" style="color: #94A3B8; font-size: 28px">format_quote</span><p><span class="ph">[[رأي حقيقي <bdi>1</bdi> من طلاب الدبلومة]]</span></p><div class="q-rc__by"><span class="q-av" aria-hidden="true"><span class="cs-icon" aria-hidden="true">person</span></span><div><b><span class="ph">[[اسم الطالب]]</span></b></div></div></article><article class="q-rc q-rc--ph q-rv-in"><span class="cs-icon" style="color: #94A3B8; font-size: 28px">format_quote</span><p><span class="ph">[[رأي حقيقي <bdi>2</bdi> من طلاب الدبلومة]]</span></p><div class="q-rc__by"><span class="q-av" aria-hidden="true"><span class="cs-icon" aria-hidden="true">person</span></span><div><b><span class="ph">[[اسم الطالب]]</span></b></div></div></article></div></div></section><div class="q-stick" aria-label="إجراءات سريعة"><div><b>دبلومة هياكل البيانات والخوارزميات بلغة Python</b><br><span><bdi>43</bdi> محاضرة · <bdi dir="ltr">+45</bdi> ساعة</span></div><div style="display: flex; gap: 8px"><a class="q-b q-b--line q-b--sm" href="#gate"><span class="cs-icon" aria-hidden="true">play_arrow</span>شاهد محاضرة مجانية</a><a class="q-b q-b--sm" href="#pricing" style="color: #062985">الخطط والأسعار<span class="cs-icon" aria-hidden="true">arrow_downward</span></a></div></div></div><section id="pricing" class="q-sec" style="background: #ffffff; border-top: 1px solid #E2E8F0;"><div class="q-w"><div class="q-price">
+</div></div></section><section class="q-sec" style="background: #ffffff; border-top: 1px solid #E2E8F0;">
+<div class="q-w">
+<style>
+.q-vs{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:24px;align-items:start;max-width:1080px;margin-inline:auto}
+.q-vs__box{border-radius:12px;padding:28px}
+.q-vs__box h3{display:flex;align-items:center;gap:10px;margin:0 0 16px;padding-bottom:16px;font-size:20px;line-height:1.5}
+.q-vs__box ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.q-vs__bad{background:#FEF5F5;border:1.5px solid #F5C6C6;color:#7F1D1D}
+.q-vs__bad h3{color:#991B1B;border-bottom:1px solid #F5C6C6}
+.q-vs__bad li{position:relative;padding-inline-start:16px;font-size:15px;line-height:1.9}
+.q-vs__bad li + li{margin-top:6px}
+.q-vs__bad li::before{content:"•";position:absolute;inset-inline-start:0;color:#991B1B;font-weight:700}
+.q-vs__bad b{color:#991B1B}
+.q-vs__good{background:#0B2A8A;border:2px solid #2440DC;color:#fff;box-shadow:0 24px 48px rgba(11,42,138,0.18)}
+.q-vs__good h3{color:#fff;border-bottom:1px solid rgba(255,255,255,0.18)}
+.q-vs__good ul{gap:10px}
+.q-vs__good li{display:flex;gap:10px;align-items:baseline;padding:12px 16px;border-radius:8px;background:rgba(255,255,255,0.09);font-size:15px;line-height:1.7;color:#E2E8F0}
+.q-vs__good li::before{content:"✓";color:#fff;flex:none}
+.q-vs__good b{color:#86EFAC;font-weight:700}
+@media (max-width:860px){.q-vs{grid-template-columns:minmax(0,1fr)}.q-vs__box{padding:22px 18px}.q-vs__box h3{font-size:18px}}
+</style>
+<div class="q-head q-head--c"><h2 class="q-h2">لماذا CSkilled، وليس مصادر متفرقة؟</h2><p class="q-lead">مقارنة سريعة بين التشتت وبين المسار الهندسي المتكامل.</p></div>
+<div class="q-vs">
+<div class="q-vs__box q-vs__good"><h3><span aria-hidden="true">✓</span>ماذا تحصل عليه في منصة CSkilled؟</h3><ul>
+<li><span><b>العمق الرياضي:</b> يشرح الاشتقاق والمعادلة قبل المكتبة</span></li><li><span><b>حجم الممارسة:</b> مئات المسائل المصحّحة مع الحل</span></li><li><span><b>اللغة:</b> عربية واضحة مع المصطلح الإنجليزي</span></li><li><span><b>ترتيب المنهج:</b> <bdi>387</bdi> محاضرة في <bdi>6</bdi> دبلومات مرتّبة</span></li><li><span><b>المدرّس:</b> مهندس واحد يعمل في NVIDIA • PhD</span></li><li><span><b>المشاريع:</b> مشاريع كاملة من الفكرة حتى النشر</span></li><li><span><b>المجتمع والدعم:</b> مجتمع نشط وإجابات على الأسئلة</span></li><li><span><b>السداد:</b> تقسيط بلا فوائد حتى <bdi>12</bdi> شهرًا</span></li></ul></div>
+<div class="q-vs__box q-vs__bad"><h3><span aria-hidden="true">✕</span>المصادر المتفرقة (يوتيوب / دورات عامة / معسكرات)</h3><ul>
+<li><b>العمق والمنهج:</b> إما سطحي وغير مرتب، أو مضغوط ومحدود بالوقت.</li><li><b>الممارسة والمشاريع:</b> مسائل قليلة غير مصححة ومشاريع صغيرة غير مكتملة.</li><li><b>اللغة والمدرّس:</b> مستوى متفاوت، أو إنجليزي فقط يصعب استيعابه.</li><li><b>الدعم والسداد:</b> تعليقات عامة بدون توجيه، أو اشتراكات دولارية ومعسكرات باهظة.</li></ul></div>
+</div>
+</div>
+</section><section class="q-sec q-rv" style="background: #FAF9F6; border-top: 1px solid #E2E8F0;">
+<div class="q-w" style="display: flex; align-items: flex-end; justify-content: space-between; gap: 40px; margin-bottom: 48px"><div class="q-head" style="margin: 0"><span class="q-k">آراء طلابنا</span><h2 class="q-h2">تجارب حقيقية من طلاب أكملوا الرحلة</h2></div><div style="text-align: end"><div class="q-big" style="font-family: 'IBM Plex Sans Arabic', sans-serif; font-size: 44px">مئات</div><div class="q-note">الآراء الموثقة</div></div></div>
+<div class="q-w">
+<script src="https://widget.senja.io/widget/cfe1fdbc-09c5-4969-b848-00b8c84ab45c/platform.js" type="text/javascript" async></script>
+<div class="senja-embed" data-id="cfe1fdbc-09c5-4969-b848-00b8c84ab45c" data-mode="shadow" data-lazyload="false" style="display: block; width: 100%;"></div>
+</div>
+</section><div class="q-stick" aria-label="إجراءات سريعة"><div><b>دبلومة هياكل البيانات والخوارزميات بلغة Python</b><br><span><bdi>43</bdi> محاضرة · <bdi dir="ltr">+45</bdi> ساعة</span></div><div style="display: flex; gap: 8px"><a class="q-b q-b--line q-b--sm" href="#gate"><span class="cs-icon" aria-hidden="true">play_arrow</span>شاهد محاضرة مجانية</a><a class="q-b q-b--sm" href="#pricing" style="color: #062985">الخطط والأسعار<span class="cs-icon" aria-hidden="true">arrow_downward</span></a></div></div></div><section id="pricing" class="q-sec" style="background: #ffffff; border-top: 1px solid #E2E8F0;"><div class="q-w"><div class="q-price">
 <input class="sr ce" type="radio" name="cur" id="cur-e" checked="" aria-label="مصر"><input class="sr cu" type="radio" name="cur" id="cur-u" aria-label="خارج مصر">
 <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 32px; flex-wrap: wrap">
 <div class="q-head"><span class="q-k">التوجيه الأكاديمي الشفاف</span><h2 class="q-h2">اختر خطة السداد التي تناسبك</h2><p class="q-lead">بدون فوائد وبدون رسوم خفية. الرقم الكبير هو ما تدفعه اليوم.</p></div>
@@ -1420,7 +1463,7 @@ html{scroll-behavior:smooth}
 <div class="q-plan__tot">الإجمالي: <bdi dir="ltr">$300</bdi></div></div></div>
 <div class="q-trust2"><span><span class="cs-icon" aria-hidden="true">account_balance_wallet</span>إنستاباي</span><span><span class="cs-icon" aria-hidden="true">storefront</span>فوري</span><span><span class="cs-icon" aria-hidden="true">credit_card</span>البطاقات</span><span><span class="cs-icon" aria-hidden="true">percent</span>بدون فوائد</span><span><span class="cs-icon" aria-hidden="true">verified_user</span>ضمان استرداد <span class="ph">[[المدة، تأكيد]]</span></span><span><span class="cs-icon" aria-hidden="true">lock</span>دفع آمن عبر Paymob</span></div>
 <p class="q-note" style="text-align: center; margin-top: 16px"><a class="q-a" href="/contact" style="font-size: 14px" data-link="whatsapp"><span class="cs-icon" aria-hidden="true">chat</span>لديك سؤال عن السداد؟ تواصل معنا على واتساب</a></p>
-</div></div></section><section class="q-sec" style="background: #FAF9F6; border-top: 1px solid #E2E8F0;"><div class="q-w"><div style="max-width: 880px; margin-inline: auto"><div class="q-head q-head--c"><span class="q-k">أسئلة شائعة</span><h2 class="q-h2">أسئلة تُطرح قبل التسجيل</h2></div><details class="q-q" open=""><summary>ما المتطلبات السابقة لهذه الدبلومة؟<span class="cs-icon" aria-hidden="true">add</span></summary><p>أساسيات Python: الدوال والقوائم والبرمجة الكائنية. إن لم تكن جاهزًا فابدأ بدبلومة البرمجة بلغة Python.</p></details><details class="q-q"><summary>كم ساعة أحتاج أسبوعيًا؟<span class="cs-icon" aria-hidden="true">add</span></summary><p><span class="ph">[[تأكيد: عدد الساعات]]</span>. الدراسة ذاتية الإيقاع ويمكن التوفيق بينها وبين الدراسة أو العمل.</p></details><details class="q-q"><summary>هل المحاضرات مسجّلة؟<span class="cs-icon" aria-hidden="true">add</span></summary><p>نعم، مسجّلة بالكامل وتشاهدها في الوقت الذي يناسبك.</p></details><details class="q-q"><summary>ما مدة صلاحية الوصول إلى المحتوى؟<span class="cs-icon" aria-hidden="true">add</span></summary><p><span class="ph">[[تأكيد]]</span></p></details><details class="q-q"><summary>هل أحصل على شهادة؟<span class="cs-icon" aria-hidden="true">add</span></summary><p><span class="ph">[[تأكيد]]</span></p></details><details class="q-q"><summary>ما سياسة الاسترداد؟<span class="cs-icon" aria-hidden="true">add</span></summary><p><span class="ph">[[تأكيد]]</span></p></details><details class="q-q"><summary>ما طرق السداد المتاحة؟<span class="cs-icon" aria-hidden="true">add</span></summary><p>إنستاباي وفوري والبطاقات البنكية، مع تقسيط حتى <bdi>12</bdi> شهرًا بدون فوائد.</p></details><details class="q-q"><summary>لماذا الشرح بالعربية والمصطلحات بالإنجليزية؟<span class="cs-icon" aria-hidden="true">add</span></summary><p>لتفهم الفكرة بلغتك، وتتعامل مع المراجع وسوق العمل بمصطلحاته.</p></details></div></div></section><section class="q-sec" style="background: #ffffff; padding-block: 96px; border-top: 1px solid #E2E8F0">
+</div></div></section><section class="q-sec" style="background: #ffffff; padding-block: 96px; border-top: 1px solid #E2E8F0">
 <div class="q-w">
 <div class="q-end q-rv-in">
 <div class="q-end__sh" aria-hidden="true" style="width: 260px; height: 260px; background: #2440DC; top: -90px; right: -70px; rotate: 18deg"></div>
@@ -1433,6 +1476,7 @@ html{scroll-behavior:smooth}
 </div>
 </div>
 </section>
+<section class="q-sec" style="background: #FAF9F6; border-top: 1px solid #E2E8F0;"><div class="q-w"><div style="max-width: 880px; margin-inline: auto"><div class="q-head q-head--c"><span class="q-k">أسئلة شائعة</span><h2 class="q-h2">أسئلة تُطرح قبل التسجيل</h2></div><details class="q-q" open=""><summary>ما المتطلبات السابقة لهذه الدبلومة؟<span class="cs-icon" aria-hidden="true">add</span></summary><p>أساسيات Python: الدوال والقوائم والبرمجة الكائنية. إن لم تكن جاهزًا فابدأ بدبلومة البرمجة بلغة Python.</p></details><details class="q-q"><summary>كم ساعة أحتاج أسبوعيًا؟<span class="cs-icon" aria-hidden="true">add</span></summary><p><span class="ph">[[تأكيد: عدد الساعات]]</span>. الدراسة ذاتية الإيقاع ويمكن التوفيق بينها وبين الدراسة أو العمل.</p></details><details class="q-q"><summary>هل المحاضرات مسجّلة؟<span class="cs-icon" aria-hidden="true">add</span></summary><p>نعم، مسجّلة بالكامل وتشاهدها في الوقت الذي يناسبك.</p></details><details class="q-q"><summary>ما مدة صلاحية الوصول إلى المحتوى؟<span class="cs-icon" aria-hidden="true">add</span></summary><p><span class="ph">[[تأكيد]]</span></p></details><details class="q-q"><summary>هل أحصل على شهادة؟<span class="cs-icon" aria-hidden="true">add</span></summary><p><span class="ph">[[تأكيد]]</span></p></details><details class="q-q"><summary>ما سياسة الاسترداد؟<span class="cs-icon" aria-hidden="true">add</span></summary><p><span class="ph">[[تأكيد]]</span></p></details><details class="q-q"><summary>ما طرق السداد المتاحة؟<span class="cs-icon" aria-hidden="true">add</span></summary><p>إنستاباي وفوري والبطاقات البنكية، مع تقسيط حتى <bdi>12</bdi> شهرًا بدون فوائد.</p></details><details class="q-q"><summary>لماذا الشرح بالعربية والمصطلحات بالإنجليزية؟<span class="cs-icon" aria-hidden="true">add</span></summary><p>لتفهم الفكرة بلغتك، وتتعامل مع المراجع وسوق العمل بمصطلحاته.</p></details></div></div></section>
 </div>
 <!-- 8. PRINCIPLE STRIP -->
 <section class="cs-section" style="flex: none; padding-block: 32px">
