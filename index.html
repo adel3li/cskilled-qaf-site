@@ -1560,6 +1560,9 @@ html{scroll-behavior:smooth}
 .q-wa > span:last-child{display:inline-block;max-width:0;opacity:0;overflow:hidden;white-space:nowrap;transition:max-width 300ms ease,opacity 200ms ease}
 .q-wa:hover,.q-wa:focus-visible{gap:10px;padding:0 20px 0 14px;color:#0F172A}
 .q-wa:hover > span:last-child,.q-wa:focus-visible > span:last-child{max-width:220px;opacity:1}
+.q-en--join{position:static;margin-bottom:24px}
+.q-en--join ul{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 32px}
+@media (max-width:860px){.q-en--join ul{grid-template-columns:minmax(0,1fr)}}
 .q-mq{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
 .q-mq__t{display:flex;width:max-content}
 .q-mq--st{margin-bottom:32px}
@@ -1740,6 +1743,8 @@ html{scroll-behavior:smooth}
 </section>
 <section class="q-sec" style="background: #ffffff; padding-block: 96px; border-top: 1px solid #E2E8F0">
 <div class="q-w">
+<aside class="q-en q-en--join q-rv-in"><span class="q-k">طريقة الالتحاق</span><h3 style="margin: 0; font-size: 26px; line-height: 1.4">ابدأ مجانًا، وقرّر بعد أن ترى الشرح</h3>
+<ul><li><span class="cs-icon" aria-hidden="true">play_circle</span><span>أول محاضرة من كل دبلومة مجانية: <bdi>6</bdi> محاضرات تحكم بها قبل أن تدفع</span></li><li><span class="cs-icon" aria-hidden="true">percent</span><span>تقسيط بلا فوائد حتى <bdi>12</bdi> شهرًا</span></li><li><span class="cs-icon" aria-hidden="true">account_balance_wallet</span><span>كل طرق الدفع متاحة: إنستاباي وفوري والبطاقات</span></li><li><span class="cs-icon" aria-hidden="true">translate</span><span>شرح بالعربية مع المصطلح الإنجليزي</span></li></ul></aside>
 <div class="q-end q-rv-in">
 <div class="q-end__sh" aria-hidden="true" style="width: 260px; height: 260px; background: #2440DC; top: -90px; right: -70px; rotate: 18deg"></div>
 <div class="q-end__sh" aria-hidden="true" style="width: 200px; height: 200px; background: rgba(235,237,255,0.12); bottom: -80px; left: -40px; rotate: -16deg"></div>
@@ -1750,10 +1755,9 @@ html{scroll-behavior:smooth}
 </div>
 </section>
 <section id="faq" class="q-sec" style="background: #FAF9F6; border-top: 1px solid #E2E8F0">
-<div class="q-w q-fq">
+<div class="q-w q-fq" style="grid-template-columns: minmax(0, 1fr); max-width: 900px">
 <div><div class="q-head" style="margin-bottom: 40px"><span class="q-k">الأسئلة الشائعة</span><h2 class="q-h2">قبل أن تبدأ</h2></div><details class="q-q" open=""><summary>هل أحتاج خبرة سابقة في البرمجة؟<span class="cs-icon" aria-hidden="true">add</span></summary><p>لا. دبلومتا البرمجة بلغة Python والبرمجة والبرمجة الكائنية بلغة C++ تبدآن من الصفر، ومنهما تنتقل إلى الدبلومات الأعلى في مسارك.</p></details><details class="q-q"><summary>هل يمكنني تجربة الشرح قبل الدفع؟<span class="cs-icon" aria-hidden="true">add</span></summary><p>نعم. أول محاضرة من كل دبلومة مجانية، فتحكم على أسلوب الشرح بنفسك قبل أن تدفع.</p></details><details class="q-q"><summary>هل يمكنني الدفع بالتقسيط؟<span class="cs-icon" aria-hidden="true">add</span></summary><p>نعم، تقسيط بلا فوائد حتى <bdi>12</bdi> شهرًا، وكل طرق الدفع متاحة.</p></details><details class="q-q"><summary>بأي لغة يتم الشرح؟<span class="cs-icon" aria-hidden="true">add</span></summary><p>بالعربية، مع المصطلح الإنجليزي لكل مفهوم حتى تقرأ المراجع وتتعامل مع الأدوات بثقة.</p></details><details class="q-q"><summary>من أي دبلومة أبدأ؟<span class="cs-icon" aria-hidden="true">add</span></summary><p>اضغط «ابدأ رحلتك» وأجب عن ثلاثة أسئلة، وسنوجّهك إلى المحاضرة الأنسب لمستواك وهدفك.</p></details><a class="q-a" href="/faq" style="margin-top: 20px">كل الأسئلة الشائعة<span class="cs-icon" aria-hidden="true">arrow_back</span></a></div>
-<aside class="q-en q-rv-in"><span class="q-k">طريقة الالتحاق</span><h3 style="margin: 0; font-size: 26px; line-height: 1.4">ابدأ مجانًا، وقرّر بعد أن ترى الشرح</h3>
-<ul><li><span class="cs-icon" aria-hidden="true">play_circle</span><span>أول محاضرة من كل دبلومة مجانية: <bdi>6</bdi> محاضرات تحكم بها قبل أن تدفع</span></li><li><span class="cs-icon" aria-hidden="true">percent</span><span>تقسيط بلا فوائد حتى <bdi>12</bdi> شهرًا</span></li><li><span class="cs-icon" aria-hidden="true">account_balance_wallet</span><span>كل طرق الدفع متاحة: إنستاباي وفوري والبطاقات</span></li><li><span class="cs-icon" aria-hidden="true">translate</span><span>شرح بالعربية مع المصطلح الإنجليزي</span></li></ul></aside>
+
 </div>
 </section>
 <footer class="q-ft">
