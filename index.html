@@ -808,7 +808,7 @@ bdi{font-family:var(--cs-font-mono);font-variant-numeric:tabular-nums}
 
 /* ===================== v5 · Qaf-inspired, light & airy ===================== */
 @property --n{syntax:'<integer>';inherits:false;initial-value:0}
-.q5{font-family:'IBM Plex Sans Arabic',sans-serif;color:#0F172A;--navy:#062985;--cob:#2440DC;--lav:#EBEDFF;--paper:#FAF9F6;--night:#0A101D;--mut:#475569;--line:#E2E8F0}
+.q5,.qz,.q-wa{font-family:'IBM Plex Sans Arabic',sans-serif;color:#0F172A;--navy:#062985;--cob:#2440DC;--lav:#EBEDFF;--paper:#FAF9F6;--night:#0A101D;--mut:#475569;--line:#E2E8F0}
 .q5 *{box-sizing:border-box}
 .mono{font-family:var(--cs-font-mono)}
 .q-w{width:100%;max-width:1280px;margin-inline:auto;padding-inline:32px}
@@ -1556,6 +1556,10 @@ html{scroll-behavior:smooth}
 
 </section>
 <style>
+.q-wa{gap:0;padding:0 8px;transition:padding 250ms ease,gap 250ms ease}
+.q-wa > span:last-child{display:inline-block;max-width:0;opacity:0;overflow:hidden;white-space:nowrap;transition:max-width 300ms ease,opacity 200ms ease}
+.q-wa:hover,.q-wa:focus-visible{gap:10px;padding:0 20px 0 14px;color:#0F172A}
+.q-wa:hover > span:last-child,.q-wa:focus-visible > span:last-child{max-width:220px;opacity:1}
 .q-mq{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
 .q-mq__t{display:flex;width:max-content}
 .q-mq--st{margin-bottom:32px}
