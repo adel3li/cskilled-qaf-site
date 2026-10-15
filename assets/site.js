@@ -93,6 +93,18 @@
     }
   });
 
+  // Track/diploma pages: any link to #gate also opens the free-lecture form
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href="#gate"], a[href$="#gate"]');
+    if (!a) return;
+    var href = a.getAttribute('href');
+    if (href !== '#gate' && href.split('#')[0] !== location.pathname) return;
+    var gb = document.getElementById('g-b');
+    if (gb && !document.getElementById('g-c').checked) gb.checked = true;
+  });
+
+  if (location.hash === '#gate') { var gb0 = document.getElementById('g-b'); if (gb0) gb0.checked = true; }
+
   // Home-page quiz: recommend a diploma from the answers and link its free first lecture
   var go = document.querySelector('[data-qz-go]');
   if (go) {
