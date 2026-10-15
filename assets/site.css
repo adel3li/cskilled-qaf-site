@@ -106,3 +106,7 @@ body.q-menu-open{overflow:hidden}
   .q-end[style*="flex-direction: row"] > a{align-self:stretch !important;justify-content:center}
 }
 @media (max-width: 860px){ .cs-footer [style*="display: flex"]{flex-wrap:wrap} }
+/* Track & diploma heroes on phones: buttons above the free-lecture video */
+@media (max-width: 860px){
+  .q-hero-side > .q-hero__cta{order:-1}
+}
