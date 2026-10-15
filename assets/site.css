@@ -32,7 +32,7 @@ body.q-menu-open{overflow:hidden}
 /* ---------- Responsive layer for the q-* page components ---------- */
 @media (max-width: 1100px){
   .q-tr,.q-pg,.q-ls,.q-cm,.q-sk,.q-who,.q-podium{grid-template-columns:repeat(2,minmax(0,1fr)) !important}
-  .q-pil,.q-ch,.q-plans{grid-template-columns:repeat(2,minmax(0,1fr)) !important}
+  .q-pil,.q-ch{grid-template-columns:repeat(2,minmax(0,1fr)) !important}
   .q-jr{grid-template-columns:repeat(3,minmax(0,1fr)) !important}
   .q-cos{grid-template-columns:repeat(3,minmax(0,1fr)) !important}
   .q-split,.q-split--57,.q-fq,.q-in,.q-ins{gap:40px}
@@ -114,3 +114,4 @@ body.q-menu-open{overflow:hidden}
   .q-ph-hero .q-split > .q-gate{order:1}
   .q-hero-r > .q-hero__cta ~ *{order:2}
 }
+@media (max-width: 860px){ .q-plans{grid-template-columns:minmax(0,1fr) !important} }
