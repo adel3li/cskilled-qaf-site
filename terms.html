@@ -6,6 +6,7 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="utf-8">
+<script>document.documentElement.classList.add('anim-js')</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>CSkilled — الشروط والأحكام</title>
 <meta property="og:image" content="/assets/og-image.png">
@@ -1029,10 +1030,9 @@ bdi{font-family:var(--cs-font-mono);font-variant-numeric:tabular-nums}
   .q-shape{animation:q5float 9s ease-in-out infinite}
   .q-shape:nth-of-type(2){animation-duration:11s;animation-delay:-3s}
   .cnt{animation:q5cnt 1800ms cubic-bezier(.2,.7,.2,1) 300ms both}
-  @supports (animation-timeline: view()){
-    .q-rv-in{animation:q5rise linear both;animation-timeline:view();animation-range:entry 0% entry 65%}
-    .cnt{animation:q5cnt linear both;animation-timeline:view();animation-range:entry 20% cover 40%}
-  }
+  .q-rv-in{animation:q5rise 800ms cubic-bezier(.2,.7,.2,1) both}
+  /* play once, on a timer, when scrolled into view (assets/site.js adds .is-in) */
+  .anim-js .cnt:not(.is-in),.anim-js .q-rv-in:not(.is-in){animation-play-state:paused}
 }
 
 /* ===== v6 · Qaf family: inner pages ===== */
