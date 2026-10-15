@@ -106,7 +106,11 @@ body.q-menu-open{overflow:hidden}
   .q-end[style*="flex-direction: row"] > a{align-self:stretch !important;justify-content:center}
 }
 @media (max-width: 860px){ .cs-footer [style*="display: flex"]{flex-wrap:wrap} }
-/* Track & diploma heroes on phones: buttons above the free-lecture video */
+/* Track & diploma heroes: text column holds the buttons and details; video alone on the left.
+   On phones: text, buttons, video, then the rest. */
 @media (max-width: 860px){
-  .q-hero-side > .q-hero__cta{order:-1}
+  .q-ph-hero .q-split:has(.q-hero-r){row-gap:22px}
+  .q-hero-r{display:contents}
+  .q-ph-hero .q-split > .q-gate{order:1}
+  .q-hero-r > .q-hero__cta ~ *{order:2}
 }

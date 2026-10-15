@@ -827,7 +827,7 @@ bdi{font-family:var(--cs-font-mono);font-variant-numeric:tabular-nums}
 .q-b:hover{transform:translateY(-2px)}
 .q-b:focus-visible{outline:2px solid var(--cob);outline-offset:3px}
 .q-b--fill{background:var(--navy);color:#fff;box-shadow:0 10px 24px rgba(6,41,133,0.22)}
-.q-b--fill:hover{background:#041c5c}
+.q-b--fill:hover{background:#2440DC;color:#fff}
 .q-b--line{background:#fff;border-color:rgba(6,41,133,0.25);color:var(--navy)}
 .q-b--line:hover{border-color:var(--navy)}
 .q-b--white{background:#fff;color:var(--navy)}
@@ -1322,12 +1322,16 @@ html{scroll-behavior:smooth}
 <section class="q-ph-hero">
 <div class="q-shape" aria-hidden="true" style="width: 220px; height: 280px; background: #2440DC; top: -80px; left: -90px; rotate: -14deg"></div>
 <div class="q-w q-split" style="align-items: start">
-<div class="q-stack" style="padding-top: 24px">
+<div class="q-stack q-hero-r" style="padding-top: 24px">
 <nav class="q-crumb q-up" aria-label="مسار الصفحة"><a href="/#catalog">المسارات</a><span class="cs-icon" aria-hidden="true">chevron_left</span><span aria-current="page">مسار الذكاء الاصطناعي</span></nav>
 <div class="q-up" style="--d: 80ms"><h1 class="q-h1s">مسار الذكاء الاصطناعي</h1><span class="q-ename" dir="ltr">AI Track</span></div>
 <p class="q-lead q-up" style="--d: 160ms; font-size: 17px">أربع دبلومات بترتيب واحد: تبدأ من أول سطر Python، ثم هياكل البيانات والخوارزميات (Data Structures and Algorithms)، ثم تعلّم الآلة (Machine Learning)، وتنتهي بالتعلّم العميق (Deep Learning).</p>
+<div class="q-hero__cta q-up" style="--d: 300ms; justify-content: flex-start"><a class="q-b q-b--fill" href="#gate"><span class="cs-icon ic-fill" aria-hidden="true">play_circle</span>شاهد محاضرة مجانية</a><a class="q-b q-b--line" href="#pricing">الخطط والأسعار<span class="cs-icon" aria-hidden="true">arrow_downward</span></a></div>
+<div class="q-mx q-up" style="--d: 220ms"><div><b><bdi dir="ltr">+370</bdi></b><span>ساعة · <bdi>292</bdi> محاضرة</span></div><div><b style="font-family: 'IBM Plex Sans Arabic', sans-serif; font-size: 20px"><bdi>4</bdi> دبلومات</b><span>بترتيب واحد</span></div><div><b><span class="ph">[[عدد المسائل]]</span></b><span>مصحَّحة ومتدرجة</span></div><div><b><span class="ph">[[عدد المشاريع]]</span></b><span>مشاريع تطبيقية</span></div></div>
+<div class="q-tags q-up" style="--d: 260ms"><span class="q-tag"><span class="cs-icon" aria-hidden="true">flag</span>المتطلبات السابقة: لا شيء، تبدأ من الصفر</span></div>
+<div class="q-by q-up" style="--d: 360ms"><span class="q-av q-av--img" aria-hidden="true"><img src="/assets/mostafa-avatar.jpg" alt="" width="40" height="40"></span><span>يدرّسه <b>د. مصطفى سعد إبراهيم</b><br><bdi dir="ltr">+20</bdi> سنة تدريس · ICPC World Finalist <bdi>2011</bdi> · <bdi dir="ltr">+134K</bdi> على YouTube</span></div>
+<a class="q-a q-up" href="#route" style="--d: 400ms; align-self: flex-start">محتوى المسار<span class="cs-icon" aria-hidden="true">arrow_downward</span></a>
 </div>
-<div class="q-stack q-hero-side">
 <div class="q-gate q-up" id="gate" style="--d: 200ms">
 <input class="sr ga" type="radio" name="gate" id="g-a" checked="" aria-label="عرض الفيديو التعريفي"><input class="sr gb" type="radio" name="gate" id="g-b" aria-label="نموذج المحاضرة المجانية"><input class="sr gc" type="radio" name="gate" id="g-c" aria-label="مشغّل المحاضرة">
 <div class="q-g q-g--a">
@@ -1349,12 +1353,6 @@ html{scroll-behavior:smooth}
 <div class="q-pbar"><bdi dir="ltr">00:52</bdi><i></i><span class="ph">[[المدة]]</span></div>
 <div class="q-gate__f"><div><b>تشاهد الآن: المحاضرة <bdi>01</bdi>، <span class="ph">[[عنوان المحاضرة]]</span></b></div><a class="q-a" href="#route">المحاضرة المجانية التالية<span class="cs-icon" aria-hidden="true">arrow_back</span></a></div>
 </div>
-</div>
-<div class="q-hero__cta q-up" style="--d: 300ms; justify-content: flex-start"><a class="q-b q-b--fill" href="#gate"><span class="cs-icon ic-fill" aria-hidden="true">play_circle</span>شاهد محاضرة مجانية</a><a class="q-b q-b--line" href="#pricing">الخطط والأسعار<span class="cs-icon" aria-hidden="true">arrow_downward</span></a></div>
-<div class="q-mx q-up" style="--d: 220ms"><div><b><bdi dir="ltr">+370</bdi></b><span>ساعة · <bdi>292</bdi> محاضرة</span></div><div><b style="font-family: 'IBM Plex Sans Arabic', sans-serif; font-size: 20px"><bdi>4</bdi> دبلومات</b><span>بترتيب واحد</span></div><div><b><span class="ph">[[عدد المسائل]]</span></b><span>مصحَّحة ومتدرجة</span></div><div><b><span class="ph">[[عدد المشاريع]]</span></b><span>مشاريع تطبيقية</span></div></div>
-<div class="q-tags q-up" style="--d: 260ms"><span class="q-tag"><span class="cs-icon" aria-hidden="true">flag</span>المتطلبات السابقة: لا شيء، تبدأ من الصفر</span></div>
-<div class="q-by q-up" style="--d: 360ms"><span class="q-av q-av--img" aria-hidden="true"><img src="/assets/mostafa-avatar.jpg" alt="" width="40" height="40"></span><span>يدرّسه <b>د. مصطفى سعد إبراهيم</b><br><bdi dir="ltr">+20</bdi> سنة تدريس · ICPC World Finalist <bdi>2011</bdi> · <bdi dir="ltr">+134K</bdi> على YouTube</span></div>
-<a class="q-a q-up" href="#route" style="--d: 400ms; align-self: flex-start">محتوى المسار<span class="cs-icon" aria-hidden="true">arrow_downward</span></a>
 </div>
 </div>
 </section><div style="display: flex; flex-direction: column; flex: none"><section class="q-sec" style="background: #FAF9F6; border-top: 1px solid #E2E8F0;"><div class="q-w"><div class="q-head q-head--c"><span class="q-k">هل هذا المسار لك؟</span><h2 class="q-h2">لمن هذا المسار</h2></div><div class="q-who">
