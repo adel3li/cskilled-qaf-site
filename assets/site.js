@@ -93,15 +93,17 @@
     }
   });
 
-  // Track/diploma pages: any link to #gate plays the free first lecture
+  // Track/diploma pages: «شاهد محاضرة مجانية» (any link to #gate) opens the free-lecture form;
+  // clicking the video itself plays it directly.
   document.addEventListener('click', function (e) {
     var a = e.target.closest && e.target.closest('a[href="#gate"], a[href$="#gate"]');
     if (!a) return;
     var href = a.getAttribute('href');
     if (href !== '#gate' && href.split('#')[0] !== location.pathname) return;
-    var gc = document.getElementById('g-c'); if (gc) gc.checked = true;
+    var gb = document.getElementById('g-b'), gc = document.getElementById('g-c');
+    if (gb && !(gc && gc.checked)) gb.checked = true;
   });
-  if (location.hash === '#gate') { var gc0 = document.getElementById('g-c'); if (gc0) gc0.checked = true; }
+  if (location.hash === '#gate') { var gb0 = document.getElementById('g-b'); if (gb0) gb0.checked = true; }
 
   // Home-page quiz: recommend a diploma from the answers and link its free first lecture
   var go = document.querySelector('[data-qz-go]');

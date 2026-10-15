@@ -34,3 +34,12 @@ Values shown as dashed `[[…]]` chips (USD instalments, lecture counts per unit
 ```sh
 npx serve .
 ```
+
+## Caching
+
+Pages load `assets/site.css` and `assets/site.js` with a `?v=` version tag. After editing either file, update the tag in every page so browsers fetch the new copy, e.g.:
+
+```sh
+V=$(cat assets/site.css assets/site.js | sha1sum | cut -c1-8)
+sed -i -E "s#(/assets/site\.(css|js))(\?v=[0-9a-f]+)?\"#\1?v=$V\"#g" *.html
+```
